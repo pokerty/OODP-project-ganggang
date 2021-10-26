@@ -3,7 +3,6 @@ public class MenuItems {
 	private String name;
 	private String description;
 	private float price;
-	private int category;
 
 	public MenuItems() {
 		// TODO - implement MenuItems.MenuItems

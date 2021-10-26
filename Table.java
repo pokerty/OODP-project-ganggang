@@ -19,9 +19,4 @@ public class Table {
 		throw new UnsupportedOperationException();
 	}
 
-	public void operation() {
-		// TODO - implement Table.operation
-		throw new UnsupportedOperationException();
-	}
-
 }
