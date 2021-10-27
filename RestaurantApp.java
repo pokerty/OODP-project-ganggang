@@ -4,7 +4,7 @@ public class RestaurantApp {
 	private OrderApp orderApp;
 	private ReservationApp reservationApp;
 	private int report;
-	private TableApp tableApp;
+	private TableLogic tableApp;
 
 	public RestaurantApp() {
 		// TODO - implement RestaurantApp.RestaurantApp

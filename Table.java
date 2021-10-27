@@ -2,26 +2,32 @@ public class Table {
 
 	private int tableNumber;
 	private int sizeOfTable;
-	private Boolean isOccupied;
+	private Boolean isOccupied=false;
 
-	public Table() {
-		// TODO - implement Table.Table
-		throw new UnsupportedOperationException();
+	public Table(int tableNumber,int sizeOfTable) {
+		this.sizeOfTable = sizeOfTable;
+		this.tableNumber = tableNumber;
+
 	}
 
-	public void getTableNumber() {
-		// TODO - implement Table.getTableNumber
-		throw new UnsupportedOperationException();
+	public int getTableNumber() {
+		return tableNumber;
+
 	}
 
-	public void getSizeOfTable() {
-		// TODO - implement Table.getSizeOfTable
-		throw new UnsupportedOperationException();
-	}
+	public int getSizeOfTable() {
+		return sizeOfTable;
 
+	}
+	public Boolean getIsOccupied(){
+		return isOccupied;
+	}
 	public void operation() {
-		// TODO - implement Table.operation
-		throw new UnsupportedOperationException();
+		if(isOccupied){
+			isOccupied=false;
+			return;
+		}
+		isOccupied=true;
 	}
 
 }
