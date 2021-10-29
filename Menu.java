@@ -1,12 +1,32 @@
+import java.util.*;
+import MenuItems.courseType; 
 public class Menu {
 
-	private MenuItems[] main;
-	private MenuItems[] drinks;
-	private MenuItems[] dessert;
-	private MenuItems[] promoSet;
+	private ArrayList<MenuItems> main;
+	private ArrayList<MenuItems> drinks;
+	private ArrayList<MenuItems> desserts;
+	private ArrayList<MenuItems> promoItems;
+	private ArrayList<MenuItems> menuItemsList;
 
 	public Menu() {
-		// TODO - implement Menu.Menu
+		main = new ArrayList<MenuItems>();
+		drinks = new ArrayList<MenuItems>();
+		desserts = new ArrayList<MenuItems>();
+		promoItems = new ArrayList<MenuItems>();
+		menuItemsList = new ArrayList<MenuItems>();
+		for (int i=0; i<menuItemsList.size(); i++){
+			switch (menuItemsList.get(i).category){
+				case 'main':
+					main.add(menuItemsList.get(i));
+					break;
+				case 'drink':
+					drinks.add(menuItemsList.get(i));
+					break;
+				case 'dessert':
+					desserts.add(menuItemsList.get(i));
+					break;
+			}
+		}
 		throw new UnsupportedOperationException();
 	}
 
