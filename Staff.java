@@ -1,6 +1,6 @@
 public class Staff {
 
-	private int name;
+	private String name;
 	private int gender;
 	private int ID;
 	private int job;
@@ -13,6 +13,7 @@ public class Staff {
 	public void getName() {
 		// TODO - implement Staff.getName
 		throw new UnsupportedOperationException();
+
 	}
 
 	public void getGender() {
