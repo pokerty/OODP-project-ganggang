@@ -1,7 +1,7 @@
 public class MenuItems {
 
 	public enum courseType {
-		main, drinks, desserts, promotionSet
+		main, drink, dessert
 	}
 	private String name;
 	private courseType category;
@@ -10,12 +10,10 @@ public class MenuItems {
 
 
 	public MenuItems(String name, courseType category, String description, float price) {
-		// TODO - implement MenuItems.MenuItems
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.price = price;
-		throw new UnsupportedOperationException();
 	}
 
 	public String getName() {
@@ -27,7 +25,6 @@ public class MenuItems {
 	 */
 	public void setName(String name) {
 		this.name = name;
-		throw new UnsupportedOperationException();
 	}
 
 	public courseType getCategory() {
@@ -39,7 +36,6 @@ public class MenuItems {
 	 */
 	public void setCategory(courseType category) {
 		this.category = category;
-		throw new UnsupportedOperationException();
 	}
 
 	public String getDescription() {
@@ -51,7 +47,6 @@ public class MenuItems {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-		throw new UnsupportedOperationException();
 	}
 
 	public float getPrice() {
@@ -63,7 +58,6 @@ public class MenuItems {
 	 */
 	public void setPrice(float price) {
 		this.price=price;
-		throw new UnsupportedOperationException();
 	}
 
 }
