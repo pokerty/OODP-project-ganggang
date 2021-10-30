@@ -1,5 +1,5 @@
 public interface CheckTable {
 
-	void giveTable();
-
+	public void giveTable();
+	public int freeTable(int TableNumber); 
 }
