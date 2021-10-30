@@ -1,8 +1,12 @@
+import java.util.Scanner; 
+
 public class ReservationBoundary {
 
+	Scanner sc = new Scanner(System.in); 
+	
 	public void makeReservation() {
-		// TODO - implement ReservationBoundary.makeReservation
-		throw new UnsupportedOperationException();
+	
+		
 	}
 
 	/**
