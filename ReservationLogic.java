@@ -1,15 +1,33 @@
+
+package assignmentOODP;
+
+import java.util.ArrayList; // import the ArrayList class
+
 public class ReservationLogic {
 
-	private Reservation[] reservations;
+	private ArrayList<Reservation> reservations;
+	private CheckTable checkTable;
 
 	public ReservationLogic() {
-		// TODO - implement ReservationLogic.ReservationLogic
-		throw new UnsupportedOperationException();
+		this.reservations = new ArrayList <Reservation>(); 
+		
+		System.out.println("ReservationLogic start-up complete"); 
 	}
 
 	public void makeReservation() {
-		// TODO - implement ReservationLogic.makeReservation
-		throw new UnsupportedOperationException();
+		Reservation reservation = new Reservation(); 
+		reservations.add(reservation); 
+	}
+	
+	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
+		int tableNumber = checkTable.giveTable();
+		if(tableNumber==-1) { //no table 
+			System.out.println("No available tables, sorry!"); 
+			return; 
+		}
+		Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tableNumber); 
+		reservations.add(reservation); 
+		
 	}
 
 	/**
