@@ -4,26 +4,28 @@ public class TableLogic {
 	private List<Table> tables ;
 
 	public TableLogic() {
-
+		for(int i=1;i<4;i++){
+			tables.add(new Table(i, 2));
+		}
+		for(int i=4;i<7;i++){
+			tables.add(new Table(i, 4));
+		}
+		for(int i=7;i<10;i++){
+			tables.add(new Table(i, 6));
+		}
+		for(int i=10;i<13;i++){
+			tables.add(new Table(i, 8));
+		}
+		for(int i=13;i<16;i++){
+			tables.add(new Table(i, 10));
+		}
 	}
 
-	public void addTable(int tableNumber,int sizeOfTable) {
-		if(tables.size()==0) {
-			tables.add(new Table(tableNumber, sizeOfTable));
-			return;
-		}
-		for(int i = 0;i<tables.size();i++) {
-			if(tables.get(i).getSizeOfTable()>=sizeOfTable)
-			tables.add(i,new Table(tableNumber, sizeOfTable));
-			return;
-		}
-		tables.add(new Table(tableNumber, sizeOfTable));
-	}
 
 	public int giveTable(int customerPax) {
 		for(int i = 0;i<tables.size();i++){
 			if(tables.get(i).getSizeOfTable()>=customerPax&&!tables.get(i).getIsOccupied()){
-				tables.get(i).operation();
+				tables.get(i).changeOccupied();
 				return tables.get(i).getTableNumber();
 			}
 		}
@@ -39,14 +41,12 @@ public class TableLogic {
 		return false;
 	}
 
-	public Boolean freeTable(int tableNumber) {
-		for(int i = 0;i<tables.size();i++){
-			if(tables.get(i).getTableNumber()>=tableNumber){
-				tables.get(i).operation();
-				return true;
-			}
+	public void freeTable(int tableNumber) {
+		if(tables.get(tableNumber).getIsOccupied())
+		{
+			tables.get(tableNumber).changeOccupied();
 		}
-		return false;
+		tables.get(tableNumber).changeOccupied();
 	}
 
 
