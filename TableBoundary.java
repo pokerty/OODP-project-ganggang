@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TableBoundary {
+public class TableBoundary implements CheckTable{
     private TableLogic tableLogic = new TableLogic();
     Scanner scanner = new Scanner(System.in);
     public void giveTable() {
