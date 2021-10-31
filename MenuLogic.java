@@ -1,4 +1,5 @@
 import java.util.ArrayList; 
+import java.util.Scanner; 
 import MenuItems.courseType;;
 
 public class MenuLogic { 
@@ -17,7 +18,11 @@ public class MenuLogic {
 		desserts = new ArrayList<MenuItems>();
 		promo = new ArrayList<PromotionalSet>();
 		menuItemsList = new ArrayList<MenuItems>();
-		for (int i=0; i<menuItemsList.size(); i++){
+		Scanner s = new Scanner(new File("Menu.txt"));
+		while(s.hasNext()){
+			menuItemsList.add(s.next());
+		}
+		for (int i=0; i<menuItemsList.size();i++){
 			switch (menuItemsList.get(i).getCategory()){
 				case main:
 					mains.add(menuItemsList.get(i));
@@ -28,7 +33,7 @@ public class MenuLogic {
 				case dessert:
 					desserts.add(menuItemsList.get(i));
 					break;
-			}
+		}
 		}
 	}
 
