@@ -19,9 +19,19 @@ public class MenuLogic {
 		desserts = new ArrayList<MenuItems>();
 		promo = new ArrayList<PromotionalSet>();
 		menuItemsList = new ArrayList<MenuItems>();
-		Scanner s = new Scanner(new File("Menu.txt"));
+		Scanner sc = new Scanner(new File("Menu.txt"));
 		while(s.hasNext()){
-			menuItemsList.add(s.next());
+			System.out.print("Enter the item ID\n");
+			int id = sc.nextInt();
+			System.out.print("Enter the item name\n");
+			String name = sc.next();
+			System.out.print("Enter the item category\n");
+			courseType category = (courseType)sc.next();
+			System.out.print("Enter the item description\n");
+			String description = sc.next();
+			System.out.print("Enter the item price\n");
+			float price = sc.nextFloat();
+			menuItemsList.add(new MenuItems(id, name, category, description, price));
 		}
 		for (int i=0; i<menuItemsList.size();i++){
 			switch (menuItemsList.get(i).getCategory()){
