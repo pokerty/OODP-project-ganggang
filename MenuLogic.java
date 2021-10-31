@@ -1,6 +1,7 @@
 import java.util.ArrayList; 
 import java.util.Scanner; 
-import MenuItems.courseType;;
+import MenuItems.courseType;
+import CourseType;
 
 public class MenuLogic { 
 	// implements AddMenutoOrder 
