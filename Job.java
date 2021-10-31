@@ -1,5 +1,3 @@
 public enum Job {
-	Manager,
-	Waiter,
-	Chef
+	Manager, Waiter, Chef
 }
