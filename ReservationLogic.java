@@ -2,6 +2,9 @@
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 public class ReservationLogic {
@@ -10,6 +13,16 @@ public class ReservationLogic {
 	private CheckTable tablelogic;
 
 	public ReservationLogic() {
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				//insert code here
+			}
+		};
+		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		scheduler.scheduleAtFixedRate(runnable, 15, 15, TimeUnit.MINUTES);
+
 		this.reservations = new Reservation[15]; //set reservations to be 15 
 		
 		System.out.println("ReservationLogic start-up complete without Table"); 
@@ -22,7 +35,7 @@ public class ReservationLogic {
 	}
 
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
-		int tableNumber = tablelogic.giveTable();
+		int tableNumber = tablelogic.giveTable(pax);
 		if(tableNumber==-1) { //no table 
 			System.out.println("No available tables, sorry!"); 
 			return; 

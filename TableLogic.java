@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class TableLogic {
+public class TableLogic implements CheckTable{
 	private List<Table> tables ;
 
 	public TableLogic() {
