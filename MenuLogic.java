@@ -1,13 +1,9 @@
-import java.util.*;
-import MenuItems.courseType; 
+import java.util.ArrayList; 
+import MenuItems.courseType;;
 
+public class MenuLogic { 
+	// implements AddMenutoOrder 
 
-public class MenuLogic implements AddMenutoOrder {
-
-	public enum courseType {
-		main, drink, dessert
-	}
-	
 	private ArrayList<MenuItems> mains;
 	private ArrayList<MenuItems> drinks;
 	private ArrayList<MenuItems> desserts;
@@ -36,16 +32,16 @@ public class MenuLogic implements AddMenutoOrder {
 		}
 	}
 
-public void createMenuItems(String name, courseType category, String description, float price) {
+public void createMenuItems(int id, String name, MenuItems.courseType category, String description, float price) {
 	switch (category){
 		case main:
-			mains.add(new MenuItems(name, category, description, price));
+			mains.add(new MenuItems(id, name, category, description, price));
 			break;
 		case drink:
-			drinks.add(new MenuItems(name, category, description, price));
+			drinks.add(new MenuItems(id, name, category, description, price));
 			break;
 		case dessert:
-			desserts.add(new MenuItems(name, category, description, price));
+			desserts.add(new MenuItems(id, name, category, description, price));
 			break;
 	}
 }
@@ -69,30 +65,51 @@ public void createMenuItems(String name, courseType category, String description
 		}
 	}
 
-	public void addItemsToOrder() {
-		// TODO - implement MenuLogic.addItemsToOrder
-		throw new UnsupportedOperationException();
-	}
-
-	public void removeMenuItems(String name, courseType category) {
+	public MenuItems addItemsToOrder(int id, courseType category) {
 		switch (category){
 			case main:
 				for (int i=0; i<mains.size(); i++){
-					if (mains.get(i).getName()==name){
+					if (mains.get(i).getID()==id){
+						return mains.get(i);
+					}
+				}
+				break;
+			case drink:
+				for (int i=0; i<drinks.size(); i++){
+					if (drinks.get(i).getID()==id){
+						return drinks.get(i);
+					}
+				}
+				break;
+			case dessert:
+				for (int i=0; i<desserts.size(); i++){
+					if (desserts.get(i).getID()==id){
+						return desserts.get(i);
+					}
+				}
+				break;
+		}
+	}
+
+	public void removeMenuItems(int id, courseType category) {
+		switch (category){
+			case main:
+				for (int i=0; i<mains.size(); i++){
+					if (mains.get(i).getID()==id){
 						mains.remove(i);
 					}
 				}
 				break;
 			case drink:
 				for (int i=0; i<drinks.size(); i++){
-					if (drinks.get(i).getName()==name){
+					if (drinks.get(i).getID()==id){
 						drinks.remove(i);
 					}
 				}
 				break;
 			case dessert:
 				for (int i=0; i<desserts.size(); i++){
-					if (desserts.get(i).getName()==name){
+					if (desserts.get(i).getID()==id){
 						desserts.remove(i);
 					}
 				}
@@ -100,9 +117,107 @@ public void createMenuItems(String name, courseType category, String description
 		}
 	}
 
-	public void updateMenuItems() {
-		// TODO - implement MenuLogic.updateMenuItems
-		throw new UnsupportedOperationException();
+	public void updateMenuItemID(int id, courseType category, int newid) {
+		switch (category){
+			case main:
+				for (int i=0; i<mains.size(); i++){
+					if (mains.get(i).getID()==id){
+						mains.get(i).setID(newid);
+					}
+				}
+				break;
+			case drink:
+				for (int i=0; i<drinks.size(); i++){
+					if (drinks.get(i).getID()==id){
+						drinks.get(i).setID(newid);
+					}
+				}
+				break;
+			case dessert:
+				for (int i=0; i<desserts.size(); i++){
+					if (desserts.get(i).getID()==id){
+						desserts.get(i).setID(newid);
+					}
+				}
+				break;
+		}
+	}
+	public void updateMenuItemName(int id, courseType category, String newname) {
+		switch (category){
+			case main:
+				for (int i=0; i<mains.size(); i++){
+					if (mains.get(i).getID()==id){
+						mains.get(i).setName(newname);
+					}
+				}
+				break;
+			case drink:
+				for (int i=0; i<drinks.size(); i++){
+					if (drinks.get(i).getID()==id){
+						drinks.get(i).setName(newname);
+					}
+				}
+				break;
+			case dessert:
+				for (int i=0; i<desserts.size(); i++){
+					if (desserts.get(i).getID()==id){
+						desserts.get(i).setName(newname);
+					}
+				}
+				break;
+		}
+	}
+
+	public void updateMenuItemDescription(int id, courseType category, String newdescription) {
+		switch (category){
+			case main:
+				for (int i=0; i<mains.size(); i++){
+					if (mains.get(i).getID()==id){
+						mains.get(i).setDescription(newdescription);
+					}
+				}
+				break;
+			case drink:
+				for (int i=0; i<drinks.size(); i++){
+					if (drinks.get(i).getID()==id){
+						drinks.get(i).setDescription(newdescription);
+					}
+				}
+				break;
+			case dessert:
+				for (int i=0; i<desserts.size(); i++){
+					if (desserts.get(i).getID()==id){
+						desserts.get(i).setDescription(newdescription);
+					}
+				}
+				break;
+		}
+	}
+
+	public void updateMenuItemPrice(int id, courseType category, float newprice) {
+		switch (category){
+			case main:
+				for (int i=0; i<mains.size(); i++){
+					if (mains.get(i).getID()==id){
+						mains.get(i).setPrice(newprice);
+					}
+				}
+				break;
+			case drink:
+				for (int i=0; i<drinks.size(); i++){
+					if (drinks.get(i).getID()==id){
+						drinks.get(i).setPrice(newprice);
+					}
+				}
+				break;
+			case dessert:
+				for (int i=0; i<desserts.size(); i++){
+					if (desserts.get(i).getID()==id){
+						desserts.get(i).setPrice(newprice);
+					}
+				}
+				break;
+		}
 	}
 
 }
