@@ -1,4 +1,5 @@
 
+
 import java.util.Scanner; 
 
 public class ReservationBoundary {
@@ -37,39 +38,21 @@ public class ReservationBoundary {
 	 * @param Boolean
 	 */
 	public void removeReservation() {
-		String name; 
-		int month, day, hour, minute; 
+		String name;  
 		System.out.println("Please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
 		System.out.println("Please enter the reservation's customer name!"); 
 		name = sc.next(); 
-		System.out.println("Please enter month of reservation"); 
-		month= sc.nextInt(); 
-		System.out.println("Please enter day of reservation"); 
-		day = sc.nextInt(); 
-		System.out.println("Please enter time(hour) of reservation"); 
-		hour = sc.nextInt();
-		System.out.println("Please enter time(minute) of reservation"); 
-		minute = sc.nextInt(); 
-		reservationLogic.removeReservation(tablenumber,name,month,day,hour,minute);
+		reservationLogic.removeReservation(tablenumber,name);
 	}
 
 	public void checkReservation() {
-		String name; 
-		int month, day, hour, minute; 
+		String name;  
 		System.out.println("To check reservation, please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
 		System.out.println("To check reservation, please enter the customer name!"); 
 		name = sc.next(); 
-		System.out.println("To check reservation, please enter month of reservation"); 
-		month= sc.nextInt(); 
-		System.out.println("To check reservation, please enter day of reservation"); 
-		day = sc.nextInt(); 
-		System.out.println("To check reservation, please enter time(hour) of reservation"); 
-		hour = sc.nextInt();
-		System.out.println("To check reservation, please enter time(minute) of reservation"); 
-		minute = sc.nextInt(); 
-		int validity = reservationLogic.checkReservation(tablenumber, name, month, day, hour, minute); 
+		reservationLogic.checkReservation(tablenumber, name); 
 	}
 
 }
