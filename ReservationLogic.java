@@ -52,7 +52,7 @@ public class ReservationLogic {
 			//rely on java auto garbage collection to delete reservation object 
 			tablelogic.freeTable(tableNumber); 
 			//free up the table after reservation removal 
-			System.out.println("Reservation removed!"); 
+			System.out.println("Reservation will be removed! - Removed!"); 
 		}
 		else if(validity==0) {
 			System.out.println("No such reservation exists, unable to remove");
@@ -73,6 +73,7 @@ public class ReservationLogic {
 				return 0;
 			}
 			if(entry.getName().equalsIgnoreCase(name)) {
+				System.out.println("Reservation is valid on " + entry.getDateandtime().getTime()); 
 				return 1; 
 			}
 			else {
