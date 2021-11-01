@@ -1,36 +1,140 @@
 import java.util.*;
-import java.lang.Math;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StaffLogic {
 
-	private static ArrayList<Staff> staffs;
-	// get from text file
-	Scanner input = new Scanner(new File("Staff.txt"));
+	private ArrayList<Staff> staffs;
+	BufferedWriter out;
+	BufferedReader in;
+
+	Scanner sc = new Scanner(System.in);
 
 	public StaffLogic() {
-
+		staffs = new ArrayList<Staff>();
+		loadStaffs();
+		System.out.println("StaffLogic start-up complete.");
 	}
 
-	public static void addStaff(String name, char gender, int ID, Job job) { // static
-		staffs = new ArrayList<Staff>();
+	public void addStaff(String name, char gender, int ID, Job job) {
 		Staff staffObject = new Staff(name, gender, ID, job);
 		staffs.add(staffObject);
+		// overwrite staffs list
+		staffsOverwrite();
 	}
 
-	public static void displayStaff() {
+	public void displayStaff() {
 		System.out.println("List of Staff: ");
+		System.out.println();
 		for (int i = 0; i < staffs.size(); i++) {
-			System.out.println(staffs.get(i).getGender());
+			System.out.println(staffs.get(i).getID());
 			System.out.println(staffs.get(i).getName());
-			// id, job
-			// System.out.println("");
+			System.out.println(staffs.get(i).getGender());
+			System.out.println(staffs.get(i).getJob());
+			System.out.println();
 		}
 	}
 
-	public static Staff handler() {
+	public Staff handler() {
 		// display staff who are waiters: choose which staff object
-		// only waiter can take orders
-		return staffs.get();
+		int index = 1;
+		System.out.println("Please choose a waiter: ");
+		for (int i = 0; i < staffs.size(); i++) {
+			if (staffs.get(i).getJob() == Job.Waiter) {
+				System.out.println("(" + index + ")" + staffs.get(i).getName());
+				index++;
+			}
+		}
+		int choice = sc.nextInt();
+		// find the respective waiter in the arrayList and return that staff object
+		int findWaiter = 0;
+		if (choice < index && choice > 0) {
+			for (int j = 0; j < staffs.size(); j++) {
+				if (staffs.get(j).getJob() == Job.Waiter) {
+					findWaiter++;
+					if (findWaiter == choice) {
+						System.out.println(staffs.get(j).getName() + " is assigned.");
+						return staffs.get(j);
+					} else {
+						continue;
+					}
+				} else {
+					continue;
+				}
+			}
+		} else {
+			System.out.println("Please choose a valid waiter.");
+			return null;
+		}
+		System.out.println("Please choose a valid waiter.");
+		return null;
 	}
 
+	public void staffsOverwrite() { // updating changes into the text file
+		try {
+			out = new BufferedWriter(new FileWriter("stafflist.txt", false));
+			for (int counter = 0; counter < staffs.size(); counter++) {
+				out.write(staffs.get(counter).getID() + "\n" + staffs.get(counter).getName() + "\n"
+						+ staffs.get(counter).getGender() + "\n" + staffs.get(counter).getJob() + "\n");
+				out.newLine();
+			}
+			out.close();
+		} catch (IOException e) {
+			System.out.println("There was a problem:" + e);
+		}
+
+	}
+
+	public void loadStaffs() {
+		try {
+			File file = new File("stafflist.txt");
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			List<String> lines = new ArrayList<String>();
+			String line = br.readLine();
+			String tempName;
+			int tempID;
+			char tempGender;
+			String tempJob;
+			while (line != null) {
+				lines.add(line.replace(">", ""));
+				line = br.readLine();
+			}
+			int i = 0;
+
+			while (i < lines.size()) {
+
+				tempID = Integer.parseInt(lines.get(i));
+				tempName = lines.get(i + 1);
+				tempGender = lines.get(i + 2).charAt(0);
+				tempJob = lines.get(i + 3);
+				if (tempJob.equals("Manager")) {
+					Staff staffObject = new Staff(tempName, tempGender, tempID, Job.Manager);
+					staffs.add(staffObject);
+				} else if (tempJob.equals("Waiter")) {
+					Staff staffObject = new Staff(tempName, tempGender, tempID, Job.Waiter);
+					staffs.add(staffObject);
+				} else {
+					Staff staffObject = new Staff(tempName, tempGender, tempID, Job.Chef);
+					staffs.add(staffObject);
+				}
+
+				i = i + 5;
+			}
+
+			br.close();
+		}
+
+		catch (IOException e) {
+			System.out.println("There was a problem:" + e);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+
+	}
 }

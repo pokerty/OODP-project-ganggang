@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class StaffBoundary {
 
 	Scanner sc = new Scanner(System.in);
-	// StaffLogic StaffLogic = new StaffLogic();
+	StaffLogic staffLogic = new StaffLogic();
 
 	public void addStaff() {
 		System.out.println("Input staff name: ");
@@ -15,20 +15,20 @@ public class StaffBoundary {
 		System.out.println("Input staff job: (0) for Manager, (1) for Waiter, (2) for Chef");
 		int job = sc.nextInt();
 		if (job == 0) {
-			StaffLogic.addStaff(name, gender, ID, Job.Manager);
+			staffLogic.addStaff(name, gender, ID, Job.Manager);
 		} else if (job == 1) {
-			StaffLogic.addStaff(name, gender, ID, Job.Waiter);
+			staffLogic.addStaff(name, gender, ID, Job.Waiter);
 		} else {
-			StaffLogic.addStaff(name, gender, ID, Job.Chef);
+			staffLogic.addStaff(name, gender, ID, Job.Chef);
 		}
 	}
 
 	public void displayStaff() {
-		StaffLogic.displayStaff();
+		staffLogic.displayStaff();
 	}
 
 	public void handler() {
-		StaffLogic.handler();
+		staffLogic.handler();
 	}
 
 }
