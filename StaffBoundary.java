@@ -3,7 +3,12 @@ import java.util.Scanner;
 public class StaffBoundary {
 
 	Scanner sc = new Scanner(System.in);
-	StaffLogic staffLogic = new StaffLogic();
+
+	private StaffLogic staffLogic = new StaffLogic();
+
+	public StaffBoundary(StaffLogic staffLogic) {
+		this.staffLogic = staffLogic;
+	}
 
 	public void addStaff() {
 		System.out.println("Input staff name: ");

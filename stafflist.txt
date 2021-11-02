@@ -37,8 +37,3 @@ Waiter
 Salt Bae
 M
 Chef
-
-8
-meiqi
-F
-Chef
