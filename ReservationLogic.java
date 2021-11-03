@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -11,13 +10,13 @@ import java.util.Calendar;
 
 public class ReservationLogic {
 
-	private Reservation[] reservations;
+	private ArrayList<Reservation> reservations;
 	private CheckTable tablelogic;
 
 	
 	
 	public ReservationLogic(CheckTable checkTable) {
-		this.reservations = new Reservation[15];
+		this.reservations = new ArrayList<Reservation>();
  		this.tablelogic = checkTable; 
 		loadReservation(); 
 		System.out.println("ReservationLogic start-up complete "); 
@@ -27,13 +26,13 @@ public class ReservationLogic {
 	
 	
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
-		int tableNumber = tablelogic.giveTable(pax);
+		int tableNumber = tablelogic.giveTable(pax,hour);
 		if(tableNumber==-1) { //no table 
-			System.out.println("No available tables, sorry!"); 
+			System.out.println("No available tables at the time, sorry!"); 
 			return; 
 		}
 		Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tableNumber); 
-		reservations[tableNumber]= reservation; 
+		reservations.add(reservation); 
 		System.out.println("Reservation successful at table "+tableNumber+", "+day+"/"+month+","+hour+":"+minute); 
 		
 	}
@@ -41,20 +40,20 @@ public class ReservationLogic {
 	
 	
 
-	/**
-	 * 
-	 * @param Boolean
-	 */
-	public void removeReservation(int tableNumber,String name) {
+	
+	public void removeReservation(int tableNumber,String name, boolean expired) {
 		int validity = checkReservation(tableNumber, name); 
-		if(validity==1) {
-			reservations[tableNumber]=null; 
-			//rely on java auto garbage collection to delete reservation object 
-			tablelogic.freeTable(tableNumber); 
+		if(validity>=0) {
+			tablelogic.freeTable(tableNumber, reservations.get(validity).getDateandtime().get(Calendar.HOUR_OF_DAY)); 
 			//free up the table after reservation removal 
+			reservations.remove(validity); 
+			//rely on java auto garbage collection to delete reservation object. 
+			if(expired==true)
+				System.out.println("Reservation expired - Removed!"); 
+			else
 			System.out.println("Reservation will be removed! - Removed!"); 
 		}
-		else if(validity==0) {
+		else if(validity==-1) {
 			System.out.println("No such reservation exists, unable to remove");
 		}
 		else {
@@ -66,25 +65,21 @@ public class ReservationLogic {
 
 	public int checkReservation(int TableNumber, String name) {
 		if(TableNumber>-1 && TableNumber< 15) { // change parameters 
-			Reservation entry; 
-			entry = reservations[TableNumber]; 
-			if(entry==null) {
-				System.out.println("No such reservation on this table exists!"); 
-				return 0;
+			for(int i=0;i<reservations.size();i++) {
+				if(reservations.get(i).getName().equalsIgnoreCase(name)
+						&& reservations.get(i).getTableNumber() == TableNumber) {
+					System.out.println("Reservation is valid on " + reservations.get(i).getDateandtime().getTime()); 
+					return i; 	
+				}
 			}
-			if(entry.getName().equalsIgnoreCase(name)) {
-				System.out.println("Reservation is valid on " + entry.getDateandtime().getTime()); 
-				return 1; 
-			}
-			else {
-				System.out.println("Said person does not have such a reservation!"); 
-				return 0; 
-			}
-				
-		}	
-		else {
-			System.out.println("Table input exceeded bounds"); 
+			//finished searching, cant find 
+			System.out.println("Said person does not have such a reservation!"); 
 			return -1; 
+			}
+					
+		else {  //error checking code 
+			System.out.println("Table input exceeded bounds"); 
+			return -2; 
 		}
 		
 	}
@@ -115,7 +110,7 @@ public class ReservationLogic {
 				hour = Integer.parseInt(list.get(i+6)); //7th is hour 
 				minute = Integer.parseInt(list.get(i+7)); //8th is minute 
 				Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tablenumber); //create reservation
-				reservations[tablenumber] = reservation; //allocate index according to table number 
+				reservations.add(reservation); //allocate index according to table number 
 				i = i+9; //should be start of next entry , don't take empty string 
 			}
 			
@@ -148,29 +143,30 @@ public class ReservationLogic {
 			FileWriter write = new FileWriter("reservationList.txt"); 
 			@SuppressWarnings("resource")
 			BufferedWriter bwrite = new BufferedWriter(write); 
-			int noOfReservations = 15; //max is 15 since 15 tables 
+			int noOfReservations = reservations.size();
 			int i;   //need write in order of name,tablenumber,contact,pax,month,day,hour,minute; 
 			for(i=0;i<noOfReservations;i++) {
-				if(reservations[i]!=null) { //there is a valid reservation, to save to file 
-					bwrite.write(reservations[i].getName());//write name
+				if(reservations.get(i)!=null){
+					bwrite.write(reservations.get(i).getName());//write name
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getTableNumber())); //convert table no to string and write 
+					bwrite.write(Integer.toString(reservations.get(i).getTableNumber())); //convert table no to string and write 
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getContact())); //write contact 
+					bwrite.write(Integer.toString(reservations.get(i).getContact())); //write contact 
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getPax())); //write pax 
+					bwrite.write(Integer.toString(reservations.get(i).getPax())); //write pax 
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getDateandtime().get(Calendar.MONTH))); //write month 
+					bwrite.write(Integer.toString(reservations.get(i).getDateandtime().get(Calendar.MONTH))); //write month 
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getDateandtime().get(Calendar.DAY_OF_MONTH)));//write day 
+					bwrite.write(Integer.toString(reservations.get(i).getDateandtime().get(Calendar.DAY_OF_MONTH)));//write day 
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getDateandtime().get(Calendar.HOUR_OF_DAY)));
+					bwrite.write(Integer.toString(reservations.get(i).getDateandtime().get(Calendar.HOUR_OF_DAY)));
 					bwrite.newLine();
-					bwrite.write(Integer.toString(reservations[i].getDateandtime().get(Calendar.MINUTE)));
+					bwrite.write(Integer.toString(reservations.get(i).getDateandtime().get(Calendar.MINUTE)));
 					bwrite.newLine();
 					bwrite.newLine(); //TO SEPERATE THE DIFFERENT RESERVATIONS 
-				}
+				}	
 			}
+			
 		bwrite.close();
 			
 		}
