@@ -7,24 +7,40 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+
 
 public class ReservationLogic {
 
 	private ArrayList<Reservation> reservations;
 	private CheckTable tablelogic;
 
-	
-	
+
+
 	public ReservationLogic(CheckTable checkTable) {
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				//insert code here
+			}
+		};
+		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		scheduler.scheduleAtFixedRate(runnable, 15, 15, TimeUnit.MINUTES);
+
+
 		this.reservations = new ArrayList<Reservation>();
- 		this.tablelogic = checkTable; 
-		loadReservation(); 
-		System.out.println("ReservationLogic start-up complete "); 
+ 		this.tablelogic = checkTable;
+		loadReservation();
+		System.out.println("ReservationLogic start-up complete ");
 	}
 
-	
-	
-	
+
+
+
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
 		int tableNumber = tablelogic.giveTable(pax,hour);
 		if(tableNumber==-1) { //no table 
