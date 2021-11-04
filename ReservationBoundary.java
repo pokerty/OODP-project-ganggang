@@ -14,7 +14,7 @@ public class ReservationBoundary {
 	
 	public void makeReservation() {
 		String name; 
-		int month, day, hour, minute, pax, contact; 
+		int month, day, hour, pax, contact; 
 		System.out.println("Please enter customer name to make reservation!"); 
 		name = sc.next(); 
 		System.out.println("Please enter the number of pax"); 
@@ -23,53 +23,31 @@ public class ReservationBoundary {
 		month= sc.nextInt(); 
 		System.out.println("Please enter day of desired reservation"); 
 		day = sc.nextInt(); 
-		System.out.println("Please enter time(hour) of desired reservation"); 
+		System.out.println("Please enter time(hour) of desired reservation: (12:00/14:00/16:00/18:00/20:00)"); 
 		hour = sc.nextInt();
-		System.out.println("Please enter time(minute) of desired reservation"); 
-		minute = sc.nextInt(); 
+		//minute will be 0. Reservation in chunks of 2 hr 
 		System.out.println("Please enter contact details"); 
 		contact = sc.nextInt(); 
-		reservationLogic.makeReservation(month, day, hour, minute, pax, name, contact);
+		reservationLogic.makeReservation(month, day, hour, 0, pax, name, contact);
 	}
 
-	/**
-	 * 
-	 * @param Boolean
-	 */
-	public void removeReservation() {
-		String name; 
-		int month, day, hour, minute; 
+	
+	public void removeReservation() { 
+		String name;  
 		System.out.println("Please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
 		System.out.println("Please enter the reservation's customer name!"); 
 		name = sc.next(); 
-		System.out.println("Please enter month of reservation"); 
-		month= sc.nextInt(); 
-		System.out.println("Please enter day of reservation"); 
-		day = sc.nextInt(); 
-		System.out.println("Please enter time(hour) of reservation"); 
-		hour = sc.nextInt();
-		System.out.println("Please enter time(minute) of reservation"); 
-		minute = sc.nextInt(); 
-		reservationLogic.removeReservation(tablenumber,name,month,day,hour,minute);
+		reservationLogic.removeReservation(tablenumber,name,false); //manual removal of reservation 
 	}
 
 	public void checkReservation() {
-		String name; 
-		int month, day, hour, minute; 
+		String name;  
 		System.out.println("To check reservation, please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
 		System.out.println("To check reservation, please enter the customer name!"); 
 		name = sc.next(); 
-		System.out.println("To check reservation, please enter month of reservation"); 
-		month= sc.nextInt(); 
-		System.out.println("To check reservation, please enter day of reservation"); 
-		day = sc.nextInt(); 
-		System.out.println("To check reservation, please enter time(hour) of reservation"); 
-		hour = sc.nextInt();
-		System.out.println("To check reservation, please enter time(minute) of reservation"); 
-		minute = sc.nextInt(); 
-		int validity = reservationLogic.checkReservation(tablenumber, name, month, day, hour, minute); 
+		reservationLogic.checkReservation(tablenumber, name); 
 	}
 
 }
