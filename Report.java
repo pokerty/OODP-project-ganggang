@@ -1,27 +1,34 @@
+import java.util.ArrayList;
+
 public class Report {
+    //period in day(s)
+    private int period;
+    private ArrayList<Order> saleItems;
+    private float revenue;
 
-	private int period;
-	private float revenue;
-	private Order listOfOrders;
+    public ArrayList<Order> getSaleItems() {
+        return saleItems;
+    }
+    public void setSaleItems(ArrayList<Order> saleItems) {
+        this.saleItems = saleItems;
+    }
 
-	public Report() {
-		// TODO - implement Report.Report
-		throw new UnsupportedOperationException();
-	}
+    public float getRevenue() {
+        return revenue;
+    }
+    public void setRevenue(float revenue) {
+        this.revenue = revenue;
+    }
 
-	public void printRevenue() {
-		// TODO - implement Report.printRevenue
-		throw new UnsupportedOperationException();
-	}
+    public int getPeriod() {
+        return period;
+    }
+    public void setPeriod(int period) {
+        this.period = period;
+    }
 
-	public void printSetPromo() {
-		// TODO - implement Report.printSetPromo
-		throw new UnsupportedOperationException();
-	}
 
-	public void printAlaCarte() {
-		// TODO - implement Report.printAlaCarte
-		throw new UnsupportedOperationException();
-	}
+
+
 
 }
