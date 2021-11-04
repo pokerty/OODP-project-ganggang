@@ -7,8 +7,9 @@ public class TableBoundary{
         System.out.println("Enter the number of customers:");
         int customerPax =scanner.nextInt();
         System.out.println("");
-
-        System.out.printf("Table %d allocated",tableLogic.giveTable(customerPax));
+        System.out.println("Enter the time of reservation:");
+        int hour =scanner.nextInt();
+        System.out.printf("Table %d allocated",tableLogic.giveTable(customerPax,hour));
     }
 
     public void checkTableAvailability() {
@@ -24,8 +25,10 @@ public class TableBoundary{
     public void freeTable() {
         System.out.println("Enter the table number to free:");
         int tableNumber =scanner.nextInt();
+        System.out.println("Enter the time of reservation:");
+        int hour =scanner.nextInt();
         System.out.println("");
-        tableLogic.freeTable(tableNumber);
+        tableLogic.freeTable(tableNumber,hour);
         System.out.println("Table is freed\n");
     }
 
