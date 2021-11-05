@@ -1,3 +1,4 @@
+package Application;
 public class Staff {
 
 	private String name;

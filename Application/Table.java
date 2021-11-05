@@ -1,3 +1,4 @@
+package Application;
 public class Table {
 
 	private int tableNumber;

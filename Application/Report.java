@@ -1,3 +1,4 @@
+package Application;
 public class Report {
 
 	private int period;

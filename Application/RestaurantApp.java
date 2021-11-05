@@ -1,3 +1,4 @@
+package Application;
 public class RestaurantApp {
 
 	public void startApp() {

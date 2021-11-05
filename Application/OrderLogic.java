@@ -1,3 +1,4 @@
+package Application;
 public class OrderLogic implements printOrderInvoice {
 
 	private Order[] order;

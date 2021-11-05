@@ -1,3 +1,4 @@
+package Application;
 public class Order {
 
 	private int tableNumber;

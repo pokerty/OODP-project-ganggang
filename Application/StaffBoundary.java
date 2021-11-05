@@ -1,3 +1,4 @@
+package Application;
 public class StaffBoundary {
 
 	public void addStaff() {

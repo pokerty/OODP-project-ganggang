@@ -1,24 +1,23 @@
-public class TableLogic implements CheckTable {
+package Application;
+public class TableApp {
 
-	private Table[] tables;
-
-	public TableLogic() {
-		// TODO - implement TableLogic.TableLogic
+	public TableApp() {
+		// TODO - implement TableApp.TableApp
 		throw new UnsupportedOperationException();
 	}
 
 	public void addTable() {
-		// TODO - implement TableLogic.addTable
+		// TODO - implement TableApp.addTable
 		throw new UnsupportedOperationException();
 	}
 
 	public void giveTable() {
-		// TODO - implement TableLogic.giveTable
+		// TODO - implement TableApp.giveTable
 		throw new UnsupportedOperationException();
 	}
 
 	public void checkTableAvailability() {
-		// TODO - implement TableLogic.checkTableAvailability
+		// TODO - implement TableApp.checkTableAvailability
 		throw new UnsupportedOperationException();
 	}
 

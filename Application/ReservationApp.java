@@ -1,14 +1,13 @@
-public class ReservationLogic {
+package Application;
+public class ReservationApp {
 
-	private Reservation[] reservations;
-
-	public ReservationLogic() {
-		// TODO - implement ReservationLogic.ReservationLogic
+	public ReservationApp() {
+		// TODO - implement ReservationApp.ReservationApp
 		throw new UnsupportedOperationException();
 	}
 
 	public void makeReservation() {
-		// TODO - implement ReservationLogic.makeReservation
+		// TODO - implement ReservationApp.makeReservation
 		throw new UnsupportedOperationException();
 	}
 
@@ -17,12 +16,12 @@ public class ReservationLogic {
 	 * @param Boolean
 	 */
 	public void removeReservation(int Boolean) {
-		// TODO - implement ReservationLogic.removeReservation
+		// TODO - implement ReservationApp.removeReservation
 		throw new UnsupportedOperationException();
 	}
 
 	public void checkReservation() {
-		// TODO - implement ReservationLogic.checkReservation
+		// TODO - implement ReservationApp.checkReservation
 		throw new UnsupportedOperationException();
 	}
 

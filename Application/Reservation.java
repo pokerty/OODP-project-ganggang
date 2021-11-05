@@ -1,3 +1,4 @@
+package Application;
 public class Reservation {
 
 	private int date;
