@@ -37,16 +37,16 @@ public class TableLogic implements CheckTable{
 		if(2<=hour||hour<4){
 			temp=tables_2_to_4;
 		}
-		else if(4<=hour||hour<6){
+		else if(4<=hour&&hour<6){
 			temp=tables_4_to_6;
 		}
-		else if(6<=hour||hour<8){
+		else if(6<=hour&&hour<8){
 			temp=tables_6_to_8;
 		}
-		else if(8<=hour||hour<10){
+		else if(8<=hour&&hour<10){
 			temp=tables_8_to_10;
 		}
-		else if(12==hour||hour<2){
+		else if(12==hour&&hour<2){
 			temp=tables_12_to_2;
 		}
 		else{
@@ -80,16 +80,16 @@ public class TableLogic implements CheckTable{
 		if(2<=hour||hour<4){
 			temp=tables_2_to_4;
 		}
-		else if(4<=hour||hour<6){
+		else if(4<=hour&&hour<6){
 			temp=tables_4_to_6;
 		}
-		else if(6<=hour||hour<8){
+		else if(6<=hour&&hour<8){
 			temp=tables_6_to_8;
 		}
-		else if(8<=hour||hour<10){
+		else if(8<=hour&&hour<10){
 			temp=tables_8_to_10;
 		}
-		else if(12==hour||hour<2){
+		else if(12==hour&&hour<2){
 			temp=tables_12_to_2;
 		}
 		else{
