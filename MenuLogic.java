@@ -99,6 +99,10 @@ public class MenuLogic {
 		
 	}
 
+
+/** 
+ * @param choice
+ */
 // MENU FUNCTIONS
 	public void displayMenu(int choice) {
 		switch (choice){
@@ -123,6 +127,14 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param id
+	 * @param name
+	 * @param choice
+	 * @param description
+	 * @param price
+	 */
 	public void createMenuItems(int id, String name, int choice, String description, float price) {
 		switch (choice){
 			case 1:
@@ -137,6 +149,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param id
+	 * @param choice
+	 */
 	public void removeMenuItems(int id, int choice) {
 		switch (choice){
 			case 1:
@@ -163,6 +180,12 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param id
+	 * @param choice
+	 * @param newid
+	 */
 	public void updateMenuItemID(int id, int choice, int newid) {
 		switch (choice){
 			case 1:
@@ -188,6 +211,12 @@ public class MenuLogic {
 				break;
 		}
 	}
+	
+	/** 
+	 * @param id
+	 * @param category
+	 * @param newname
+	 */
 	public void updateMenuItemName(int id, int category, String newname) {
 		switch (category){
 			case 1:
@@ -214,6 +243,12 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param id
+	 * @param category
+	 * @param newdescription
+	 */
 	public void updateMenuItemDescription(int id, int category, String newdescription) {
 		switch (category){
 			case 1:
@@ -240,6 +275,12 @@ public class MenuLogic {
 		
 	}
 
+	
+	/** 
+	 * @param id
+	 * @param category
+	 * @param newprice
+	 */
 	public void updateMenuItemPrice(int id, int category, float newprice) {
 		switch (category){
 			case 1:
@@ -265,6 +306,12 @@ public class MenuLogic {
 				break;
 		}
 	}
+	
+	/** 
+	 * @param id
+	 * @param category
+	 * @return MenuItems
+	 */
 	public MenuItems addItemsToOrder(int id, int category) {
 		switch (category){
 			case 1:
@@ -316,6 +363,14 @@ public class MenuLogic {
 }
 
 	
+	
+	/** 
+	 * @param SetId
+	 * @param SetName
+	 * @param SetDescription
+	 * @param SetPrice
+	 * @param ArrayListlistOfIDs
+	 */
 	public void createPromoSet(int SetId, String SetName, String SetDescription, float SetPrice, ArrayList<Integer>listOfIDs){
 		ArrayList<MenuItems> listOfItems = new ArrayList<MenuItems>(); 
 		int i,j; 
@@ -340,6 +395,10 @@ public class MenuLogic {
 	}
 
 	
+	
+	/** 
+	 * @param SetId
+	 */
 	public void removePromoSet(int SetId){
 	for (int i=0; i<promo.size(); i++){
 		if (promo.get(i).getID()==SetId){
@@ -347,6 +406,11 @@ public class MenuLogic {
 		}}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param newid
+	 */
 	public void updateSetID(int SetId, int newid){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -355,6 +419,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param newname
+	 */
 	public void updateSetName(int SetId, String newname){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -363,6 +432,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param newdescription
+	 */
 	public void updateSetDescription(int SetId, String newdescription){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -371,6 +445,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param newprice
+	 */
 	public void updateSetPrice(int SetId, float newprice){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -379,6 +458,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param itemID
+	 */
 	public void addItemToSet(int SetId, int itemID){
 		int j; 
 		int found=0; 
@@ -413,6 +497,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @param id
+	 */
 	public void removeItemsFromSet(int SetId, int id){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -421,6 +510,11 @@ public class MenuLogic {
 		}
 	}
 
+	
+	/** 
+	 * @param SetId
+	 * @return PromotionalSet
+	 */
 	public PromotionalSet addPromoToOrder(int SetId){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){

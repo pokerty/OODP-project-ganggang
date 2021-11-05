@@ -17,42 +17,86 @@ public class PromotionalSet {
         this.SetPrice = SetPrice;
         SetItems = new ArrayList<MenuItems>();
     }
+    
+    /** 
+     * @return int
+     */
     public int getID(){
         return this.SetId;
     }
+    
+    /** 
+     * @param SetId
+     */
     public void setID(int SetId){
         this.SetId = SetId; //small letter set for method
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName(){
         return this.SetName;
     }
+    
+    /** 
+     * @param SetName
+     */
     public void setName(String SetName){
         this.SetName = SetName;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getDescription(){
         return this.SetDescription;
     }
+    
+    /** 
+     * @param SetDescription
+     */
     public void setDescription(String SetDescription){
         this.SetDescription = SetDescription;
     }
 
+    
+    /** 
+     * @return float
+     */
     public float getPrice(){
         return this.SetPrice;
     }
+    
+    /** 
+     * @param SetPrice
+     */
     public void setPrice(float SetPrice){
         this.SetPrice = SetPrice;
     }
 
+    
+    /** 
+     * @return ArrayList<MenuItems>
+     */
     public ArrayList<MenuItems> getMenuItems(){
         return this.SetItems;
     }
 
+    
+    /** 
+     * @param item
+     */
     public void addItemsToSet(MenuItems item){
         SetItems.add(item);
     }
 
+    
+    /** 
+     * @param id
+     */
     public void removeItemsFromSet(int id){
         for (int i=0; i<SetItems.size(); i++){
             if (SetItems.get(i).getID()==id){

@@ -30,37 +30,77 @@ public class MenuItems {
 		}
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getID() {
 		return this.id;
 	}
+	
+	/** 
+	 * @param id
+	 */
 	public void setID(int id) {
 		this.id = id;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getName() {
 		return this.name;
 	}
+	
+	/** 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	
+	/** 
+	 * @return courseType
+	 */
 	public courseType getCategory() {
 		return this.category;
 	}
+	
+	/** 
+	 * @param category
+	 */
 	public void setCategory(courseType category) {
 		this.category = category;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getDescription() {
 		return this.description;
 	}
+	
+	/** 
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	
+	/** 
+	 * @return float
+	 */
 	public float getPrice() {
 		return this.price;
 	}
+	
+	/** 
+	 * @param price
+	 */
 	public void setPrice(float price) {
 		this.price=price;
 	}

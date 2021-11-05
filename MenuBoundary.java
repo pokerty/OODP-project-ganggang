@@ -6,6 +6,10 @@ import java.util.*;
 public class MenuBoundary {
 	Scanner sc = new Scanner(System.in);
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void displayMenu(MenuLogic menuLogic) {
 		System.out.print("Enter the menu to display\nmain:1\ndessert:2\ndrink:3\n");
 		int categorynum = sc.nextInt();
@@ -13,6 +17,10 @@ public class MenuBoundary {
 		menuLogic.displayMenu(categorynum); 
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void createMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
@@ -29,6 +37,10 @@ public class MenuBoundary {
 		menuLogic.createMenuItems(id, name, categorynum, description, price);
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void removeMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
@@ -40,6 +52,10 @@ public class MenuBoundary {
 		}
 	
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateMenuItemID(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -50,6 +66,10 @@ public class MenuBoundary {
 		menuLogic.updateMenuItemID(id, categorynum, newid);
 
 	}
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateMenuItemName(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -61,6 +81,10 @@ public class MenuBoundary {
 
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateMenuItemDescription(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -72,6 +96,10 @@ public class MenuBoundary {
 
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateMenuItemPrice(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -82,6 +110,10 @@ public class MenuBoundary {
 		menuLogic.updateMenuItemPrice(id, categorynum, newprice);
 
 	}
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void displayPromoMenu(MenuLogic menuLogic){
 		System.out.print("Promo Menu:\n");
 		menuLogic.displayPromoMenu();
@@ -90,6 +122,10 @@ public class MenuBoundary {
 
 
 
+	 
+	 /** 
+	  * @param menuLogic
+	  */
 	 public void createPromoSet(MenuLogic menuLogic){
 	 	System.out.print("Enter the Promotional Set ID\n");
 	 	int SetId = sc.nextInt();
@@ -111,12 +147,20 @@ public class MenuBoundary {
 	 	
 	 }
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void removePromoSet(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID to remove\n");
 		int SetId = sc.nextInt();
 		menuLogic.removePromoSet(SetId);
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateSetID(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -125,6 +169,10 @@ public class MenuBoundary {
 		menuLogic.updateSetID(SetId, newid);
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateSetName(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -133,6 +181,10 @@ public class MenuBoundary {
 		menuLogic.updateSetName(SetId, newname);
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateSetDescription(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -141,6 +193,10 @@ public class MenuBoundary {
 		menuLogic.updateSetDescription(SetId, newdescription);
 	}
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void updateSetPrice(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -149,6 +205,10 @@ public class MenuBoundary {
 		menuLogic.updateSetPrice(SetId, newprice);
 	}
 
+	 
+	 /** 
+	  * @param menuLogic
+	  */
 	 public void addItemToSet(MenuLogic menuLogic){
 	 	System.out.print("Enter the Promotional Set ID\n");
 	 	int SetId = sc.nextInt();
@@ -157,6 +217,10 @@ public class MenuBoundary {
 	 	menuLogic.addItemToSet(SetId, itemID);
 	 }
 
+	
+	/** 
+	 * @param menuLogic
+	 */
 	public void removeItemsFromSet(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
