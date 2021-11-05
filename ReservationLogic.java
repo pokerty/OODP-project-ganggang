@@ -25,7 +25,11 @@ public class ReservationLogic {
 
 			@Override
 			public void run() {
-				//insert code here
+				for(int i=0;i<reservations.size();i++){
+					if(System.currentTimeMillis()>=reservations.get(i).getDateandtime().getTimeInMillis()){
+						removeReservation(reservations.get(i).getTableNumber(),reservations.get(i).getName(),true);
+					}
+				}
 			}
 		};
 		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
