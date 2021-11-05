@@ -1,27 +1,48 @@
+package oodpassignment;
+
+import java.util.ArrayList;
+
 public class Report {
+    //period in day(s)
+    private int period;
+    private ArrayList<MenuItems> menuItemsOrdered;
+    private ArrayList<PromotionalSet> promoItemsOrdered;
+    private float revenue;
 
-	private int period;
-	private float revenue;
-	private Order listOfOrders;
+    public Report(int period, ArrayList<Order> orderArray, ArrayList<MenuItems> menuItemsOrdered, ArrayList<PromotionalSet> promoItemsOrdered){
+        this.period = period;
+        this.menuItemsOrdered = menuItemsOrdered;
+        this.promoItemsOrdered = promoItemsOrdered;
+        this.revenue = revenue;
+    }
 
-	public Report() {
-		// TODO - implement Report.Report
-		throw new UnsupportedOperationException();
-	}
+    public ArrayList<MenuItems> getMenuItemsOrdered() {
+        return menuItemsOrdered;
+    }
 
-	public void printRevenue() {
-		// TODO - implement Report.printRevenue
-		throw new UnsupportedOperationException();
-	}
+    public void setMenuItemsOrdered(ArrayList<MenuItems> menuItemsOrdered) {
+        menuItemsOrdered = menuItemsOrdered;
+    }
 
-	public void printSetPromo() {
-		// TODO - implement Report.printSetPromo
-		throw new UnsupportedOperationException();
-	}
+    public ArrayList<PromotionalSet> getPromoItemsOrdered() {
+        return promoItemsOrdered;
+    }
+    public void setPromoItemsOrdered(ArrayList<PromotionalSet> promoItemsOrdered) {
+        promoItemsOrdered = promoItemsOrdered;
+    }
 
-	public void printAlaCarte() {
-		// TODO - implement Report.printAlaCarte
-		throw new UnsupportedOperationException();
-	}
+    public float getRevenue() {
+        return revenue;
+    }
+    public void setRevenue(float revenue) {
+        this.revenue = revenue;
+    }
+
+    public int getPeriod() {
+        return period;
+    }
+    public void setPeriod(int period) {
+        this.period = period;
+    }
 
 }

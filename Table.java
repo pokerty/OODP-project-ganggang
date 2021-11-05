@@ -1,3 +1,5 @@
+package oodpassignment;
+
 public class Table {
 
 	private int tableNumber;
@@ -22,7 +24,7 @@ public class Table {
 	public Boolean getIsOccupied(){
 		return isOccupied;
 	}
-	public void operation() {
+	public void changeOccupied() {
 		if(isOccupied){
 			isOccupied=false;
 			return;

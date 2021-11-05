@@ -1,21 +1,37 @@
-public class TableBoundary {
+package oodpassignment;
+
+import java.util.Scanner;
+
+public class TableBoundary{
     private TableLogic tableLogic = new TableLogic();
-
-    public void addTable(int tableNumber,int sizeOfTable) {
-        tableLogic.addTable(tableNumber,sizeOfTable);
-
+    Scanner scanner = new Scanner(System.in);
+    public void giveTable() {
+        System.out.println("Enter the number of customers:");
+        int customerPax =scanner.nextInt();
+        System.out.println("");
+        System.out.println("Enter the time of reservation:");
+        int hour =scanner.nextInt();
+        System.out.printf("Table %d allocated",tableLogic.giveTable(customerPax,hour));
     }
 
-    public int giveTable(int customerPax) {
-        return tableLogic.giveTable(customerPax);
+    public void checkTableAvailability() {
+        System.out.println("Enter the number of customers:");
+        int customerPax =scanner.nextInt();
+        System.out.println("");
+        if(tableLogic.checkTableAvailability(customerPax)) {
+            System.out.printf("There are tables available");
+            return; }
+        System.out.printf("There are no tables available");
     }
 
-    public Boolean checkTableAvailability(int customerPax) {
-        return tableLogic.checkTableAvailability(customerPax);
-    }
-
-    public Boolean freeTable(int tableNumber) {
-        return tableLogic.freeTable(tableNumber);
+    public void freeTable() {
+        System.out.println("Enter the table number to free:");
+        int tableNumber =scanner.nextInt();
+        System.out.println("Enter the time of reservation:");
+        int hour =scanner.nextInt();
+        System.out.println("");
+        tableLogic.freeTable(tableNumber,hour);
+        System.out.println("Table is freed\n");
     }
 
 }

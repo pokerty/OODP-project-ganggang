@@ -1,55 +1,68 @@
+package oodpassignment;
+
 public class MenuItems {
 
+	public enum courseType {
+		main, drink, dessert
+	}
+	private int id; 
 	private String name;
+	private courseType category;
 	private String description;
 	private float price;
-	private int category;
 
-	public MenuItems() {
-		// TODO - implement MenuItems.MenuItems
-		throw new UnsupportedOperationException();
+
+	public MenuItems(int id, String name, int choice, String description, float price) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		switch(choice) {
+		case(1): 
+			this.category = courseType.main; 
+			break ;
+		case(3):
+			this.category = courseType.drink; 
+			break ;
+		case(2):
+			this.category = courseType.dessert; 
+			break; 
+		}
 	}
 
-	public void getName() {
-		// TODO - implement MenuItems.getName
-		throw new UnsupportedOperationException();
+	public int getID() {
+		return this.id;
+	}
+	public void setID(int id) {
+		this.id = id;
 	}
 
-	/**
-	 * 
-	 * @param name
-	 */
-	public void setName(int name) {
-		// TODO - implement MenuItems.setName
-		throw new UnsupportedOperationException();
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void getDescription() {
-		// TODO - implement MenuItems.getDescription
-		throw new UnsupportedOperationException();
+	public courseType getCategory() {
+		return this.category;
+	}
+	public void setCategory(courseType category) {
+		this.category = category;
 	}
 
-	/**
-	 * 
-	 * @param description
-	 */
-	public void setDescription(int description) {
-		// TODO - implement MenuItems.setDescription
-		throw new UnsupportedOperationException();
+	public String getDescription() {
+		return this.description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void getPrice() {
-		// TODO - implement MenuItems.getPrice
-		throw new UnsupportedOperationException();
+	public float getPrice() {
+		return this.price;
 	}
-
-	/**
-	 * 
-	 * @param price
-	 */
-	public void setPrice(int price) {
-		// TODO - implement MenuItems.setPrice
-		throw new UnsupportedOperationException();
+	public void setPrice(float price) {
+		this.price=price;
 	}
 
 }
