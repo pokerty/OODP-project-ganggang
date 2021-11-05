@@ -46,7 +46,7 @@ public class TableLogic implements CheckTable{
 		else if(8<=hour&&hour<10){
 			temp=tables_8_to_10;
 		}
-		else if(12==hour&&hour<2){
+		else if(12==hour||hour==1){
 			temp=tables_12_to_2;
 		}
 		else{
@@ -89,7 +89,7 @@ public class TableLogic implements CheckTable{
 		else if(8<=hour&&hour<10){
 			temp=tables_8_to_10;
 		}
-		else if(12==hour&&hour<2){
+		else if(12==hour||hour==1){
 			temp=tables_12_to_2;
 		}
 		else{
