@@ -8,6 +8,7 @@ public class MenuItems {
 	private int id; 
 	private String name;
 	private courseType category;
+	private int choice;
 	private String description;
 	private float price;
 
@@ -17,6 +18,7 @@ public class MenuItems {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.choice=choice;
 		switch(choice) {
 		case(1): 
 			this.category = courseType.main; 
@@ -67,10 +69,10 @@ public class MenuItems {
 	
 	/** 
 	 * to get menuitem type
-	 * @return courseType
+	 * @return int
 	 */
-	public courseType getCategory() {
-		return this.category;
+	public int getCategory() {
+		return this.choice;
 	}
 	
 	/** 

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import oodpassignment.MenuItems.courseType;
 
@@ -26,18 +31,13 @@ public class MenuLogic {
 		menuItemsList = new ArrayList<MenuItems>();
 
 		try {
-			//READ MENU TXT, all print lines can be commented out
+			//READ MENU TXT
 			Scanner sc = new Scanner(new File("Menu.txt"));
 			while(sc.hasNext()){
-				System.out.print("Enter the item ID\n");
 				int id = sc.nextInt();
-				System.out.print("Enter the item name\n");
 				String name = sc.next();
-				System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n"); 
 				int categorynum = sc.nextInt(); //category has to be in numbers
-				System.out.print("Enter the item description\n");
 				String description = sc.next();
-				System.out.print("Enter the item price\n");
 				float price = sc.nextFloat();
 				menuItemsList.add(new MenuItems(id, name, categorynum, description, price));
 			}
@@ -55,48 +55,34 @@ public class MenuLogic {
 			}
 			}
 
-			//READ PROMO TXT, all print lines can be commented out
+			//READ PROMO TXT
 			Scanner sc2 = new Scanner(new File("Promo.txt"));
 			SetItems = new ArrayList<MenuItems>();
 			while(sc2.hasNext()){
 				//for each set get the bundle details
-				System.out.print("Enter the item ID\n");
 				int SetId = sc2.nextInt();
-				System.out.print("Enter the item name\n");
-				String SetName = sc.next();
-				System.out.print("Enter the item description\n");
-				String SetDescription = sc.next();
-				System.out.print("Enter the item price\n");
-				float SetPrice = sc.nextFloat();
+				String SetName = sc2.next();
+				String SetDescription = sc2.next();
+				float SetPrice = sc2.nextFloat();
 				//then add the menu items inside
 				do{
-					System.out.print("Enter the item ID\n");
-					int id = sc.nextInt();
-					System.out.print("Enter the item name\n");
-					String name = sc.next();
-					System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n"); 
-					int categorynum = sc.nextInt(); //category has to be in numbers
-					System.out.print("Enter the item description\n");
-					String description = sc.next();
-					System.out.print("Enter the item price\n");
-					float price = sc.nextFloat();
+					int id = sc2.nextInt();
+					String name = sc2.next();
+					int categorynum = sc2.nextInt(); //category has to be in numbers
+					String description = sc2.next();
+					float price = sc2.nextFloat();
 					SetItems.add(new MenuItems(id, name, categorynum, description, price));
-				}while(sc.nextInt()!=-1); //to end the taking in of menuitems write -1
+				}while(sc2.nextInt()!=-1); //to end the taking in of menuitems write -1
 
 				promo.add(new PromotionalSet(SetId, SetName, SetDescription, SetPrice, SetItems));
 				SetItems.clear(); //clear list
 				
 			}
-			
-			
 		}
 		catch(FileNotFoundException e){
 			e.getMessage(); 
 			e.printStackTrace();
 		}
-			
-			
-		
 	}
 
 // MENU FUNCTIONS
@@ -540,6 +526,116 @@ public class MenuLogic {
 		return null;
 	}
 
+	public void saveMenu() {
+		try {
+			FileWriter write = new FileWriter("Menu.txt"); 
+			@SuppressWarnings("resource")
+			BufferedWriter bwrite = new BufferedWriter(write);  //need write in order of id name category description price 
+			for(int i=0;i<mains.size();i++) {
+				if(mains.get(i)!=null){
+					bwrite.write(Integer.toString(mains.get(i).getID())); //write id
+					bwrite.newLine();
+					bwrite.write(mains.get(i).getName());//write name
+					bwrite.newLine();
+					bwrite.write(Integer.toString(mains.get(i).getCategory())); //write category 
+					bwrite.newLine();
+					bwrite.write(mains.get(i).getDescription()); //write description 
+					bwrite.newLine();
+					bwrite.write(Float.toString(mains.get(i).getPrice())); //write price 
+					bwrite.newLine();
+					bwrite.newLine(); //TO SEPERATE THE DIFFERENT MENUITEMS
+				}	
+				for(int j=0;j<desserts.size();j++) {
+					if(desserts.get(j)!=null){
+						bwrite.write(Integer.toString(desserts.get(j).getID())); //write id
+						bwrite.newLine();
+						bwrite.write(desserts.get(j).getName());//write name
+						bwrite.newLine();
+						bwrite.write(Integer.toString(desserts.get(j).getCategory())); //write category 
+						bwrite.newLine();
+						bwrite.write(desserts.get(j).getDescription()); //write description 
+						bwrite.newLine();
+						bwrite.write(Float.toString(desserts.get(j).getPrice())); //write price 
+						bwrite.newLine();
+						bwrite.newLine(); //TO SEPERATE THE DIFFERENT MENUITEMS
+					}	
+					for(int k=0;k<drinks.size();k++) {
+						if(drinks.get(k)!=null){
+							bwrite.write(Integer.toString(drinks.get(k).getID())); //write id
+							bwrite.newLine();
+							bwrite.write(drinks.get(k).getName());//write name
+							bwrite.newLine();
+							bwrite.write(Integer.toString(drinks.get(k).getCategory())); //write category 
+							bwrite.newLine();
+							bwrite.write(drinks.get(k).getDescription()); //write description 
+							bwrite.newLine();
+							bwrite.write(Float.toString(drinks.get(k).getPrice())); //write price 
+							bwrite.newLine();
+							bwrite.newLine(); //TO SEPERATE THE DIFFERENT MENUITEMS
+						}	
+			}
+			
+		bwrite.close();
+			
+		}
+		catch(FileNotFoundException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
 
+	public void savePromo() {
+		try {
+			FileWriter write = new FileWriter("Promo.txt"); 
+			@SuppressWarnings("resource")
+			BufferedWriter bwrite = new BufferedWriter(write); //need write in order of SetId SetName SetDescription SetPrice SetItems
+			for(int i=0;i<promo.size();i++) {
+				if(promo.get(i)!=null){
+					bwrite.write(Integer.toString(promo.get(i).getID())); //write id
+					bwrite.newLine();
+					bwrite.write(promo.get(i).getName());//write name
+					bwrite.newLine();
+					bwrite.write(promo.get(i).getDescription()); //write description 
+					bwrite.newLine();
+					bwrite.write(Float.toString(promo.get(i).getPrice())); //write price 
+					bwrite.newLine();
+					SetItems = new ArrayList<MenuItems>();
+					SetItems = promo.get(i).getMenuItems();
+					for(int j=0;j<SetItems.size();j++) {
+						if(SetItems.get(j)!=null){
+							bwrite.write(Integer.toString(SetItems.get(j).getID())); //write id
+							bwrite.newLine();
+							bwrite.write(SetItems.get(j).getName());//write name
+							bwrite.newLine();
+							bwrite.write(Integer.toString(SetItems.get(j).getCategory())); //write category 
+							bwrite.newLine();
+							bwrite.write(SetItems.get(j).getDescription()); //write description 
+							bwrite.newLine();
+							bwrite.write(Float.toString(SetItems.get(j).getPrice())); //write price 
+							bwrite.newLine();
+						}	}
+					bwrite.write("-1");
+					bwrite.newLine(); //TO SEPERATE THE DIFFERENT PROMOSETS
+				}	
+			}
+			
+		bwrite.close();
+			
+		}
+		catch(FileNotFoundException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
 
 }
