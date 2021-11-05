@@ -6,7 +6,6 @@ public class TableBoundary{
     public void giveTable() {
         System.out.println("Enter the number of customers:");
         int customerPax =scanner.nextInt();
-        System.out.println("");
         System.out.println("Enter the time of reservation:");
         int hour =scanner.nextInt();
         System.out.printf("Table %d allocated",tableLogic.giveTable(customerPax,hour));
