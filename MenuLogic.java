@@ -99,11 +99,11 @@ public class MenuLogic {
 		
 	}
 
-
-/** 
- * @param choice
- */
 // MENU FUNCTIONS
+	/** 
+	 * to print out menu for a category
+	 * @param choice
+	 */
 	public void displayMenu(int choice) {
 		switch (choice){
 			case 1:
@@ -129,6 +129,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to create an item and add it onto the menu
 	 * @param id
 	 * @param name
 	 * @param choice
@@ -151,6 +152,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to remove an item from the menu
 	 * @param id
 	 * @param choice
 	 */
@@ -182,6 +184,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the id of a menuitem
 	 * @param id
 	 * @param choice
 	 * @param newid
@@ -213,6 +216,7 @@ public class MenuLogic {
 	}
 	
 	/** 
+	 * to change the name of a menuitem
 	 * @param id
 	 * @param category
 	 * @param newname
@@ -245,6 +249,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the description of a menuitem
 	 * @param id
 	 * @param category
 	 * @param newdescription
@@ -277,6 +282,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the price of a menuitem
 	 * @param id
 	 * @param category
 	 * @param newprice
@@ -308,6 +314,7 @@ public class MenuLogic {
 	}
 	
 	/** 
+	 * a function for searching for an item from the menu and returning it as a menuitem, for adding to orders
 	 * @param id
 	 * @param category
 	 * @return MenuItems
@@ -340,6 +347,7 @@ public class MenuLogic {
 	}
 
 //PROMO FUNCTIONS	
+	//to print out the menu for promotional sets
 	public void displayPromoMenu(){
 		System.out.print("Promotional Sets:\n");
 		for (int i=0; i<promo.size(); i++){
@@ -365,6 +373,7 @@ public class MenuLogic {
 	
 	
 	/** 
+	 * to create a promotional set and add it to the menu, takes in a a list of numbers for menuitem ids
 	 * @param SetId
 	 * @param SetName
 	 * @param SetDescription
@@ -397,6 +406,7 @@ public class MenuLogic {
 	
 	
 	/** 
+	 * to remove a promotional set from the menu
 	 * @param SetId
 	 */
 	public void removePromoSet(int SetId){
@@ -408,6 +418,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the id of a promoset
 	 * @param SetId
 	 * @param newid
 	 */
@@ -421,6 +432,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the name of a promoset
 	 * @param SetId
 	 * @param newname
 	 */
@@ -434,6 +446,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the description of a promoset
 	 * @param SetId
 	 * @param newdescription
 	 */
@@ -447,6 +460,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * to change the price of a promoset
 	 * @param SetId
 	 * @param newprice
 	 */
@@ -460,6 +474,7 @@ public class MenuLogic {
 
 	
 	/** 
+	 * accesses the arraylist of menuitems in a promotional set and adds an item to it
 	 * @param SetId
 	 * @param itemID
 	 */
@@ -492,26 +507,28 @@ public class MenuLogic {
 	
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
-				promo.get(i).addItemsToSet(item);
+				promo.get(i).addItemToSet(item);
 			}
 		}
 	}
 
 	
 	/** 
+	 * accesses the arraylist of menuitems in a promotional set and removes an item from it
 	 * @param SetId
 	 * @param id
 	 */
-	public void removeItemsFromSet(int SetId, int id){
+	public void removeItemFromSet(int SetId, int id){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
-				promo.get(i).removeItemsFromSet(id);
+				promo.get(i).removeItemFromSet(id);
 			}
 		}
 	}
 
 	
 	/** 
+	 * accesses the promotional set menu and searches for a set, returns it as a PromotionalSet for adding to orders
 	 * @param SetId
 	 * @return PromotionalSet
 	 */

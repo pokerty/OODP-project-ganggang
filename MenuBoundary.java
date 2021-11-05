@@ -8,6 +8,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in input for displaymenu
 	 * @param menuLogic
 	 */
 	public void displayMenu(MenuLogic menuLogic) {
@@ -19,6 +20,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for createmenuitems
 	 * @param menuLogic
 	 */
 	public void createMenuItems(MenuLogic menuLogic) {
@@ -39,6 +41,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for removemenuitem
 	 * @param menuLogic
 	 */
 	public void removeMenuItems(MenuLogic menuLogic) {
@@ -54,6 +57,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatemenuitemid
 	 * @param menuLogic
 	 */
 	public void updateMenuItemID(MenuLogic menuLogic) {
@@ -68,6 +72,7 @@ public class MenuBoundary {
 	}
 	
 	/** 
+	 * takes in inputs for updatemenuitemname
 	 * @param menuLogic
 	 */
 	public void updateMenuItemName(MenuLogic menuLogic) {
@@ -83,6 +88,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatemenuitemdescription
 	 * @param menuLogic
 	 */
 	public void updateMenuItemDescription(MenuLogic menuLogic) {
@@ -98,6 +104,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatemenuitemprice
 	 * @param menuLogic
 	 */
 	public void updateMenuItemPrice(MenuLogic menuLogic) {
@@ -112,6 +119,7 @@ public class MenuBoundary {
 	}
 	
 	/** 
+	 * displays promotional set menu
 	 * @param menuLogic
 	 */
 	public void displayPromoMenu(MenuLogic menuLogic){
@@ -124,6 +132,7 @@ public class MenuBoundary {
 
 	 
 	 /** 
+	  * takes in inputs for createpromoset
 	  * @param menuLogic
 	  */
 	 public void createPromoSet(MenuLogic menuLogic){
@@ -149,6 +158,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for removepromoset
 	 * @param menuLogic
 	 */
 	public void removePromoSet(MenuLogic menuLogic){
@@ -159,6 +169,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatesetid
 	 * @param menuLogic
 	 */
 	public void updateSetID(MenuLogic menuLogic){
@@ -171,6 +182,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatesetname
 	 * @param menuLogic
 	 */
 	public void updateSetName(MenuLogic menuLogic){
@@ -183,6 +195,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatesetdescription
 	 * @param menuLogic
 	 */
 	public void updateSetDescription(MenuLogic menuLogic){
@@ -195,6 +208,7 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for updatesetprice
 	 * @param menuLogic
 	 */
 	public void updateSetPrice(MenuLogic menuLogic){
@@ -207,6 +221,7 @@ public class MenuBoundary {
 
 	 
 	 /** 
+	  * takes in inputs for additemtoset
 	  * @param menuLogic
 	  */
 	 public void addItemToSet(MenuLogic menuLogic){
@@ -219,14 +234,15 @@ public class MenuBoundary {
 
 	
 	/** 
+	 * takes in inputs for removeitemfromset
 	 * @param menuLogic
 	 */
-	public void removeItemsFromSet(MenuLogic menuLogic){
+	public void removeItemFromSet(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
 		System.out.print("Enter the item ID to remove\n");
 		int id = sc.nextInt();
-		menuLogic.removeItemsFromSet(SetId, id);
+		menuLogic.removeItemFromSet(SetId, id);
 	}
 
 }

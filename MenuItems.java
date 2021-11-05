@@ -32,6 +32,7 @@ public class MenuItems {
 
 	
 	/** 
+	 * to get menuitem id
 	 * @return int
 	 */
 	public int getID() {
@@ -39,6 +40,7 @@ public class MenuItems {
 	}
 	
 	/** 
+	 * to change menuitem id
 	 * @param id
 	 */
 	public void setID(int id) {
@@ -47,6 +49,7 @@ public class MenuItems {
 
 	
 	/** 
+	 * to get menuitem name
 	 * @return String
 	 */
 	public String getName() {
@@ -54,6 +57,7 @@ public class MenuItems {
 	}
 	
 	/** 
+	 * to change menuitem name 
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -62,6 +66,7 @@ public class MenuItems {
 
 	
 	/** 
+	 * to get menuitem type
 	 * @return courseType
 	 */
 	public courseType getCategory() {
@@ -69,6 +74,7 @@ public class MenuItems {
 	}
 	
 	/** 
+	 * to change menuitem type
 	 * @param category
 	 */
 	public void setCategory(courseType category) {
@@ -77,6 +83,7 @@ public class MenuItems {
 
 	
 	/** 
+	 * to get menuitem description
 	 * @return String
 	 */
 	public String getDescription() {
@@ -84,6 +91,7 @@ public class MenuItems {
 	}
 	
 	/** 
+	 * to change menuitem description
 	 * @param description
 	 */
 	public void setDescription(String description) {
@@ -92,6 +100,7 @@ public class MenuItems {
 
 	
 	/** 
+	 * to get menuitem price
 	 * @return float
 	 */
 	public float getPrice() {
@@ -99,6 +108,7 @@ public class MenuItems {
 	}
 	
 	/** 
+	 * to change menuitem price
 	 * @param price
 	 */
 	public void setPrice(float price) {

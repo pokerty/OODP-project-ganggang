@@ -19,6 +19,7 @@ public class PromotionalSet {
     }
     
     /** 
+     * to get promoset id
      * @return int
      */
     public int getID(){
@@ -26,6 +27,7 @@ public class PromotionalSet {
     }
     
     /** 
+     * to change promoset id
      * @param SetId
      */
     public void setID(int SetId){
@@ -34,6 +36,7 @@ public class PromotionalSet {
 
     
     /** 
+     * to get promoset name
      * @return String
      */
     public String getName(){
@@ -41,6 +44,7 @@ public class PromotionalSet {
     }
     
     /** 
+     * to change promoset name
      * @param SetName
      */
     public void setName(String SetName){
@@ -49,6 +53,7 @@ public class PromotionalSet {
 
     
     /** 
+     * to get promoset description
      * @return String
      */
     public String getDescription(){
@@ -56,6 +61,7 @@ public class PromotionalSet {
     }
     
     /** 
+     * to change promoset description
      * @param SetDescription
      */
     public void setDescription(String SetDescription){
@@ -64,6 +70,7 @@ public class PromotionalSet {
 
     
     /** 
+     * to get promoset price
      * @return float
      */
     public float getPrice(){
@@ -71,6 +78,7 @@ public class PromotionalSet {
     }
     
     /** 
+     * to change promoset price
      * @param SetPrice
      */
     public void setPrice(float SetPrice){
@@ -79,6 +87,7 @@ public class PromotionalSet {
 
     
     /** 
+     * to return the list of menuitems inside the promoset
      * @return ArrayList<MenuItems>
      */
     public ArrayList<MenuItems> getMenuItems(){
@@ -87,17 +96,19 @@ public class PromotionalSet {
 
     
     /** 
+     * to add a menuitem into the promoset
      * @param item
      */
-    public void addItemsToSet(MenuItems item){
+    public void addItemToSet(MenuItems item){
         SetItems.add(item);
     }
 
     
     /** 
+     * to remove a menuitem from the promoset
      * @param id
      */
-    public void removeItemsFromSet(int id){
+    public void removeItemFromSet(int id){
         for (int i=0; i<SetItems.size(); i++){
             if (SetItems.get(i).getID()==id){
                 SetItems.remove(i);
