@@ -2,21 +2,18 @@
 import java.util.Scanner; 
 
 public class ReservationBoundary {
-
-	private ReservationLogic reservationLogic; 
-	
-	public ReservationBoundary(ReservationLogic reservationLogic) {
-		this.reservationLogic = reservationLogic; 
+ 
+	public ReservationBoundary() {
 	}
 	
 	Scanner sc = new Scanner(System.in); 
 
 	
-	public void makeReservation() {
+	public void makeReservation(ReservationLogic reservationLogic) {
 		String name; 
 		int month, day, hour, pax, contact; 
 		System.out.println("Please enter customer name to make reservation!"); 
-		name = sc.next(); 
+		name = sc.nextLine(); 
 		System.out.println("Please enter the number of pax"); 
 		pax = sc.nextInt(); 
 		System.out.println("Please enter month of desired reservation"); 
@@ -32,7 +29,7 @@ public class ReservationBoundary {
 	}
 
 	
-	public void removeReservation() { 
+	public void removeReservation(ReservationLogic reservationLogic) { 
 		String name;  
 		System.out.println("Please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
@@ -41,7 +38,7 @@ public class ReservationBoundary {
 		reservationLogic.removeReservation(tablenumber,name,false); //manual removal of reservation 
 	}
 
-	public void checkReservation() {
+	public void checkReservation(ReservationLogic reservationLogic) {
 		String name;  
 		System.out.println("To check reservation, please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
