@@ -8,7 +8,7 @@ public class TableBoundary{
         int customerPax =scanner.nextInt();
         System.out.println("Enter the time of reservation:");
         int hour =scanner.nextInt();
-        System.out.printf("Table %d allocated",tableLogic.giveTable(customerPax,hour));
+        System.out.printf("Table %d allocated\n",tableLogic.giveTable(customerPax,hour));
     }
 
     public void checkTableAvailability() {
@@ -16,9 +16,9 @@ public class TableBoundary{
         int customerPax =scanner.nextInt();
         System.out.println("");
         if(tableLogic.checkTableAvailability(customerPax)) {
-            System.out.printf("There are tables available");
+            System.out.printf("There are tables available\n");
             return; }
-        System.out.printf("There are no tables available");
+        System.out.printf("There are no tables available\n");
     }
 
     public void freeTable() {
