@@ -6,11 +6,6 @@ import java.util.*;
 public class MenuBoundary {
 	Scanner sc = new Scanner(System.in);
 
-	
-	/** 
-	 * takes in input for displaymenu
-	 * @param menuLogic
-	 */
 	public void displayMenu(MenuLogic menuLogic) {
 		System.out.print("Enter the menu to display\nmain:1\ndessert:2\ndrink:3\n");
 		int categorynum = sc.nextInt();
@@ -18,32 +13,25 @@ public class MenuBoundary {
 		menuLogic.displayMenu(categorynum); 
 	}
 
-	
-	/** 
-	 * takes in inputs for createmenuitems
-	 * @param menuLogic
-	 */
 	public void createMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the item name\n");
-		String name = sc.nextLine();
+		String name = sc.next();
 		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
 		int categorynum = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the item description\n");
-		String description = sc.next();
+		String description = sc.nextLine();
 		System.out.print("Enter the item price\n");
 		float price = sc.nextFloat();
+		sc.nextLine();
 		
 		menuLogic.createMenuItems(id, name, categorynum, description, price);
 	}
 
-	
-	/** 
-	 * takes in inputs for removemenuitem
-	 * @param menuLogic
-	 */
 	public void removeMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
@@ -55,11 +43,6 @@ public class MenuBoundary {
 		}
 	
 
-	
-	/** 
-	 * takes in inputs for updatemenuitemid
-	 * @param menuLogic
-	 */
 	public void updateMenuItemID(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -70,43 +53,30 @@ public class MenuBoundary {
 		menuLogic.updateMenuItemID(id, categorynum, newid);
 
 	}
-	
-	/** 
-	 * takes in inputs for updatemenuitemname
-	 * @param menuLogic
-	 */
 	public void updateMenuItemName(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
 		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
 		int categorynum = sc.nextInt();
+		sc.nextLine(); 
 		System.out.print("Enter the new item name\n");
 		String newname = sc.nextLine();
 		menuLogic.updateMenuItemName(id, categorynum, newname);
 
 	}
 
-	
-	/** 
-	 * takes in inputs for updatemenuitemdescription
-	 * @param menuLogic
-	 */
 	public void updateMenuItemDescription(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
 		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
 		int categorynum = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the new item description\n");
 		String newdescription = sc.nextLine();
 		menuLogic.updateMenuItemDescription(id, categorynum, newdescription);
 
 	}
 
-	
-	/** 
-	 * takes in inputs for updatemenuitemprice
-	 * @param menuLogic
-	 */
 	public void updateMenuItemPrice(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -117,11 +87,6 @@ public class MenuBoundary {
 		menuLogic.updateMenuItemPrice(id, categorynum, newprice);
 
 	}
-	
-	/** 
-	 * displays promotional set menu
-	 * @param menuLogic
-	 */
 	public void displayPromoMenu(MenuLogic menuLogic){
 		System.out.print("Promo Menu:\n");
 		menuLogic.displayPromoMenu();
@@ -130,11 +95,6 @@ public class MenuBoundary {
 
 
 
-	 
-	 /** 
-	  * takes in inputs for createpromoset
-	  * @param menuLogic
-	  */
 	 public void createPromoSet(MenuLogic menuLogic){
 	 	System.out.print("Enter the Promotional Set ID\n");
 	 	int SetId = sc.nextInt();
@@ -156,22 +116,12 @@ public class MenuBoundary {
 	 	
 	 }
 
-	
-	/** 
-	 * takes in inputs for removepromoset
-	 * @param menuLogic
-	 */
 	public void removePromoSet(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID to remove\n");
 		int SetId = sc.nextInt();
 		menuLogic.removePromoSet(SetId);
 	}
 
-	
-	/** 
-	 * takes in inputs for updatesetid
-	 * @param menuLogic
-	 */
 	public void updateSetID(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -180,11 +130,6 @@ public class MenuBoundary {
 		menuLogic.updateSetID(SetId, newid);
 	}
 
-	
-	/** 
-	 * takes in inputs for updatesetname
-	 * @param menuLogic
-	 */
 	public void updateSetName(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -193,11 +138,6 @@ public class MenuBoundary {
 		menuLogic.updateSetName(SetId, newname);
 	}
 
-	
-	/** 
-	 * takes in inputs for updatesetdescription
-	 * @param menuLogic
-	 */
 	public void updateSetDescription(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -206,11 +146,6 @@ public class MenuBoundary {
 		menuLogic.updateSetDescription(SetId, newdescription);
 	}
 
-	
-	/** 
-	 * takes in inputs for updatesetprice
-	 * @param menuLogic
-	 */
 	public void updateSetPrice(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
@@ -219,11 +154,6 @@ public class MenuBoundary {
 		menuLogic.updateSetPrice(SetId, newprice);
 	}
 
-	 
-	 /** 
-	  * takes in inputs for additemtoset
-	  * @param menuLogic
-	  */
 	 public void addItemToSet(MenuLogic menuLogic){
 	 	System.out.print("Enter the Promotional Set ID\n");
 	 	int SetId = sc.nextInt();
@@ -232,17 +162,12 @@ public class MenuBoundary {
 	 	menuLogic.addItemToSet(SetId, itemID);
 	 }
 
-	
-	/** 
-	 * takes in inputs for removeitemfromset
-	 * @param menuLogic
-	 */
-	public void removeItemFromSet(MenuLogic menuLogic){
+	public void removeItemsFromSet(MenuLogic menuLogic){
 		System.out.print("Enter the Promotional Set ID\n");
 		int SetId = sc.nextInt();
 		System.out.print("Enter the item ID to remove\n");
 		int id = sc.nextInt();
-		menuLogic.removeItemFromSet(SetId, id);
+		menuLogic.removeItemsFromSet(SetId, id);
 	}
 
 }

@@ -11,17 +11,11 @@ public class StaffBoundary {
 
 	Scanner sc = new Scanner(System.in);
 
-	private StaffLogic staffLogic = new StaffLogic();
-
-	public StaffBoundary(StaffLogic staffLogic) {
-		this.staffLogic = staffLogic;
-	}
-
 	/**
 	 * This method is responsible for scanning in staff details when a new staff is
 	 * going to be added.
 	 */
-	public void addStaff() {
+	public void addStaff(StaffLogic staffLogic) {
 		System.out.println("Input staff name: ");
 		String name = sc.next();
 		System.out.println("Input staff gender: F/M ");
@@ -44,15 +38,15 @@ public class StaffBoundary {
 	 * the list of staff and their details.
 	 */
 
-	public void displayStaff() {
+	public void displayStaff(StaffLogic staffLogic) {
 		staffLogic.displayStaff();
 	}
 
 	/**
-	 * This method calls the handler method fron StaffLogic class to select a staff
+	 * This method calls the handler method from StaffLogic class to select a staff
 	 * member who will handle an order.
 	 */
-	public void handler() {
+	public void handler(StaffLogic staffLogic) {
 		staffLogic.handler();
 	}
 

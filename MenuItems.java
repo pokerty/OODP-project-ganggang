@@ -8,7 +8,6 @@ public class MenuItems {
 	private int id; 
 	private String name;
 	private courseType category;
-	private int choice;
 	private String description;
 	private float price;
 
@@ -18,7 +17,6 @@ public class MenuItems {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.choice=choice;
 		switch(choice) {
 		case(1): 
 			this.category = courseType.main; 
@@ -32,87 +30,37 @@ public class MenuItems {
 		}
 	}
 
-	
-	/** 
-	 * to get menuitem id
-	 * @return int
-	 */
 	public int getID() {
 		return this.id;
 	}
-	
-	/** 
-	 * to change menuitem id
-	 * @param id
-	 */
 	public void setID(int id) {
 		this.id = id;
 	}
 
-	
-	/** 
-	 * to get menuitem name
-	 * @return String
-	 */
 	public String getName() {
 		return this.name;
 	}
-	
-	/** 
-	 * to change menuitem name 
-	 * @param name
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	
-	/** 
-	 * to get menuitem type
-	 * @return int
-	 */
-	public int getCategory() {
-		return this.choice;
+	public courseType getCategory() {
+		return this.category;
 	}
-	
-	/** 
-	 * to change menuitem type
-	 * @param category
-	 */
 	public void setCategory(courseType category) {
 		this.category = category;
 	}
 
-	
-	/** 
-	 * to get menuitem description
-	 * @return String
-	 */
 	public String getDescription() {
 		return this.description;
 	}
-	
-	/** 
-	 * to change menuitem description
-	 * @param description
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	
-	/** 
-	 * to get menuitem price
-	 * @return float
-	 */
 	public float getPrice() {
 		return this.price;
 	}
-	
-	/** 
-	 * to change menuitem price
-	 * @param price
-	 */
 	public void setPrice(float price) {
 		this.price=price;
 	}

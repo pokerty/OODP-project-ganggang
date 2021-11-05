@@ -111,19 +111,21 @@ public class ReservationLogic {
 				hour = Integer.parseInt(list.get(i+6)); //7th is hour 
 				minute = Integer.parseInt(list.get(i+7)); //8th is minute 
 				Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tablenumber); //create reservation
-				reservations.add(reservation); //allocate index according to table number 
+				reservations.add(reservation); 
 				i = i+9; //should be start of next entry , don't take empty string 
 			}
 			
 			reader.close(); //close file reader 
 			
-			/* for testing 
-			for(int j=0;j<15;j++) {
-				if(reservations[j]!=null) {
-					System.out.println(reservations[j].getName()); 
+			 /*for testing 
+			for(int j=0;j<reservations.size();j++) {
+				if(reservations.get(j)!=null) {
+					System.out.println(reservations.get(j).getName());
+					System.out.println(reservations.get(j).getTableNumber());
 				}
 			}
-		*/
+			*/
+		
 		}
 		
 		catch(FileNotFoundException e) {

@@ -1,0 +1,18 @@
+15
+set A
+burger and fries
+20
+
+3
+burger
+1
+mcspicy
+7
+0
+
+8
+fries
+1
+very salty fries
+5
+-1

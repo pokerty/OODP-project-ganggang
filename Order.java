@@ -12,7 +12,7 @@ public class Order {
     private boolean isMember;
     private Staff staff;
 
-    public Order(int tableNumber, boolean isMember, Staff staff){
+    public Order(int tableNumber,boolean isMember, Staff staff){
         Calendar cal = Calendar.getInstance();
         Date timestamp = cal.getTime(); //getting the date for timestamp 
     	
@@ -45,6 +45,7 @@ public class Order {
     public ArrayList<MenuItems> getOrderItems() {
         return orderItems;
     }
+    
     public void setOrderItems(ArrayList<MenuItems> orderItems, MenuItems menuItems) {
         orderItems.add(menuItems);
     }

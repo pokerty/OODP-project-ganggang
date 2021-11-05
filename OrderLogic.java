@@ -3,22 +3,27 @@ package oodpassignment;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class OrderLogic {
     private Report report;
     private ReportLogic reportLogic;
     private MenuLogic menuLogic; 
     private ArrayList<Order> orderList; 
+    private FreeTable table; 
+    private StaffLogic staffLogic; 
     
         Scanner sc = new Scanner(System.in);
 
-        public OrderLogic(Report report, ReportLogic reportLogic, MenuLogic menuLogic){
+        public OrderLogic(Report report, ReportLogic reportLogic, MenuLogic menuLogic, FreeTable table,StaffLogic staffLogic){
                 //txt implementation
         		this.report = report; 
         		this.reportLogic = reportLogic; 
         		this.menuLogic = menuLogic;
         		ArrayList<Order> orderList = new ArrayList<Order>(); 
         		this.orderList = orderList; 
+        		this.table = table; 
+        		this.staffLogic = staffLogic; 
                 reportLogic.loadReport();
                 System.out.println("OrderLogic start-up complete.");
         }
@@ -32,15 +37,19 @@ public class OrderLogic {
 
                 boolean isMember = false;
                 if (memberStatus == "y" || memberStatus == "Y") isMember = true;
-
-                StaffLogic staffLogic = new StaffLogic();
+ 
                 Staff staff = staffLogic.handler();
 
                 Order order = new Order(tableNumber, isMember, staff);
+                orderList.add(order); //addition of order to order list (collection)
+                System.out.println("Order number is :" + (orderList.size()-1)); 
+                
         }
 
-        public void addItemToOrder(Order order, MenuLogic menuLogic){
-                System.out.println("Menu:");
+        public void addItemToOrder(int ordernumber, MenuLogic menuLogic){
+        		Order order = orderList.get(ordernumber); 
+        	
+        		System.out.println("Menu:");
                 
                 System.out.println("Input category: (1)MAIN (2)DRINKS (3)DESSERT (4)PROMO SET");
                 int categoryChoice = sc.nextInt();
@@ -53,8 +62,8 @@ public class OrderLogic {
                 if(categoryChoice == 4) order.getPromoItems().add(menuLogic.addPromoToOrder(orderIDChoice));//adding promo set returned
         }
 
-        public void removeItemFromOrder(Order order) {
-
+        public void removeItemFromOrder(int ordernumber) {
+        	Order order = orderList.get(ordernumber); 
             //need to add remove for promo item
             System.out.println("CHOOSE AN ITEM TO REMOVE:");
             for (int i = 0; i < order.getOrderItems().size(); i++) {
@@ -67,7 +76,8 @@ public class OrderLogic {
             }
         }
 
-        public void viewOrder(Order order){
+        public void viewOrder(int ordernumber){
+        				Order order = orderList.get(ordernumber); 
                         System.out.println("TABLE NO.: " + order.getTableNumber());
                         System.out.println(order.getTimeStamp());
                         System.out.println("ORDER: ");
@@ -95,7 +105,12 @@ public class OrderLogic {
                         System.out.println("\t\t\tGST: " + subTotal*0.07);
                         System.out.println("\n\t\t\tTOTAL: " + subTotal*1.07);
                         System.out.println("Thank you for dining with us!");
+                        
+                        table.freeTable(order.getTableNumber(), order.getTimeStamp().getHours());
+                        report.getOrders().add(order); 
+            
                 }
+        
 
 
 }
