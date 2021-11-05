@@ -3,11 +3,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TableLogic implements CheckTable{
-	private List<Table> tables_12_to_2 ;
-	private List<Table> tables_2_to_4 ;
-	private List<Table> tables_4_to_6 ;
-	private List<Table> tables_6_to_8 ;
-	private List<Table> tables_8_to_10 ;
+	private ArrayList<Table> tables_12_to_2 = new ArrayList<>();
+	private ArrayList<Table> tables_2_to_4 = new ArrayList<>();
+	private ArrayList<Table> tables_4_to_6 = new ArrayList<>();
+	private ArrayList<Table> tables_6_to_8 = new ArrayList<>();
+	private ArrayList<Table> tables_8_to_10 = new ArrayList<>();
 
 	public TableLogic() {
 		List<List<Table>> alltables = Arrays.asList(tables_12_to_2,tables_2_to_4,tables_4_to_6,tables_6_to_8,tables_8_to_10);
