@@ -8,8 +8,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is a control class where most of the logic concerning staff is.
+ */
+
 public class StaffLogic {
 
+	/**
+	 * A list of staff objects are stored in an arrayList. The arrayList will be
+	 * populated with staff data read in from stafflist.txt.
+	 */
 	private ArrayList<Staff> staffs;
 	BufferedWriter out;
 	BufferedReader in;
@@ -22,6 +30,11 @@ public class StaffLogic {
 		System.out.println("StaffLogic start-up complete.");
 	}
 
+	/**
+	 * This method creates a new staff object and add it to the staffs arrayList.
+	 * The text file will also be updated with this new staff member.
+	 */
+
 	public void addStaff(String name, char gender, int ID, Job job) {
 		Staff staffObject = new Staff(name, gender, ID, job);
 		staffs.add(staffObject);
@@ -29,6 +42,9 @@ public class StaffLogic {
 		staffsOverwrite();
 	}
 
+	/**
+	 * This method prints out the list of staffs and their details.
+	 */
 	public void displayStaff() {
 		System.out.println("List of Staff: ");
 		System.out.println();
@@ -40,6 +56,14 @@ public class StaffLogic {
 			System.out.println();
 		}
 	}
+
+	/**
+	 * This method prints out all the staff whose job title is waiter and allows the
+	 * user to choose a staff member to handle the order. It will then return the
+	 * object reference of the staff that is chosen.
+	 * 
+	 * @return staff object reference
+	 */
 
 	public Staff handler() {
 		// display staff who are waiters: choose which staff object
@@ -76,6 +100,9 @@ public class StaffLogic {
 		return null;
 	}
 
+	/**
+	 * This method is used to update changes of the staff list into the text file.
+	 */
 	public void staffsOverwrite() { // updating changes into the text file
 		try {
 			out = new BufferedWriter(new FileWriter("stafflist.txt", false));
@@ -90,6 +117,12 @@ public class StaffLogic {
 		}
 
 	}
+
+	/**
+	 * This method is used to read in the data from the text file, creates a new
+	 * object for every staff and then add the staff object into the staffs
+	 * arrayList.
+	 */
 
 	public void loadStaffs() {
 		try {

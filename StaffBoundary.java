@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * This is a boundary class that uses the StaffLogic class and is responsible
+ * for interacting with the user.
+ */
+
 public class StaffBoundary {
 
 	Scanner sc = new Scanner(System.in);
@@ -10,6 +15,10 @@ public class StaffBoundary {
 		this.staffLogic = staffLogic;
 	}
 
+	/**
+	 * This method is responsible for scanning in staff details when a new staff is
+	 * going to be added.
+	 */
 	public void addStaff() {
 		System.out.println("Input staff name: ");
 		String name = sc.next();
@@ -28,10 +37,19 @@ public class StaffBoundary {
 		}
 	}
 
+	/**
+	 * This method calls the displayStaff method from StaffLogic class to print out
+	 * the list of staff and their details.
+	 */
+
 	public void displayStaff() {
 		staffLogic.displayStaff();
 	}
 
+	/**
+	 * This method calls the handler method fron StaffLogic class to select a staff
+	 * member who will handle an order.
+	 */
 	public void handler() {
 		staffLogic.handler();
 	}
