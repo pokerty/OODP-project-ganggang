@@ -8,7 +8,12 @@ public class TableBoundary{
         int customerPax =scanner.nextInt();
         System.out.println("Enter the time of reservation:");
         int hour =scanner.nextInt();
-        System.out.printf("Table %d allocated\n",tableLogic.giveTable(customerPax,hour));
+        int tablenumber = tableLogic.giveTable(customerPax,hour);
+        if(tablenumber!=-1) {
+            System.out.printf("Table %d allocated\n", tableLogic.giveTable(customerPax, hour));
+            return;
+        }
+        System.out.printf("Table not allocated\n");
     }
 
     public void checkTableAvailability() {
