@@ -20,7 +20,7 @@ public class TableBoundary{
         System.out.println("Enter the number of customers:");
         int customerPax =scanner.nextInt();
         System.out.println("Enter the time of reservation:");
-        int hou =scanner.nextInt();
+        int hour =scanner.nextInt();
         System.out.println("");
         if(tableLogic.checkTableAvailability(customerPax,hour)) {
             System.out.printf("There are tables available\n");
