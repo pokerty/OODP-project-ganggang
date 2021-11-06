@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class TableBoundary{
-    private TableLogic tableLogic = new TableLogic();
+public class TableBoundary(TableLogic tableLogic){
     Scanner scanner = new Scanner(System.in);
     public void giveTable() {
         System.out.println("Enter the number of customers:");
