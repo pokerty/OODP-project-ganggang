@@ -10,24 +10,33 @@ import java.io.FileNotFoundException;
 
 public class MenuLogic { 
 	// implements AddMenutoOrder 
-
+/**
+ *  the collection of menu items of the mains enum type 
+ */
 	private ArrayList<MenuItems> mains; //array is plural, enum is singular
+/**
+ *  the collection of menu items of the drinks enum type 
+*/
 	private ArrayList<MenuItems> drinks;
+	/**
+	 * the collection of menu items of the desserts enum type 
+	 */
 	private ArrayList<MenuItems> desserts;
+	/**
+	 * the collection of promotional set of menu items
+	 */
 	private ArrayList<PromotionalSet> promo;
 
-	private ArrayList<MenuItems> menuItemsList; //populate with database
-	private ArrayList<MenuItems> SetItems; //to add promo items
 
 	public MenuLogic() {
 		mains = new ArrayList<MenuItems>(); 
 		drinks = new ArrayList<MenuItems>();
 		desserts = new ArrayList<MenuItems>();
 		promo = new ArrayList<PromotionalSet>();
-		menuItemsList = new ArrayList<MenuItems>();
 
 		try {
 			//READ MENU TXT, all print lines can be commented out
+			ArrayList<MenuItems >menuItemsList = new ArrayList<MenuItems>();
 			Scanner sc = new Scanner(new File("Menu.txt"));
 			while(sc.hasNext()){
 				//System.out.print("Enter the item ID\n");
