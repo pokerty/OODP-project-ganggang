@@ -76,6 +76,7 @@ public class StaffLogic {
 			}
 		}
 		int choice = sc.nextInt();
+		sc.nextLine(); // flush
 		// find the respective waiter in the arrayList and return that staff object
 		int findWaiter = 0;
 		if (choice < index && choice > 0) {
