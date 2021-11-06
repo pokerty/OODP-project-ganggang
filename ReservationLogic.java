@@ -45,9 +45,9 @@ public class ReservationLogic {
 	public void removeReservation(int tableNumber,String name, boolean expired) {
 		int validity = checkReservation(tableNumber, name); 
 		if(validity>=0) {
-			tablelogic.freeTable(tableNumber, reservations.get(validity).getDateandtime().get(Calendar.HOUR_OF_DAY)); 
+			tablelogic.freeTable(tableNumber-1, reservations.get(validity).getDateandtime().get(Calendar.HOUR_OF_DAY)); 
 			//free up the table after reservation removal 
-			reservations.remove(validity); 
+			reservations.remove(validity); //remove from array list
 			//rely on java auto garbage collection to delete reservation object. 
 			if(expired==true)
 				System.out.println("Reservation expired - Removed!"); 
@@ -62,10 +62,11 @@ public class ReservationLogic {
 		}
 		
 		
+		
 	}
 
 	public int checkReservation(int TableNumber, String name) {
-		if(TableNumber>-1 && TableNumber< 15) { // change parameters 
+		if(TableNumber>0 && TableNumber<= 15) { // change parameters 
 			for(int i=0;i<reservations.size();i++) {
 				if(reservations.get(i).getName().equalsIgnoreCase(name)
 						&& reservations.get(i).getTableNumber() == TableNumber) {

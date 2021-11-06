@@ -1,17 +1,50 @@
 package oodpassignment;
-
+/**
+ * The MenuItems class is the entity class that contains the attributes of our different dishes 
+ * @author hong po 
+ * @since 06/11/2021 
+ * @version 1.0 
+ *
+ */
 public class MenuItems {
-
+/**
+ * 
+ *An enum that shows the different types of MenuItems, namely mains, drinks and desserts 
+ *
+ */
 	public enum courseType {
 		main, drink, dessert
 	}
+/**
+ * A unique identifier for each kind of dish 
+ */
 	private int id; 
+	
+/**
+* Name of the dish 
+ */
 	private String name;
+	/**
+	 * Category of the dish which is defined by the courseType enum 
+	 */
 	private courseType category;
+	/**
+	 * Description of the menu item we are selling 
+	 */
 	private String description;
+	/**
+	 * price of the menu item 
+	 */
 	private float price;
 
-
+/**
+ * constructor of MenuItems which creates a MenuItems object with its corresponding attributes 
+ * @param id
+ * @param name
+ * @param choice
+ * @param description
+ * @param price
+ */
 	public MenuItems(int id, String name, int choice, String description, float price) {
 		this.id = id;
 		this.name = name;

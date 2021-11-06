@@ -22,31 +22,32 @@ public class RestaurantApp {
 		MenuLogic menuLogic = new MenuLogic();
 		CheckTable tableLogic = new TableLogic();
 		ReservationLogic reservationLogic = new ReservationLogic(tableLogic);
-		ReportLogic reportLogic = new ReportLogic();
 		StaffLogic staffLogic = new StaffLogic();
 		Report report = new Report();
-		OrderLogic orderLogic = new OrderLogic(report,reportLogic,menuLogic,(FreeTable)tableLogic,staffLogic);
+		ReportLogic reportLogic = new ReportLogic(report);
+		OrderLogic orderLogic = new OrderLogic(report,(FreeTable)tableLogic,staffLogic);
 
 		// to initialise everything
 		MenuBoundary menuBoundary = new MenuBoundary();
 		ReservationBoundary reservationBoundary = new ReservationBoundary();
 		TableBoundary tableBoundary = new TableBoundary();
-		//OrderBoundary orderBoundary = new OrderBoundary();
-		//ReportBoundary reportBoundary = new ReportBoundary();
+		OrderBoundary orderBoundary = new OrderBoundary();
+		ReportBoundary reportBoundary = new ReportBoundary();
 		StaffBoundary staffBoundary = new StaffBoundary();
 
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Choose the category: ");
-		System.out.printf("1. Menu\n2. Reservation\n3.Table\n4. Order\n5. Report\n6. Staff\n");
+		System.out.println("\nChoose the category: ");
+		System.out.printf("1. Menu\n2. Reservation\n3. Table\n4. Order\n5. Report\n6. Staff\n-1. Terminate\n");
 		int cChoice = sc.nextInt();
 		while(cChoice!=-1) {
 		switch (cChoice) {
 		case 1:
 		{
 			System.out.println("Choose a function in Menu: ");
-			System.out.println("1. Display Menu\n2. Create menu items\n3. Remove menu items\n4. Update menu items\n");
-			System.out.println("5. Display Promo Menu\n6.Create Promo Menu\n7.Remove Promo Menu\n8.Update Promo Menu ");
+			System.out.println("1. Display Menu\n2. Create menu items\n3. Remove menu items\n4. Update menu items");
+			System.out.println("5. Display Promo Menu\n6. Create Promo Menu\n7. Remove Promo Menu\n8. Update Promo Menu ");
 			int mChoice = sc.nextInt();
+			sc.nextLine(); 
 
 			switch (mChoice) {
 			case 1:
@@ -61,6 +62,7 @@ public class RestaurantApp {
 			case 4:
 				System.out.println("1. Change ID\n2. Change Name\n3. Change Description\n4. Change Price\n");
 				int choicethird = sc.nextInt();
+				sc.nextLine(); 
 				switch(choicethird) {
 				case(1):
 					menuBoundary.updateMenuItemID(menuLogic);
@@ -89,7 +91,8 @@ public class RestaurantApp {
 				menuBoundary.removePromoSet(menuLogic);
 				break;
 			case 8:
-				System.out.println("1. Change ID\n2. Change Name\n3. Change Description\n4. Change Price\n");
+				System.out.println("1. Change ID\n2. Change Name\n3. Change Description\n4. Change Price\n"
+						+ "5.Add item to set\n6.Remove item from set");
 				int choicefourth = sc.nextInt();
 				switch(choicefourth) {
 				case(1):
@@ -104,6 +107,13 @@ public class RestaurantApp {
 				case(4):
 					menuBoundary.updateSetPrice(menuLogic);
 					break;
+				case(5):
+					menuBoundary.addItemToSet(menuLogic);
+					break;
+				case(6):
+					menuBoundary.removeItemsFromSet(menuLogic);
+					break; 
+					
 			default:
 				System.out.println("Please choose a valid option.");
 				break;
@@ -111,12 +121,14 @@ public class RestaurantApp {
 
 			break;
 			}
+			break;
 		}
 			
 		case(2):
 			System.out.println("Choose a function in Reservation:");
 			System.out.println("1. Make reservation\n2. Remove reservation\n3. Check reservation\n");
 			int rChoice = sc.nextInt();
+			sc.nextLine(); 
 
 			switch (rChoice) {
 			case 1:
@@ -151,28 +163,29 @@ public class RestaurantApp {
 			break;
 		case 4:
 			System.out.println("Choose a function in Order:");
-			System.out.println("1. View Order\n2. New Order\n3. Add item to order\n4. Remove item from order");
+			System.out.println("1. View Order\n2. New Order\n3. Add item to order\n4. Remove item from order\n5.Print Order Invoice");
 			int oChoice = sc.nextInt();
 
-			switch (oChoice) { // TOCHANGE: not finalised
+			switch (oChoice) { 
 			case 1:
-				System.out.println("Enter order number"); 
-				int orderno = sc.nextInt(); 
-				orderLogic.viewOrder(orderno);
+				orderBoundary.viewOrder(orderLogic);
 				break;
 			case 2:
-				orderLogic.newOrder();
+				orderBoundary.newOrder(orderLogic,menuLogic);
 				break;
 			case 3:
-				System.out.println("Enter order number"); 
-				int orderno1 = sc.nextInt(); 
-				orderLogic.addItemToOrder(orderno1, menuLogic);
+				
+				System.out.println("Please enter order number!"); 
+				int ordernumber = sc.nextInt();
+				orderBoundary.addItemToOrder(orderLogic, menuLogic,ordernumber);
 				break;
 			case 4:
-				System.out.println("Enter order number"); 
-				int orderno2 = sc.nextInt(); 
-				orderLogic.removeItemFromOrder(orderno2);
+				orderBoundary.removeItemFromOrder(orderLogic);
 				break;
+			case 5: 
+				orderBoundary.printOrderInvoice(orderLogic);
+				break;
+				
 			default:
 				System.out.println("Please choose a valid option.");
 				break;
@@ -181,18 +194,17 @@ public class RestaurantApp {
 			break;
 		case 5:
 			System.out.println("Choose a function in Report:");
-			System.out.println("1. Print revenue\n2. Print Promotion Set\n3. Print Ala Carte\n");
+			System.out.println("1. Print revenue by period\n2. Print Promotion Set by period\n3. Print Ala Carte by period\n");
 			int reportChoice = sc.nextInt();
-
 			switch (reportChoice) { // TOCHANGE: not finalised
 			case 1:
-				reportLogic.calculateTotalRevenue();
+				reportBoundary.reportTotal(reportLogic);
 				break;
 			case 2:
-				reportLogic.calculateSetPromoRevenue();
+				reportBoundary.reportSetPromo(reportLogic);
 				break;
 			case 3:
-				reportLogic.calculateAlaCateRevenue();
+				reportBoundary.reportAlaCarte(reportLogic);
 				break;
 			default:
 				System.out.println("Please choose a valid option.");
@@ -222,10 +234,17 @@ public class RestaurantApp {
 			System.out.println("Please choose a valid option.");
 			break;
 		}
-		System.out.println("Choose the category: ");
-		System.out.printf("1. Menu\n2. Reservation\n3.Table\n4. Order\n5. Report\n6. Staff\n");
+		System.out.println("\nChoose the category: ");
+		System.out.printf("1. Menu\n2. Reservation\n3.Table\n4. Order\n5. Report\n6. Staff\n-1.Terminate\n");
 		cChoice = sc.nextInt();
 	}
+		
+		System.out.println("Terminating...Saving reservations,reports,staff."); 
+		reservationLogic.saveReservation(); //save reservation onto txt 
+		staffLogic.staffsOverwrite(); //save changes to staff onto txt 
+		reportLogic.saveReport();
+		
+		
 }
 	
 }

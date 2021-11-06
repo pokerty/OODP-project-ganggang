@@ -26,6 +26,20 @@ public class Order {
         this.promoItems = promoItem; 
         
     }
+    public Order(int tableNumber,boolean isMember, Staff staff, Calendar time){
+        Calendar cal = time;
+        Date timestamp = cal.getTime(); //getting the date for timestamp 
+    	
+    	this.tableNumber = tableNumber;
+        this.timeStamp = timestamp; 
+        ArrayList<MenuItems> orderArrayList = new ArrayList<MenuItems>();
+        this.orderItems = orderArrayList;
+        this.isMember = isMember;
+        this.staff = staff;
+        ArrayList<PromotionalSet> promoItem = new ArrayList<PromotionalSet>(); 
+        this.promoItems = promoItem; 
+        
+    }
 
     //get and set functions
     public int getTableNumber() {

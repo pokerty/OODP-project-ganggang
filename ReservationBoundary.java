@@ -17,8 +17,9 @@ public class ReservationBoundary {
 		name = sc.nextLine(); 
 		System.out.println("Please enter the number of pax"); 
 		pax = sc.nextInt(); 
-		System.out.println("Please enter month of desired reservation"); 
+		System.out.println("Please enter month (1-12) of desired reservation"); 
 		month= sc.nextInt(); 
+		month = month -1; 
 		System.out.println("Please enter day of desired reservation"); 
 		day = sc.nextInt(); 
 		System.out.println("Please enter time(hour) of desired reservation: (12:00/14:00/16:00/18:00/20:00)"); 
@@ -26,6 +27,7 @@ public class ReservationBoundary {
 		//minute will be 0. Reservation in chunks of 2 hr 
 		System.out.println("Please enter contact details"); 
 		contact = sc.nextInt(); 
+		sc.nextLine(); 
 		reservationLogic.makeReservation(month, day, hour, 0, pax, name, contact);
 	}
 
@@ -34,8 +36,9 @@ public class ReservationBoundary {
 		String name;  
 		System.out.println("Please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
+		sc.nextLine();
 		System.out.println("Please enter the reservation's customer name!"); 
-		name = sc.next(); 
+		name = sc.nextLine(); 
 		reservationLogic.removeReservation(tablenumber,name,false); //manual removal of reservation 
 	}
 
@@ -43,8 +46,9 @@ public class ReservationBoundary {
 		String name;  
 		System.out.println("To check reservation, please enter the reservation table number"); 
 		int tablenumber = sc.nextInt(); 
+		sc.nextLine();
 		System.out.println("To check reservation, please enter the customer name!"); 
-		name = sc.next(); 
+		name = sc.nextLine(); 
 		reservationLogic.checkReservation(tablenumber, name); 
 	}
 

@@ -29,7 +29,9 @@ public class Table {
 			isOccupied=false;
 			return;
 		}
-		isOccupied=true;
+		else{
+			isOccupied=true;
+		}
 	}
 
 }

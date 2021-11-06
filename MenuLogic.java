@@ -42,7 +42,6 @@ public class MenuLogic {
 				String description = sc.nextLine();
 				//System.out.print("Enter the item price\n");
 				float price = sc.nextFloat();
-				sc.nextLine();
 				menuItemsList.add(new MenuItems(id, name, categorynum, description, price));
 			}
 			for (int i=0; i<menuItemsList.size();i++){
@@ -61,8 +60,8 @@ public class MenuLogic {
 
 			//READ PROMO TXT, all print lines can be commented out
 			Scanner sc2 = new Scanner(new File("Promo.txt"));
-			ArrayList<MenuItems>SetItems = new ArrayList<MenuItems>();
 			while(sc2.hasNext()){
+				ArrayList<MenuItems>SetItems=new ArrayList<MenuItems>();
 				//for each set get the bundle details
 				//System.out.print("Enter the item ID\n");
 				int SetId = sc2.nextInt();
@@ -93,7 +92,6 @@ public class MenuLogic {
 				}while(sc2.nextInt()!=-1); //to end the taking in of menuitems write -1
 
 				promo.add(new PromotionalSet(SetId, SetName, SetDescription, SetPrice, SetItems));
-				SetItems.clear(); //clear list
 				
 			}
 			
@@ -114,19 +112,19 @@ public class MenuLogic {
 			case 1:
 				System.out.print("Mains:\n");
 				for (int i=0; i<mains.size(); i++){
-					System.out.println(mains.get(i).getName());
+					System.out.println(mains.get(i).getName() + ", ID: " + mains.get(i).getID());
 				}
 				break;
 			case 3:
 				System.out.print("Drinks:\n");
 				for (int i=0; i<drinks.size(); i++){
-					System.out.println(drinks.get(i).getName());
+					System.out.println(drinks.get(i).getName()+ ", ID: " + drinks.get(i).getID());
 				}
 				break;
 			case 2:
 				System.out.print("Desserts:\n");
 				for (int i=0; i<desserts.size(); i++){
-					System.out.println(desserts.get(i).getName());
+					System.out.println(desserts.get(i).getName() + ", ID: " + desserts.get(i).getID());
 				}
 				break;
 		}
@@ -303,21 +301,19 @@ public class MenuLogic {
 
 //PROMO FUNCTIONS	
 	public void displayPromoMenu(){
-		System.out.print("Promotional Sets:\n");
 		for (int i=0; i<promo.size(); i++){
-			System.out.println(promo.get(i).getName());
-			System.out.println(promo.get(i).getID()); 
-			System.out.println(promo.get(i).getDescription()); 
-			System.out.println(promo.get(i).getPrice()); 
-			System.out.println("Items in this set:\n");
-			ArrayList<MenuItems> SetItems = new ArrayList<MenuItems>();
+			System.out.println("\nName: " + promo.get(i).getName());
+			System.out.println("ID is: " +promo.get(i).getID()); 
+			System.out.println("Description: " +promo.get(i).getDescription()); 
+			System.out.println("Price: $" +promo.get(i).getPrice()+ "\n"); 
+			System.out.println("Items in this set:");
 			
-			SetItems = promo.get(i).getMenuItems();
-			for(int k=0; k<SetItems.size(); k++){
-				System.out.println(SetItems.get(k).getName());
-				System.out.println(SetItems.get(k).getID());
-				System.out.println(SetItems.get(k).getDescription());
-				System.out.println(SetItems.get(k).getPrice());
+			
+			for(int k=0; k<promo.get(i).getMenuItems().size(); k++){
+				System.out.print(promo.get(i).getMenuItems().get(k).getName() + ",");
+				System.out.print(" ID is: "+promo.get(i).getMenuItems().get(k).getID());
+				System.out.println("\nDescription: "+promo.get(i).getMenuItems().get(k).getDescription());
+				//System.out.println(promo.get(i).getMenuItems().get(k).getPrice());
 			}	
 		
 			

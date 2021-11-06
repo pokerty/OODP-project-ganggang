@@ -15,7 +15,7 @@ public class PromotionalSet {
         this.SetName = SetName;
         this.SetDescription = SetDescription;
         this.SetPrice = SetPrice;
-        SetItems = new ArrayList<MenuItems>();
+        this.SetItems = SetItems; 
     }
     public int getID(){
         return this.SetId;

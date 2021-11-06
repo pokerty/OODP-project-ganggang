@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class TableBoundary{
 
     Scanner scanner = new Scanner(System.in);
-    public void giveTable(CheckTable tableLogic) {
+    public void giveTable(TableLogic tableLogic) {
         System.out.println("Enter the number of customers:");
         int customerPax =scanner.nextInt();
         System.out.println("Enter the time of reservation:");
@@ -20,14 +20,16 @@ public class TableBoundary{
     public void checkTableAvailability(TableLogic tableLogic) {
         System.out.println("Enter the number of customers:");
         int customerPax =scanner.nextInt();
+        System.out.println("Enter the hour of reservation:");
+        int hour =scanner.nextInt();
         System.out.println("");
-        if(tableLogic.checkTableAvailability(customerPax)) {
+        if(tableLogic.checkTableAvailability(customerPax,hour)) {
             System.out.printf("There are tables available\n");
             return; }
         System.out.printf("There are no tables available\n");
     }
 
-    public void freeTable(CheckTable tableLogic) {
+    public void freeTable(TableLogic tableLogic) {
         System.out.println("Enter the table number to free:");
         int tableNumber =scanner.nextInt();
         System.out.println("Enter the time of reservation:");
