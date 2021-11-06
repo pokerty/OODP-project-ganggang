@@ -62,15 +62,34 @@ public class TableLogic implements CheckTable{
 		return -1;
 	}
 
-	public Boolean checkTableAvailability(int customerPax) {
-		List<List<Table>> alltables = Arrays.asList(tables_12_to_2,tables_2_to_4,tables_4_to_6,tables_6_to_8,tables_8_to_10);
-		for(int j=0;j< alltables.size();j++){
-			for (int i = 0; i < alltables.get(j).size(); i++) {
-				if (alltables.get(j).get(i).getSizeOfTable() >= customerPax && !alltables.get(j).get(i).getIsOccupied()) {
+	public Boolean checkTableAvailability(int customerPax,int hour) {
+		
+		List<Table> temp ;
+		if(2<=hour||hour<4){
+			temp=tables_2_to_4;
+		}
+		else if(4<=hour&&hour<6){
+			temp=tables_4_to_6;
+		}
+		else if(6<=hour&&hour<8){
+			temp=tables_6_to_8;
+		}
+		else if(8<=hour&&hour<10){
+			temp=tables_8_to_10;
+		}
+		else if(12==hour||hour==1){
+			temp=tables_12_to_2;
+		}
+		else{
+			return false;
+		}
+
+			for (int i = 0; i < temp.size(); i++) {
+				if (temp.get(i).getSizeOfTable() >= customerPax && !temp.get(i).getIsOccupied()) {
 					return true;
 				}
 			}
-		}
+		
 		return false;
 	}
 
