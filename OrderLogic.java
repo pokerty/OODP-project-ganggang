@@ -77,11 +77,11 @@ public class OrderLogic {
                         if(order.getMember()==true) {
                         	subTotal = (float)0.9*subTotal; 
                         	System.out.println("Members discount (10%): " + subTotal);
-                        	System.out.println("GST: " +subTotal*0.07);
+                        	System.out.printf("GST: %.2f\n",subTotal*0.07);
                         	System.out.println("\nTOTAL: " + subTotal*1.07);
                         } 
                         else {
-                        	System.out.println("GST: " +subTotal*0.07);
+                        	System.out.printf("GST: %.2f\n",subTotal*0.07);
                             System.out.println("\nTOTAL: " + subTotal*1.07);
                         }
                         System.out.println("Thank you for dining with us!");
