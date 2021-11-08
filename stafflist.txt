@@ -1,0 +1,45 @@
+0
+Michael Scott
+M
+Manager
+
+1
+Dwight Schrute
+M
+Waiter
+
+2
+Pam Beesly
+F
+Chef
+
+3
+Jim Halpert
+M
+Waiter
+
+4
+Angela Martin
+F
+Chef
+
+5
+Jan Levinson
+F
+Waiter
+
+6
+Stanley Hudson
+M
+Waiter
+
+7
+Salt Bae
+M
+Chef
+
+30
+chang wei
+f
+Manager
+

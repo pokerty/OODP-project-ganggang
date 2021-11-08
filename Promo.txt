@@ -16,3 +16,22 @@ fries
 very salty fries
 5
 -1
+
+12
+setB
+waffles and ice cream
+10
+
+2
+waffles
+2
+waffles from cafe
+6
+0
+
+9
+ice cream
+2
+very salty ice cream
+2
+-1
