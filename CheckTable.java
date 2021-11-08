@@ -2,12 +2,12 @@ package oodpassignment;
 
 
 /**
- * 
+ * An interface to be used by ReservationLogic so as to allocate and deallocate tables when reservations
+ * are made and cancelled respectively 
  * @author Chang Wei 
  * @version 1.0 
  * @since 06/11/2021
- * An interface to be used by ReservationLogic so as to allocate and deallocate tables when reservations
- * are made and cancelled respectively 
+ *
  */
 public interface CheckTable {
 	/**
@@ -22,7 +22,7 @@ public interface CheckTable {
 	/**
 	 * abstract method, to mark the table as unoccupied 
 	 * 
-	 * @param TableNumber table number 
+	 * @param TableNumber table number of customer 
 	 * @param hour time of dining 
 	 */
 	public void freeTable(int TableNumber, int hour); 

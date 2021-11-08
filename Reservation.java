@@ -3,14 +3,15 @@ package oodpassignment;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 /**
- * 
- * @author chang wei 
- * @since 07/11/2021 
- * @version 1.0 
- *Reservation class is an entity class that stores data regarding reservation
+ * Reservation class is an entity class that stores data regarding reservation
  *such as the date and time of reservation, no of pax, name of customer who made the reservation
  *contact details and the table number to be allocated to the customer
+ *@author chang wei 
+ * @since 07/11/2021 
+ * @version 1.0 
  */
+ 
+
 
 public class Reservation {
 
@@ -58,14 +59,14 @@ public class Reservation {
 	
 	/**
 	 * the correct constructor to be used to create a reservation object 
-	 * @param month
-	 * @param day
-	 * @param hour
-	 * @param minute
-	 * @param pax
-	 * @param name
-	 * @param contact
-	 * @param tableNumber
+	 * @param month month of reservation 	
+	 * @param day day of reservation 
+	 * @param hour hour of reservation 
+	 * @param minute minute of reservation - 0 
+	 * @param pax no of pax of reservation 
+	 * @param name name of customer who made reservation 
+	 * @param contact contact number of customer who made reservation 
+	 * @param tableNumber table number that will be allocated to customer 
 	 */
 	public Reservation(int month, int day, int hour, int minute, int pax, String name, int contact, int tableNumber) {
 		// Using Calendar class
@@ -101,7 +102,7 @@ public class Reservation {
 
 	/**
 	 * getter for no of pax in reservation 
-	 * @return
+	 * @return no of customer in reservation 
 	 */
 	public int getPax() {
 		return pax;
@@ -109,7 +110,7 @@ public class Reservation {
 
 /**
  * setter for no of pax for reservation 
- * @param pax
+ * @param pax no of pax of reservation 
  */
 	public void setPax(int pax) {
 		this.pax = pax;
@@ -117,7 +118,7 @@ public class Reservation {
 
 /**
  * getter for name of customer who made reservation 
- * @return
+ * @return name of customer who made reservation 
  */
 	public String getName() {
 		return name;
@@ -125,7 +126,7 @@ public class Reservation {
 
 /**
  * setter for name of customer who made reservation 
- * @param name
+ * @param name changes name of customer who made reservation 
  */
 	public void setName(String name) {
 		this.name = name;
@@ -133,7 +134,7 @@ public class Reservation {
 
 /**
  * getter for contact of customer who made reservation
- * @return
+ * @return gets contact no of customer 
  */
 	public int getContact() {
 		return contact;
@@ -141,7 +142,7 @@ public class Reservation {
 
 /**
  * setter method for contact of customer who made reservation 
- * @param contact
+ * @param contact sets contact no of customer 
  */
 	public void setContact(int contact) {
 		this.contact = contact;
@@ -149,7 +150,7 @@ public class Reservation {
 
 /**
  * getter method for table number of the table to be allocated to the customer who made the reservation 
- * @return tablenumber 
+ * @return tableNumber the table number that was allocated to customer 
  */
 	public int getTableNumber() {
 		return tableNumber;
@@ -157,7 +158,7 @@ public class Reservation {
 
 /**
  * setter method  for table number of the table to be allocated to the customer who made the reservation 
- * @param tableNumber
+ * @param tableNumber sets the table number to be allocated to customer 
  */
 	public void setTableNumber(int tableNumber) {
 		this.tableNumber = tableNumber;

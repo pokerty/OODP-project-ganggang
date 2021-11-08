@@ -3,11 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 /**
- * 
- * @author zheng ying 
- * @version 1.0 
- * @since 07/11/2021 
- * TAbleLogic implements the logical components behind the functions affecting table
+ *  TAbleLogic implements the logical components behind the functions affecting table
  * such as the allocation and deallocation of tables as well as the checking of availability of tables 
  * for a certain size of customers 
  * 
@@ -15,6 +11,11 @@ import java.util.List;
  *  since tables will be allocated if reservation is given at a certain time 
  *  
  *  Have a total of 15 tables, 3 for 2 pax, 3 for 4 pax, 3 for 6 pax, 3 for 8 pax and 3 for 10 pax 
+ *
+ * @author zheng ying 
+ * @version 1.0 
+ * @since 07/11/2021 
+ * 
  *
  */
 public class TableLogic implements CheckTable, FreeTable{

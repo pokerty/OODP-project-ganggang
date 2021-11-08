@@ -2,19 +2,19 @@ package oodpassignment;
 
 import java.util.Scanner;
 /**
- * 
+ * OrderBoundary is the class that takes in inputs for all methods related to Orders 
  * @author zheng ying chang wei 
  * @version 1.0 
  * @since 07/11/2021 
  *
- *OrderBoundary is the class that takes in inputs for all methods related to Orders 
+ *
  */
 public class OrderBoundary {
 
 /**
  * views the list of orders that are currently in the system  - inputs to be taken in in this class 
  * done via orderLogic object that was passed in 
- * @param orderLogic
+ * @param orderLogic the class that implements the logic behind all order methods 
  */
 	 public void viewOrder(OrderLogic orderLogic){
 	        Scanner sc = new Scanner(System.in);
@@ -40,8 +40,8 @@ public class OrderBoundary {
 	  * done with orderlogic and menulogic object 
 	  * menulogic helps to return the relevant menu items to be part of the order object 
 	  * orderlogic is responsible for the logic behind the creation of the order object 
-	  * @param orderLogic
-	  * @param menuLogic
+	  * @param orderLogic the class that implements the logic behind all order methods  
+	  * @param menuLogic the class that implements the logic behind all methods regarding the menu 
 	  */
     public void newOrder(OrderLogic orderLogic, MenuLogic menuLogic){
         Scanner sc = new Scanner(System.in);
@@ -63,9 +63,9 @@ public class OrderBoundary {
      * to determine which order, we have order number to help us differentiate  
      * menulogic to help return the correct menu item we want to add to the otder 
      * orderlogic to be responsible for the logic behind the addition of the additional menu item to the correct order 
-     * @param orderLogic
-     * @param menuLogic
-     * @param ordernumber
+     * @param orderLogic the class that implements the logic behind all order methods 
+     * @param menuLogic the class that implements the logic behind all methods regarding the menu 
+     * @param ordernumber the order number of the order 
      */
     public void addItemToOrder(OrderLogic orderLogic,MenuLogic menuLogic, int ordernumber){
         Scanner sc = new Scanner(System.in);
@@ -92,7 +92,7 @@ public class OrderBoundary {
  * removes a chosen item from a currently existing order  - inputs to be taken in in this class 
  * orderlogic to be used to view what is currently in the order and lets the user choose the 
  * item to be removed via its ID 
- * @param orderLogic
+ * @param orderLogic  the class that implements the logic behind all order methods 
  */
     public void removeItemFromOrder(OrderLogic orderLogic) {
 
@@ -110,12 +110,19 @@ public class OrderBoundary {
         orderLogic.removeItemFromOrder(ordernumber, removeChoice);
 
     }
-    public void printOrderInvoice(OrderLogic orderLogic) {
+    
+    
+    /**
+     * 
+     * @param orderLogic  the class that implements the logic behind all order methods 
+     * @param report the report object where it is suppose to update 
+     */
+    public void printOrderInvoice(OrderLogic orderLogic, Report report) {
     	Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter order number:");
         int ordernumber = sc.nextInt();
-        orderLogic.printOrderInvoice(ordernumber);
+        orderLogic.printOrderInvoice(ordernumber,report);
       
     	
     	

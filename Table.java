@@ -1,14 +1,14 @@
 package oodpassignment;
 
 /**
- * 
+ *  Table entity class to contain the attributes needed by a table 
+ * such as the size of table, table number, whether it is currently occupied 
+ *
  * @author zheng ying 
  * @since 07/11/2021 
  * @version 1.0 
  * 
- * Table entity class to contain the attributes needed by a table 
- * such as the size of table, table number, whether it is currently occupied 
- *
+ * 
  */
 public class Table {
 /**
@@ -27,8 +27,8 @@ public class Table {
 	/**
 	 * constructor for table, inputs required are table and size of table, which is gotten from user 
 	 * from the boundary class 
-	 * @param tableNumber
-	 * @param sizeOfTable
+	 * @param tableNumber tablenumber of table 
+	 * @param sizeOfTable no of customer table can accomodate 
 	 */
 	public Table(int tableNumber,int sizeOfTable) {
 		this.sizeOfTable = sizeOfTable;
@@ -37,7 +37,7 @@ public class Table {
 	}
 /**
  * getter method for table number 
- * @return
+ * @return table number 
  */
 	public int getTableNumber() {
 		return tableNumber;
@@ -45,7 +45,7 @@ public class Table {
 	}
 /**
  * getter method for size of table 
- * @return
+ * @return the size of table - how many customers it can accomodate 
  */
 	public int getSizeOfTable() {
 		return sizeOfTable;

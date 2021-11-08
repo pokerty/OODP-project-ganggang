@@ -17,42 +17,41 @@ import java.text.DateFormat;
 import oodpassignment.MenuItems.courseType;
 
 /**
- * 
+ * ReportLogic is responsible for the logics behind all functions related to the report (i.e. revenue generated) 
  * @author chang wei 
  *@since 07/11/2021 
  *@version 1.0 
- *ReportLogic is responsible for the logics behind all functions related to the report (i.e. revenue generated) 
+ *
  */
 
 public class ReportLogic {
-	protected Report report;
+	
     
 /**
  * constructor for the reportlogic object - initialised in main normally 
- * @param report
+ * @param report the object that stores all the completed order 
  */
     public ReportLogic(Report report){
-       this.report = report; 
-       loadReport(); 
+       loadReport(report); 
        System.out.println("ReportLogic start-up complete."); 
        
     }
 /**
  * calculates the total revenue depending on the time period stated in the boundary class 
- * @param cal
+ * @param cal the calendar object that stores the date of the completed orders 
  * @return float value corresponding to total revenue 
  */
-    public float calculateTotalRevenue(Calendar cal){
-        float totalRevenue = calculateAlaCarteRevenue(cal) + calculateSetPromoRevenue(cal);
+    public float calculateTotalRevenue(Calendar cal, Report report){
+        float totalRevenue = calculateAlaCarteRevenue(cal,report) + calculateSetPromoRevenue(cal,report);
         return totalRevenue;
     }
 
     /**
      * calculates only the revenue from promotional set items of a specified time frame in the boundary class
-     * @param cal
+     * @param cal the calendar object that stores the date of the completed orders 
      * @return float value corresponding to revenue from promotional set items 
      */
-    public float calculateSetPromoRevenue(Calendar cal){
+    public float calculateSetPromoRevenue(Calendar cal, Report report){
         float promoRevenue = 0;
         Date dateandtime = cal.getTime(); 
         for(int i=0; i<report.getOrders().size(); i++){
@@ -68,10 +67,10 @@ public class ReportLogic {
     
     /**
      * calculates revenue from ala carte items according to time frame specified in boundary class
-     * @param cal
+     * @param cal the calendar object that stores the date of the completed orders 
      * @return float value corresponding to revenue from ala carte items 
      */
-    public float calculateAlaCarteRevenue(Calendar cal){
+    public float calculateAlaCarteRevenue(Calendar cal, Report report){
         float alaCarteRevenue = 0;
         Date dateandtime = cal.getTime();
         for(int i=0; i<report.getOrders().size(); i++){
@@ -88,7 +87,7 @@ public class ReportLogic {
     /**
      * prints the whole list of promotional set items sold thus far 
      */
-    public void showSetPromo(){
+    public void showSetPromo(Report report){
         System.out.println("Promotional Set Items sold: ");
         for(int i = 0; i<report.getOrders().size(); i++){
            for(int j=0;j<report.getOrders().get(i).getPromoItems().size();j++) { 
@@ -100,7 +99,7 @@ public class ReportLogic {
     /**
      * prints the whole list of ala carte items sold thus far 
      */
-    public void showAlaCarte(){
+    public void showAlaCarte(Report report){
         System.out.println("Ala Carte Items Sold: ");
         for(int i = 0; i<report.getOrders().size(); i++){
             for(int j=0;j<report.getOrders().get(i).getOrderItems().size();j++) { 
@@ -112,15 +111,16 @@ public class ReportLogic {
     /**
      * prints all items sold thus far 
      */
-    public void showAll(){
-        showSetPromo();
-        showAlaCarte();
+    public void showAll(Report report){
+        showSetPromo(report);
+        showAlaCarte(report);
     }
 
     /**
      * loads the report particulars from the txt database 
+     * @param thereport report object to be populated with data from txt file 
      */
-    public void loadReport() {
+    public void loadReport(Report thereport) {
         try {
             float price;
             String name;
@@ -160,13 +160,13 @@ public class ReportLogic {
                 	MenuItems item = new MenuItems(0,name,1,"null",price); 
                 	Order order = new Order(0,false,null,cal);
                 	order.getOrderItems().add(item);
-                	getReport().getOrders().add(order);
+                	thereport.getOrders().add(order);
                 }
                 else { //its set 
                 	PromotionalSet item = new PromotionalSet(0,name,"null",price,null); 
                 	Order order = new Order(0,false,null);
                 	order.getPromoItems().add(item); 
-                	getReport().getOrders().add(order);
+                	thereport.getOrders().add(order);
                 }
                 i += 5;
             }
@@ -184,12 +184,13 @@ public class ReportLogic {
         }
     }
     /**
-     * saves the report particulars to a txt file to serve as a database 
+     * saves the report particulars to a txt file to serve as a database \
+     * @param report the report that needs to be saved to txt file 
      */
-    public void saveReport() {
+    public void saveReport(Report report) {
         try {
             FileWriter write = new FileWriter("report.txt");
-            @SuppressWarnings("resource")
+            
             BufferedWriter bwrite = new BufferedWriter(write);
             
             for(int i = 0; i<report.getOrders().size(); i++){
@@ -236,9 +237,5 @@ public class ReportLogic {
         }
     }
     
-    
-    public Report getReport() {
-    	return this.report; 
-    }
-    
+   
 }

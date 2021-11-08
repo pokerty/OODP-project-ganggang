@@ -9,12 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 /**
- * 
+ *  ReservationLogic is responsible for the logics used to implements the different methods 
+ * involving reservations such as creating/removal/checking of reservations 
+ *
  * @author CHANG WEI 
  * @since 07/11/2021 
  * @version 1.0 
- * ReservationLogic is responsible for the logics used to implements the different methods 
- * involving reservations such as creating/removal/checking of reservations 
+ *
  *
  */
 public class ReservationLogic {
@@ -30,7 +31,7 @@ public class ReservationLogic {
 	
 	/**
 	 * constructor of ReservationLogic 
-	 * @param checkTable
+	 * @param checkTable TableLogic class of type checkTable - to use only 2 methods  
 	 */
 	public ReservationLogic(CheckTable checkTable) {
 		this.reservations = new ArrayList<Reservation>();
@@ -42,7 +43,7 @@ public class ReservationLogic {
 	/**
 	 * gets the list of reservations held by the reservationLogic object 
 	 * to be used in the automatic scheduler for deletion of expired reservations 
-	 * @return
+	 * @return   returns ArrayList of Reservation(s) 
 	 */
 	public ArrayList<Reservation>getReservations(){
 		return reservations;
@@ -51,13 +52,13 @@ public class ReservationLogic {
 	/**
 	 * creates a reservation object using the inputs taken in the boundary class 
 	 * 
-	 * @param month
-	 * @param day
-	 * @param hour
-	 * @param minute
-	 * @param pax
-	 * @param name
-	 * @param contact
+	 * @param month month of reservation 	
+	 * @param day day of reservation 
+	 * @param hour hour of reservation 
+	 * @param minute minute of reservation 	
+	 * @param pax  no of pax in the reservation 
+ 	 * @param name  name of customer who made reservation 
+	 * @param contact contact number of customer who made reservation 
 	 */
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
 		int tableNumber = tablelogic.giveTable(pax,hour);
@@ -67,7 +68,7 @@ public class ReservationLogic {
 		}
 		Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tableNumber); 
 		reservations.add(reservation); 
-		System.out.println("Reservation successful at table "+tableNumber+", "+day+"/"+month+","+hour+":"+minute); 
+		System.out.println("Reservation successful at table "+tableNumber+", "+day+"/"+(month+1)+","+hour+":"+minute); 
 		
 	}
 	
@@ -76,9 +77,9 @@ public class ReservationLogic {
 
 	/**
 	 * removes reservation based on the inputs taken in boundary class e.g. table number and name of customer 
-	 * @param tableNumber
-	 * @param name
-	 * @param expired
+	 * @param tableNumber  reservation's table number that you want to remove  
+	 * @param name  name of customer whose reservation you want to remove 
+	 * @param expired  whether it is auto removal of reservation due to expiry or manual removal 
 	 */
 	public void removeReservation(int tableNumber,String name, boolean expired) {
 		int validity = checkReservation(tableNumber, name); 
@@ -105,8 +106,8 @@ public class ReservationLogic {
 
 	/**
 	 * checks the validity of the reservation using inputs taken in boundary class - table number and name of customer 
-	 * @param TableNumber
-	 * @param name
+	 * @param TableNumber table number of reservation 
+	 * @param name  name of customer who made reservation 
 	 * @return
 	 */
 	public int checkReservation(int TableNumber, String name) {

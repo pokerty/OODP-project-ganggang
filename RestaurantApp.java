@@ -2,16 +2,17 @@ package oodpassignment;
 import java.util.Scanner;
 
 
-/**
- * 
- * @author mei qi 
- * @since 07/11/21 
- * @version 1.0 
- *RestaurantApp is the main driver class to perform all our functions. 
+/***RestaurantApp is the main driver class to perform all our functions. 
  *All the other classes are mostly initialized here in start(). 
  *Some choices will be made here and then depending on the choices, the control will be sent to the 
  *corresponding boundary classes for further input from user to carry out the actions desired 
+ * @author mei qi 
+ * @since 07/11/21 
+ * @version 1.0 
+ *
  */
+ 
+ 
 public class RestaurantApp {
 
 	
@@ -34,8 +35,8 @@ public class RestaurantApp {
 	 * takes in tableLogic and reservationLogic as they are initialized in main 
 	 * to be used by a scheduler to remove expired reservations according to
 	 * our specifications
-	 * @param tablelogic
-	 * @param reservationLogic
+	 * @param tablelogic the class that is responsible for the logics behind table 
+	 * @param reservationLogic the class that is responsible for the logics behind reservation 
 	 */
 	public void start(CheckTable tablelogic, ReservationLogic reservationLogic) {
 
@@ -46,7 +47,7 @@ public class RestaurantApp {
 		StaffLogic staffLogic = new StaffLogic();
 		Report report = new Report();
 		ReportLogic reportLogic = new ReportLogic(report);
-		OrderLogic orderLogic = new OrderLogic(report,(FreeTable)tablelogic,staffLogic);
+		OrderLogic orderLogic = new OrderLogic((FreeTable)tablelogic,staffLogic);
 
 		// to initialise everything
 		MenuBoundary menuBoundary = new MenuBoundary();
@@ -65,8 +66,8 @@ public class RestaurantApp {
 		case 1:
 		{
 			System.out.println("Choose a function in Menu: ");
-			System.out.println("1. Display Menu\n2. Create menu items\n3. Remove menu items\n4. Update menu items");
-			System.out.println("5. Display Promo Menu\n6. Create Promo Menu\n7. Remove Promo Menu\n8. Update Promo Menu ");
+			System.out.println("1. Display menu\n2. Create menu items\n3. Remove menu items\n4. Update menu items");
+			System.out.println("5. Display promo Menu\n6. Create promo Menu\n7. Remove promo Menu\n8. Update promo Menu ");
 			int mChoice = sc.nextInt();
 			sc.nextLine(); 
 
@@ -204,7 +205,7 @@ public class RestaurantApp {
 				orderBoundary.removeItemFromOrder(orderLogic);
 				break;
 			case 5: 
-				orderBoundary.printOrderInvoice(orderLogic);
+				orderBoundary.printOrderInvoice(orderLogic,report);
 				break;
 				
 			default:
@@ -219,13 +220,13 @@ public class RestaurantApp {
 			int reportChoice = sc.nextInt();
 			switch (reportChoice) { // TOCHANGE: not finalised
 			case 1:
-				reportBoundary.reportTotal(reportLogic);
+				reportBoundary.reportTotal(reportLogic,report);
 				break;
 			case 2:
-				reportBoundary.reportSetPromo(reportLogic);
+				reportBoundary.reportSetPromo(reportLogic,report);
 				break;
 			case 3:
-				reportBoundary.reportAlaCarte(reportLogic);
+				reportBoundary.reportAlaCarte(reportLogic,report);
 				break;
 			default:
 				System.out.println("Please choose a valid option.");
@@ -256,14 +257,14 @@ public class RestaurantApp {
 			break;
 		}
 		System.out.println("\nChoose the category: ");
-		System.out.printf("1. Menu\n2. Reservation\n3.Table\n4. Order\n5. Report\n6. Staff\n-1.Terminate\n");
+		System.out.printf("1. Menu\n2. Reservation\n3. Table\n4. Order\n5. Report\n6. Staff\n-1. Terminate\n");
 		cChoice = sc.nextInt();
 	}
 		
 		System.out.println("Terminating...Saving reservations,reports,staff."); 
 		reservationLogic.saveReservation(); //save reservation onto txt 
 		staffLogic.staffsOverwrite(); //save changes to staff onto txt 
-		reportLogic.saveReport();
+		reportLogic.saveReport(report);
 		
 		
 }

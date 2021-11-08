@@ -3,7 +3,8 @@ package oodpassignment;
 import java.util.*;
 
 /**
- * 
+ * Promotional set is the entity class that stores the data of promotional sets 
+ * such as the ID, name, description, price and the menu items that is included in the promotional set 
  * @author hong po 
  * @version 1.0 
  * @since 07/11/2021 
@@ -33,11 +34,11 @@ public class PromotionalSet {
 
     /**
      * creates the promotional set according to its attributes 
-     * @param SetId
-     * @param SetName
-     * @param SetDescription
-     * @param SetPrice
-     * @param SetItems
+     * @param setId ID of promo set 
+     * @param setName name of promo set 
+     * @param setDescription description of promo set 
+     * @param setPrice price of promo set 
+     * @param setItems the set of items that make up promo set (an array list) 
      */
     public PromotionalSet(int SetId, String SetName, String SetDescription, float SetPrice, ArrayList<MenuItems> SetItems){
         this.setId =SetId;
@@ -48,62 +49,62 @@ public class PromotionalSet {
     }
     /**
      * getter method for the promotional set's ID 
-     * @return
+     * @return return ID of promo set 
      */
     public int getID(){
         return this.setId;
     }
     /**
      * setter method for the promotional set's ID 
-     * @param SetId
+     * @param setId the ID you want the promo set to have 
      */
-    public void setID(int SetId){
-        this.setId = SetId; //small letter set for method
+    public void setID(int setId){
+        this.setId = setId; //small letter set for method
     }
     
 /**
  * getter method for the promotional set's name 
- * @return
+ * @return returns the promo set's name 
  */
     public String getName(){
         return this.setName;
     }
     /**
      * setter method for the promotional set's name 
-     * @param SetName
+     * @param setName the name you want to set the promo set to have 
      */
-    public void setName(String SetName){
-        this.setName = SetName;
+    public void setName(String setName){
+        this.setName = setName;
     }
 
     /**
      * getter method for the description of the promotional set 
-     * @return
+     * @return the description of the promo set 
      */
     public String getDescription(){
         return this.setDescription;
     }
     /**
      * the setter method for the description of the promotional set 
-     * @param SetDescription
+     * @param setDescription  the description you want the promo set to have 
      */
-    public void setDescription(String SetDescription){
-        this.setDescription = SetDescription;
+    public void setDescription(String setDescription){
+        this.setDescription = setDescription;
     }
 
     /**
      * getter method for the price of the promotional set 
-     * @return
+     * @return the price of the promo set 
      */
     public float getPrice(){
         return this.setPrice;
     }
     /**
      * setter method for the price of the promotional set 
-     * @param SetPrice
+     * @param setPrice the price you want the promo set to have 
      */
-    public void setPrice(float SetPrice){
-        this.setPrice = SetPrice;
+    public void setPrice(float setPrice){
+        this.setPrice = setPrice;
     }
 /**
  * The collection of menu items that make up the promotional set 
@@ -115,7 +116,7 @@ public class PromotionalSet {
 /**
  * adds an additional menu item to the promotional set by adding the item to the collection of menu items that
  * make up the promotional set 
- * @param item
+ * @param item the menu item you want to add to the promo set 
  */
     public void addItemsToSet(MenuItems item){
         setItems.add(item);
@@ -123,7 +124,7 @@ public class PromotionalSet {
 
     /**
      * removes a chosen menu item from the promotional set via the menu item ID 
-     * @param id
+     * @param id the id of the item you want to remove 
      */
     public void removeItemsFromSet(int id){
         for (int i=0; i<setItems.size(); i++){

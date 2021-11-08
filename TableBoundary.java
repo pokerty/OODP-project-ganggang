@@ -1,13 +1,13 @@
 package oodpassignment;
 import java.util.Scanner;
 /**
- * 
+ * *TableBoundary is a boundary class that is responsible for taking in inputs from the user
+ *to be used in the methods regarding tables. Logic to be provided by tableLogic class 
  * @author zheng ying 
  * @since 07/11/2021 
  * @version 1.0 
- *TableBoundary is a boundary class that is responsible for taking in inputs from the user
- *to be used in the methods regarding tables. Logic to be provided by tableLogic class 
  */
+ 
 public class TableBoundary{
 
     Scanner scanner = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class TableBoundary{
      * will indicate if there are no free tables available 
      * tableLogic to implement the logics behind the allocation 
      * - inputs taken in here 
-     * @param tableLogic
+     * @param tableLogic  tableLogic the class responsible for the logics behind table 
      */
     public void giveTable(TableLogic tableLogic) {
         System.out.println("Enter the number of customers:");
@@ -35,7 +35,7 @@ public class TableBoundary{
     /**
      * checks if there are any free tables for a particular size of customers - inputs taken in here 
      * tableLogic to implement the logics behind the checking for a free and suitable table 
-     * @param tableLogic
+     * @param tableLogic  tableLogic the class responsible for the logics behind table 
      */
     public void checkTableAvailability(TableLogic tableLogic) {
         System.out.println("Enter the number of customers:");
@@ -52,7 +52,7 @@ public class TableBoundary{
     /**
      * deallocates a table and sets it to unoccupied status - inputs taken in here 
      * tableLogic to implement the logics behind the deallocation 
-     * @param tableLogic
+     * @param tableLogic the class responsible for the logics behind table 
      */
     public void freeTable(TableLogic tableLogic) {
         System.out.println("Enter the table number to free:");

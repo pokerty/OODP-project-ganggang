@@ -5,21 +5,17 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Calendar;
 /**
- * 
- * @author chang wei 
- * @version 1.0 
- * @since 07/11/2021 
  * Orderlogic is responsible for all the logic behind the methods related to orders 
  * such as creation of orders, removal and addition of orderitems and printing of
  * order invoice 
  *
+ * @author chang wei 
+ * @version 1.0 
+ * @since 07/11/2021 
+ * 
  */
 public class OrderLogic {
-	/**
-	 * report object that holds the list of orders once they have been paid so 
-	 * that we are able to tabulate the revenue by months/days 
-	 */
-    private Report report;
+
     /**
      * holds the list of orders that are currently in the system 
      */
@@ -38,14 +34,12 @@ public class OrderLogic {
         Scanner sc = new Scanner(System.in);
 
         /**
-         * constructor for OrderLogic 
-         * @param report
-         * @param table
-         * @param staffLogic
+         * The constructor for orderlogic 
+         * @param table the table class of type FreeTable 
+         * @param staffLogic the class that implements the logic for all staff related functions 
          */
-        public OrderLogic(Report report,FreeTable table,StaffLogic staffLogic){
+        public OrderLogic(FreeTable table,StaffLogic staffLogic){
                 //txt implementation
-        		this.report = report; 
         	
         		ArrayList<Order> orderList = new ArrayList<Order>(); 
         		this.orderList = orderList; 
@@ -56,9 +50,9 @@ public class OrderLogic {
 
         /**
          * creates a new order 
-         * @param tableNumber
-         * @param memberStatus
-         * @return
+         * @param tableNumber table number of order 
+         * @param memberStatus whether the customer is a member of the restaurant 
+         * @return returns the new order object 
          */
         public int newOrder(int tableNumber,String memberStatus){
             boolean isMember = false;
@@ -73,10 +67,10 @@ public class OrderLogic {
     }
 /**
  * adds a new menu item to the order 
- * @param ordernumber
- * @param menuLogic
- * @param categoryChoice
- * @param orderIDChoice
+ * @param ordernumber order number 
+ * @param menuLogic the class that implements all the logics behind menu 
+ * @param categoryChoice the type of item you want to add to order 
+ * @param orderIDChoice ID of item you want to add 
  */
         public void addItemToOrder(int ordernumber, MenuLogic menuLogic,int categoryChoice,int orderIDChoice){
     		Order order = orderList.get(ordernumber);
@@ -88,8 +82,8 @@ public class OrderLogic {
     }
 /**
  * removes a menu item from the order 
- * @param ordernumber
- * @param removeChoice
+ * @param ordernumber order number of order 
+ * @param removeChoice ID of the menu item you want to remove from order 
  */
         public void removeItemFromOrder(int ordernumber, int removeChoice) {
         	Order order = orderList.get(ordernumber); 
@@ -102,7 +96,7 @@ public class OrderLogic {
 
         /**
          * Chooses the correct order object from the list of order objects using the order number 
-         * @param ordernumber
+         * @param ordernumber the order number 
          * @return returns the correct order object 
          */
         public Order viewOrder(int ordernumber){
@@ -113,9 +107,10 @@ public class OrderLogic {
          * settles the bill, to input the order to records for tabulation of revenue 
          * to free up the currently used table as well 
          * bill will differ based on whether the customer is a member or not 
-         * @param ordernumber
+         * @param ordernumber the order number 
+         * @param report the object where order invoice will store the completed orders at 
          */
-        public void printOrderInvoice(int ordernumber){
+        public void printOrderInvoice(int ordernumber, Report report){
         				Order order = orderList.get(ordernumber); 
                         System.out.println("========CZ2002 RESTAURANT========");
                         System.out.println("Server: " + order.getStaff().getName() + "\tTable: " + order.getTableNumber());

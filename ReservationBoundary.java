@@ -2,25 +2,22 @@ package oodpassignment;
 
 import java.util.Scanner; 
 /**
- * 
+ *  ReservationBoundary is responsible for taking all the inputs to be used
+ * in the functions involving reservations such as making of reservations
+ * removal of reservations, checking of reservations 
  * @author chang wei 
  * @since 07/11/2021
  * @version 1.0 
- * ReservationBoundary is responsible for taking all the inputs to be used
- * in the functions involving reservations such as making of reservations
- * removal of reservations, checking of reservations 
+ * 
  */
 public class ReservationBoundary {
  
-	public ReservationBoundary() {
-	}
-	
 	Scanner sc = new Scanner(System.in); 
 
 	/**
 	 * takes in all the inputs required to make a reservation such as name of customer, no of pax, etc 
 	 * reservation made via use of reservationLogic object 
-	 * @param reservationLogic
+	 * @param reservationLogic the class that is responsible for the logics behind reservation 
 	 */
 	public void makeReservation(ReservationLogic reservationLogic) {
 		String name; 
@@ -31,7 +28,7 @@ public class ReservationBoundary {
 		pax = sc.nextInt(); 
 		System.out.println("Please enter month (1-12) of desired reservation"); 
 		month= sc.nextInt(); 
-		month = month -1; 
+		month = month-1; 
 		System.out.println("Please enter day of desired reservation"); 
 		day = sc.nextInt(); 
 		System.out.println("Please enter time(hour) of desired reservation: (12:00/14:00/16:00/18:00/20:00)"); 
@@ -47,7 +44,7 @@ public class ReservationBoundary {
 	 * gets the necessary inputs to identify the correct reservation to remove. inputs such as customer name and table number
 	 * is needed 
 	 * reservationLogic is used to remove the identified reservation 
-	 * @param reservationLogic
+	 * @param reservationLogic the class that is responsible for the logics behind reservation 
 	 */
 	public void removeReservation(ReservationLogic reservationLogic) { 
 		String name;  
@@ -63,7 +60,7 @@ public class ReservationBoundary {
 	 * gets the necessary inputs such as table number and customer name to check the validity 
 	 * of a reservation.
 	 * reservationLogic to implement the logics behind the checking of validity of reservation 
-	 * @param reservationLogic
+	 * @param reservationLogic the class that is responsible for the logics behind reservation 
 	 */
 	public void checkReservation(ReservationLogic reservationLogic) {
 		String name;  

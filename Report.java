@@ -3,12 +3,12 @@ package oodpassignment;
 import java.util.ArrayList;
 
 /**
- * 
+ * the report class that holds the collection of orders whose bill has been tallied for the purpose of 
+ *tracking of the revenue of the restaurant 
  * @author chang wei 
  *@since 07/11/2021 
  *@version 1.0 
- *the report class that holds the collection of orders whose bill has been tallied for the purpose of 
- *tracking of the revenue of the restaurant 
+ *
  */
 public class Report {
     //period in day(s)
@@ -27,7 +27,7 @@ public class Report {
 
     /**
      * getter method for the array list of orders 
-     * @return
+     * @return returns the array list that holds all the completed orders 
      */
     public ArrayList<Order> getOrders() {
     	return orders; 

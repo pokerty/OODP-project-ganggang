@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * The Order class is a entity class storing the details regarding the orders made by customers 
+ * such as the time, table number, list of menu items, list of promo items 
  * 
  * @author minhwan 
  * @since 07/11/2021
@@ -39,9 +41,9 @@ public class Order {
 
     /**
      * constructor to create an Order object 
-     * @param tableNumber
-     * @param isMember
-     * @param staff
+     * @param tableNumber the table number where the order came from  
+     * @param isMember whether the customer is a member of the restaurant - boolean 
+     * @param staff the staff that took the customer's order (an object) 
      */
     public Order(int tableNumber,boolean isMember, Staff staff){
         Calendar cal = Calendar.getInstance();
@@ -60,10 +62,10 @@ public class Order {
     /**
      * a constructor that is used to create order objects from txt file as part of records
      * - a different constructor is to be used for creation of new orders 
-     * @param tableNumber
-     * @param isMember
-     * @param staff
-     * @param time
+     * @param tableNumber the table number where the order came from  
+     * @param isMember whether the customer is a member of the restaurant - boolean 
+     * @param staff staff the staff that took the customer's order (an object) 
+     * @param time the time of order 
      */
     public Order(int tableNumber,boolean isMember, Staff staff, Calendar time){
         Calendar cal = time;
@@ -90,7 +92,7 @@ public class Order {
     }
     /**
      * setter method for table number 
-     * @param tableNumber
+     * @param tableNumber table number of order 
      */
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
@@ -119,16 +121,16 @@ public class Order {
     
     /**
      * adds additional order items to the existing order which is in the form of an array list 
-     * @param orderItems
-     * @param menuItems
-     */
+     * @param orderItems the list of orders (an arraylist) 
+     * @param menuItems the menu item you wish to add to an existing order 
+     */ 
     public void setOrderItems(ArrayList<MenuItems> orderItems, MenuItems menuItems) {
         orderItems.add(menuItems);
     }
     /**
      *removes menu items from the existing order which is in the form of an array list 
-     * @param orderItems
-     * @param menuItems
+     * @param orderItems the list of orders (an arraylist) 
+     * @param menuItems the menu item you wish to remove from the order 
      */
     public void removeOrderItems(ArrayList<MenuItems> orderItems, MenuItems menuItems) {
         orderItems.remove(menuItems);
@@ -142,21 +144,21 @@ public class Order {
     }
     /**
      * setter method for staff object that took the order 
-     * @param staff
+     * @param staff staff object you wish to set as the one who took the order 
      */
     public void setStaff(Staff staff) {
         this.staff = staff;
     }
 /**
  * getter method for whether a customer is a member or not (boolean) 
- * @return boolean value 
+ * @return boolean value of whether the customer is a member 
  */
     public boolean getMember() {
         return isMember;
     }
     /**
      * setter method for whether customer is a member or not (boolean) 
-     * @param member
+     * @param member boolean value of whether the customer is a member 
      */
     public void setMember(boolean member) {
         isMember = member;
