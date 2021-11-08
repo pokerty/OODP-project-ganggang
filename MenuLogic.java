@@ -7,7 +7,15 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-
+/**
+ * 
+ * @author hong po chang wei 
+ * @version 1.0 
+ * @since 07/11/2021 
+ * MenuLogic is responsible for all logics regarding functions regarding menuitems and promotional items 
+ * such as displaying, modifying menu and promotional set items 
+ *
+ */
 public class MenuLogic { 
 	// implements AddMenutoOrder 
 /**
@@ -27,7 +35,10 @@ public class MenuLogic {
 	 */
 	private ArrayList<PromotionalSet> promo;
 
-
+/**
+ * constructor of MenuLogic object, 2 txt files, menu.txt and promo.txt will be scanned 
+ * and their contents will populate the mains, drinks and dessert collections of the MenuLogic object 
+ */
 	public MenuLogic() {
 		mains = new ArrayList<MenuItems>(); 
 		drinks = new ArrayList<MenuItems>();
@@ -116,6 +127,10 @@ public class MenuLogic {
 	}
 
 // MENU FUNCTIONS
+	/**
+	 * Displays the menu to the user depending on the user's selection 
+	 * @param choice which is input from MenuBoundary class 
+	 */
 	public void displayMenu(int choice) {
 		switch (choice){
 			case 1:
@@ -139,6 +154,14 @@ public class MenuLogic {
 		}
 	}
 
+	/**
+	 * creates a new menu item according to the specifications of the user
+	 * @param id
+	 * @param name
+	 * @param choice
+	 * @param description
+	 * @param price
+	 */
 	public void createMenuItems(int id, String name, int choice, String description, float price) {
 		switch (choice){
 			case 1:
@@ -152,7 +175,12 @@ public class MenuLogic {
 				break;
 		}
 	}
-
+/**
+ * removes a pre-existing menu item from the current collection of menu items according 
+ * to the choice of the user 
+ * @param id
+ * @param choice
+ */
 	public void removeMenuItems(int id, int choice) {
 		switch (choice){
 			case 1:
@@ -178,7 +206,12 @@ public class MenuLogic {
 				break;
 		}
 	}
-
+/**
+ * updateMenuItemID will update the ID of a chosen menu item with its old ID 
+ * @param id
+ * @param choice
+ * @param newid
+ */
 	public void updateMenuItemID(int id, int choice, int newid) {
 		switch (choice){
 			case 1:
@@ -204,6 +237,13 @@ public class MenuLogic {
 				break;
 		}
 	}
+	
+	/**
+	 * updateMenuItemName will update the menu item's name to a new name using its ID as identifier 
+	 * @param id
+	 * @param category
+	 * @param newname
+	 */
 	public void updateMenuItemName(int id, int category, String newname) {
 		switch (category){
 			case 1:
@@ -229,7 +269,12 @@ public class MenuLogic {
 				break;
 		}
 	}
-
+/**
+ * updateMenuItemDescription will update the menu item's description to a new description using its ID as identifier
+ * @param id
+ * @param category
+ * @param newdescription
+ */
 	public void updateMenuItemDescription(int id, int category, String newdescription) {
 		switch (category){
 			case 1:
@@ -255,7 +300,12 @@ public class MenuLogic {
 		}
 		
 	}
-
+/**
+ * updateMenuItemPrice will update the menu item's price to a new price using its ID as identifier
+ * @param id
+ * @param category
+ * @param newprice
+ */
 	public void updateMenuItemPrice(int id, int category, float newprice) {
 		switch (category){
 			case 1:
@@ -281,6 +331,12 @@ public class MenuLogic {
 				break;
 		}
 	}
+	/**
+	 * used to add a menu item to an existing order 
+	 * @param id
+	 * @param category
+	 * @return a menu item object chosen by the user 
+	 */
 	public MenuItems addItemsToOrder(int id, int category) {
 		switch (category){
 			case 1:
@@ -309,6 +365,9 @@ public class MenuLogic {
 	}
 
 //PROMO FUNCTIONS	
+	/**
+	 * to display promotional set items on the console to the user 
+	 */
 	public void displayPromoMenu(){
 		for (int i=0; i<promo.size(); i++){
 			System.out.println("\nName: " + promo.get(i).getName());
@@ -329,7 +388,14 @@ public class MenuLogic {
 	}
 }
 
-	
+	/**
+	 * creates a new promotional set consisting of menu items from the ala carte menu 
+	 * @param SetId
+	 * @param SetName
+	 * @param SetDescription
+	 * @param SetPrice
+	 * @param listOfIDs  the list of IDs of the menu items that will form the new promotional set 
+	 */
 	public void createPromoSet(int SetId, String SetName, String SetDescription, float SetPrice, ArrayList<Integer>listOfIDs){
 		ArrayList<MenuItems> listOfItems = new ArrayList<MenuItems>(); 
 		int i,j; 
@@ -353,14 +419,21 @@ public class MenuLogic {
 		promo.add(new PromotionalSet(SetId, SetName, SetDescription, SetPrice,listOfItems)); 
 	}
 
-	
+	/**
+	 * removes an existing promotional set via its ID 
+	 * @param SetId
+	 */
 	public void removePromoSet(int SetId){
 	for (int i=0; i<promo.size(); i++){
 		if (promo.get(i).getID()==SetId){
 			promo.remove(i);
 		}}
 	}
-
+/**
+ * updates a promotional set's old ID to a new ID 
+ * @param SetId
+ * @param newid
+ */
 	public void updateSetID(int SetId, int newid){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -368,7 +441,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * updates a promotional set's name to a new name via its ID 
+ * @param SetId
+ * @param newname
+ */
 	public void updateSetName(int SetId, String newname){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -376,7 +453,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * updates a promotional set's description to a new description via its ID 
+ * @param SetId
+ * @param newdescription
+ */
 	public void updateSetDescription(int SetId, String newdescription){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -384,7 +465,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * updates a promotional set's price to a new price via its ID 
+ * @param SetId
+ * @param newprice
+ */
 	public void updateSetPrice(int SetId, float newprice){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -392,7 +477,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * adds an additional menu item to an existing promotional set by using the ID of the chosen menu item 
+ * @param SetId
+ * @param itemID
+ */
 	public void addItemToSet(int SetId, int itemID){
 		int j; 
 		int found=0; 
@@ -426,7 +515,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * removes a specific menu item from a promotional set using the menu item's ID 
+ * @param SetId
+ * @param id
+ */
 	public void removeItemsFromSet(int SetId, int id){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){
@@ -434,7 +527,11 @@ public class MenuLogic {
 			}
 		}
 	}
-
+/**
+ * adds a promotional set to an existing order 
+ * @param SetId
+ * @return the promotional set object that was chosen via its ID
+ */
 	public PromotionalSet addPromoToOrder(int SetId){
 		for (int i=0; i<promo.size(); i++){
 			if (promo.get(i).getID()==SetId){

@@ -1,10 +1,21 @@
 package oodpassignment;
 
 import java.util.Scanner;
-
+/**
+ * 
+ * @author zheng ying chang wei 
+ * @version 1.0 
+ * @since 07/11/2021 
+ *
+ *OrderBoundary is the class that takes in inputs for all methods related to Orders 
+ */
 public class OrderBoundary {
 
-
+/**
+ * views the list of orders that are currently in the system  - inputs to be taken in in this class 
+ * done via orderLogic object that was passed in 
+ * @param orderLogic
+ */
 	 public void viewOrder(OrderLogic orderLogic){
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("Enter order number:");
@@ -24,6 +35,14 @@ public class OrderBoundary {
 	        System.out.println("Total excluding discounts and GST: $"+subTotal); 
 	    }
 
+	 /**
+	  * creation of a new order object  - inputs to be taken in in this class 
+	  * done with orderlogic and menulogic object 
+	  * menulogic helps to return the relevant menu items to be part of the order object 
+	  * orderlogic is responsible for the logic behind the creation of the order object 
+	  * @param orderLogic
+	  * @param menuLogic
+	  */
     public void newOrder(OrderLogic orderLogic, MenuLogic menuLogic){
         Scanner sc = new Scanner(System.in);
         System.out.println("INPUT TABLE NO.: ");
@@ -39,6 +58,15 @@ public class OrderBoundary {
 
     }
 
+    /**
+     * adds an additional item to a currently existing order - inputs to be taken in in this class 
+     * to determine which order, we have order number to help us differentiate  
+     * menulogic to help return the correct menu item we want to add to the otder 
+     * orderlogic to be responsible for the logic behind the addition of the additional menu item to the correct order 
+     * @param orderLogic
+     * @param menuLogic
+     * @param ordernumber
+     */
     public void addItemToOrder(OrderLogic orderLogic,MenuLogic menuLogic, int ordernumber){
         Scanner sc = new Scanner(System.in);
         int categoryChoice =0; 
@@ -60,7 +88,12 @@ public class OrderBoundary {
  }
        
     
-
+/**
+ * removes a chosen item from a currently existing order  - inputs to be taken in in this class 
+ * orderlogic to be used to view what is currently in the order and lets the user choose the 
+ * item to be removed via its ID 
+ * @param orderLogic
+ */
     public void removeItemFromOrder(OrderLogic orderLogic) {
 
         Scanner sc = new Scanner(System.in);

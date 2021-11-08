@@ -2,14 +2,47 @@ package oodpassignment;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * 
+ * @author zheng ying 
+ * @version 1.0 
+ * @since 07/11/2021 
+ * TAbleLogic implements the logical components behind the functions affecting table
+ * such as the allocation and deallocation of tables as well as the checking of availability of tables 
+ * for a certain size of customers 
+ * 
+ * Have many tables for different time periods so as to take in reservations at different times 
+ *  since tables will be allocated if reservation is given at a certain time 
+ *  
+ *  Have a total of 15 tables, 3 for 2 pax, 3 for 4 pax, 3 for 6 pax, 3 for 8 pax and 3 for 10 pax 
+ *
+ */
 public class TableLogic implements CheckTable, FreeTable{
+	/**
+	 * collection of tables for time period 12pm-2pm 
+	 */
 	private ArrayList<Table> tables_12_to_2 = new ArrayList<>();
+	/**
+	 * collection of tables for time period 2pm-4pm 
+	 */
 	private ArrayList<Table> tables_2_to_4 = new ArrayList<>();
+	/**
+	 * collection of tables for time period 4pm-6pm 
+	 */
 	private ArrayList<Table> tables_4_to_6 = new ArrayList<>();
+	/**
+	 * collection of tables for time period 6pm-8pm
+	 */
 	private ArrayList<Table> tables_6_to_8 = new ArrayList<>();
+	/**
+	 * collection of tables for time period 8pm-10pm
+	 */
 	private ArrayList<Table> tables_8_to_10 = new ArrayList<>();
 
+	/**
+	 * constructor of TableLogic 
+	 * initializes all tables of different timing as a list 
+	 */
 	public TableLogic() {
 		List<List<Table>> alltables = Arrays.asList(tables_12_to_2,tables_2_to_4,tables_4_to_6,tables_6_to_8,tables_8_to_10);
 		for(int i=0;i<alltables.size();i++)
@@ -32,7 +65,10 @@ public class TableLogic implements CheckTable, FreeTable{
 		}
 	}
 
-
+/**
+ * allocates a table according to the hour of the reservation and the number of customers per group 
+ * if a table is available
+ */
 	public int giveTable(int customerPax,int hour) {
 		List<Table> temp ;
 		if(14<=hour&&hour<16){
@@ -63,6 +99,13 @@ public class TableLogic implements CheckTable, FreeTable{
 		return -1;
 	}
 
+	/**
+	 * checks if a table is available according to the specifications such as 
+	 * no of customers and the hour of dining 
+	 * @param customerPax no of customers per table 
+	 * @param hour hour of dining 
+	 * @return Boolean value whether table is available or not 
+	 */
 public Boolean checkTableAvailability(int customerPax,int hour) {
 		
 		List<Table> temp ;
@@ -94,6 +137,9 @@ public Boolean checkTableAvailability(int customerPax,int hour) {
 		return false;
 	}
 
+/**
+ * marks a table as unoccupied once bill is paid, based on table number and time of dining 
+ */
 	public void freeTable(int tableNumber,int hour) {
 
 		List<Table> temp ;

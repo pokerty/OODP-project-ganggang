@@ -62,38 +62,79 @@ public class MenuItems {
 			break; 
 		}
 	}
-
+/**
+ * getter method for ID of a menu item 
+ * @return ID 
+ */
 	public int getID() {
 		return this.id;
 	}
+	
+	/**
+	 * setter method for ID of a menu item
+	 * @param id
+	 */
 	public void setID(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * getter method for name menu item 
+	 * @return name 
+	 */
 	public String getName() {
 		return this.name;
 	}
+	
+	/**
+	 * setter method for name of menu item
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * getter method for courseType (enum) for menu item
+	 * @return
+	 */
 	public courseType getCategory() {
 		return this.category;
 	}
+	/**
+	 * setter method for courseType (enum) for menu item
+	 * @param category
+	 */
 	public void setCategory(courseType category) {
 		this.category = category;
 	}
 
+/**
+ * getter method for description of menu item 
+ * @return description of menu item 
+ */
 	public String getDescription() {
 		return this.description;
 	}
+	/**
+	 * setter method for description of menu item 
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * getter method for price of menu item 
+	 * @return price
+	 */
 	public float getPrice() {
 		return this.price;
 	}
+	/**
+	 * setter method for price of menu item 
+	 * @param price
+	 */
 	public void setPrice(float price) {
 		this.price=price;
 	}

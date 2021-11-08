@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  * 
- * @author chang wei & hong po 
+ * @author chang wei hong po 
  * @since 06/11/2021
  * @version 1.0
  * MenuBoundary is the boundary class for menu related functions, where inputs are taken in here via the 
@@ -32,7 +32,7 @@ public class MenuBoundary {
 	
 	
 	/**
-	 * in CreateMenuItems, you can create additional MenuItems not previously 
+	 *  create additional MenuItems not previously 
 	 * in the loaded .txt file. The item ID,name,category,description and price
 	 * will be scanned in and added to the collection of MenuItems  
 	 * this is done via menuLogic object that is passed in 
@@ -59,7 +59,7 @@ public class MenuBoundary {
 
 	
 	/**
-	 * removeMenuItems removes the desired menu item from the list of menu items 
+	 * removes the desired menu item from the list of menu items 
 	 * through the use of item ID and item category 
 	 * (each item has its own unique ID which allows us to identify them) 
 	 * this is done via menuLogic object that is passed in 
@@ -76,7 +76,7 @@ public class MenuBoundary {
 		}
 	
 /**
- * updateMenuItemID changes the item ID of a MenuItem to a new item ID 
+ * changes the item ID of a MenuItem to a new item ID 
  * this is done via menuLogic object that is passed in 
  * @param menuLogic
  */
@@ -92,7 +92,7 @@ public class MenuBoundary {
 	}
 	
 /**
- * updateMenuItemName changes the item name of a MenuItem via item ID & category
+ * changes the item name of a MenuItem via item ID and category
  * this is done via menuLogic object that is passed in 
  * @param menuLogic
  */
@@ -109,7 +109,7 @@ public class MenuBoundary {
 	}
 
 	/**
-	 * updateMenuItemDescription changes the item description of a MenuItem via item ID & category
+	 * changes the item description of a MenuItem via item ID and category
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
@@ -126,11 +126,10 @@ public class MenuBoundary {
 	}
 	
 	/**
-	 * updateMenuItemPrice updates the item price of a MenuItem via item ID & category 
+	 * updates the item price of a MenuItem via item ID and category 
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
-
 	public void updateMenuItemPrice(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
 		int id = sc.nextInt();
@@ -143,7 +142,7 @@ public class MenuBoundary {
 	}
 	
 	/**
-	 * displayPromoMenu displays the promotional set menu, which have different combinations of ala carte items\
+	 * displays the promotional set menu, which have different combinations of ala carte items\
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
@@ -156,7 +155,7 @@ public class MenuBoundary {
 
 
 	/**
-	 * createPromoSet creates a new promotional set which have different combinations of ala carte items 
+	 * creates a new promotional set which have different combinations of ala carte items 
 	 * this is done via menuLogic object that is passed in
 	 * A unique ID, name, description,price and the menu items to be included needs to be given as input 
 	 * @param menuLogic
@@ -184,7 +183,7 @@ public class MenuBoundary {
 	 }
 
 	 /**
-	  * removePromoSet removes a promo set via its set ID 
+	  * removes a promo set via its set ID 
 	  * this is done via menuLogic object that is passed in 
 	  * @param menuLogic
 	  */
@@ -195,7 +194,7 @@ public class MenuBoundary {
 	}
 
 	/**
-	 * updateSetID updates the promo set's id to a new one 
+	 * updates the promo set's id to a new one 
 	 * this is done via menuLogic object that is passed in  
 	 * @param menuLogic
 	 */
@@ -207,7 +206,7 @@ public class MenuBoundary {
 		menuLogic.updateSetID(SetId, newid);
 	}
 /**
- * updateSetName updates the promo set's name of your choice using set ID 
+ * updates the promo set's name of your choice using set ID 
  * this is done via menuLogic object that is passed in 
  * @param menuLogic
  */
@@ -221,7 +220,7 @@ public class MenuBoundary {
 	}
 
 	/**
-	 * updateSetDescription updates a promo set's description using set ID 
+	 *updates a promo set's description using set ID 
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
@@ -235,7 +234,7 @@ public class MenuBoundary {
 	}
 
 	/**
-	 * updateSetPrice will update a promo set's price using set ID 
+	 *  will update a promo set's price using set ID 
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
@@ -248,7 +247,7 @@ public class MenuBoundary {
 	}
 
 	/**
-	 * addItemToSet will add a menu item to the promo set using set id and menu id of the menu item 
+	 * will add a menu item to the promo set using set id and menu id of the menu item 
 	 * this is done via menuLogic object that is passed in 
 	 * @param menuLogic
 	 */
@@ -260,7 +259,7 @@ public class MenuBoundary {
 	 	menuLogic.addItemToSet(SetId, itemID);
 	 }
 /**
- * removeItemsFromSet will remove a menu item from a promotional set using set ID as the identifier for the promo set 
+ * will remove a menu item from a promotional set using set ID as the identifier for the promo set 
  * this is done via menuLogic object that is passed in 
  * @param menuLogic
  */

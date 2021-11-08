@@ -16,22 +16,42 @@ import java.text.DateFormat;
 
 import oodpassignment.MenuItems.courseType;
 
+/**
+ * 
+ * @author chang wei 
+ *@since 07/11/2021 
+ *@version 1.0 
+ *ReportLogic is responsible for the logics behind all functions related to the report (i.e. revenue generated) 
+ */
+
 public class ReportLogic {
 	protected Report report;
     
-
+/**
+ * constructor for the reportlogic object - initialised in main normally 
+ * @param report
+ */
     public ReportLogic(Report report){
        this.report = report; 
        loadReport(); 
        System.out.println("ReportLogic start-up complete."); 
        
     }
-
+/**
+ * calculates the total revenue depending on the time period stated in the boundary class 
+ * @param cal
+ * @return float value corresponding to total revenue 
+ */
     public float calculateTotalRevenue(Calendar cal){
         float totalRevenue = calculateAlaCarteRevenue(cal) + calculateSetPromoRevenue(cal);
         return totalRevenue;
     }
 
+    /**
+     * calculates only the revenue from promotional set items of a specified time frame in the boundary class
+     * @param cal
+     * @return float value corresponding to revenue from promotional set items 
+     */
     public float calculateSetPromoRevenue(Calendar cal){
         float promoRevenue = 0;
         Date dateandtime = cal.getTime(); 
@@ -45,6 +65,12 @@ public class ReportLogic {
         }
         return promoRevenue;
     }
+    
+    /**
+     * calculates revenue from ala carte items according to time frame specified in boundary class
+     * @param cal
+     * @return float value corresponding to revenue from ala carte items 
+     */
     public float calculateAlaCarteRevenue(Calendar cal){
         float alaCarteRevenue = 0;
         Date dateandtime = cal.getTime();
@@ -59,6 +85,9 @@ public class ReportLogic {
         }
         return alaCarteRevenue;
     }
+    /**
+     * prints the whole list of promotional set items sold thus far 
+     */
     public void showSetPromo(){
         System.out.println("Promotional Set Items sold: ");
         for(int i = 0; i<report.getOrders().size(); i++){
@@ -68,6 +97,9 @@ public class ReportLogic {
         }
     }
     
+    /**
+     * prints the whole list of ala carte items sold thus far 
+     */
     public void showAlaCarte(){
         System.out.println("Ala Carte Items Sold: ");
         for(int i = 0; i<report.getOrders().size(); i++){
@@ -77,11 +109,17 @@ public class ReportLogic {
          }
     }
     
+    /**
+     * prints all items sold thus far 
+     */
     public void showAll(){
         showSetPromo();
         showAlaCarte();
     }
 
+    /**
+     * loads the report particulars from the txt database 
+     */
     public void loadReport() {
         try {
             float price;
@@ -145,6 +183,9 @@ public class ReportLogic {
         	e.printStackTrace(); 
         }
     }
+    /**
+     * saves the report particulars to a txt file to serve as a database 
+     */
     public void saveReport() {
         try {
             FileWriter write = new FileWriter("report.txt");

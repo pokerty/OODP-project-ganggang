@@ -8,14 +8,30 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+/**
+ * 
+ * @author CHANG WEI 
+ * @since 07/11/2021 
+ * @version 1.0 
+ * ReservationLogic is responsible for the logics used to implements the different methods 
+ * involving reservations such as creating/removal/checking of reservations 
+ *
+ */
 public class ReservationLogic {
-
+/**
+ * A collection of reservation objects - each reservation object belongs to one group of customer(s) 
+ */
 	private ArrayList<Reservation> reservations;
+	/**
+	 * TableLogic of the CheckTable type to use some functions in TableLogic. (CheckTable is an interface) 
+	 */
 	private CheckTable tablelogic;
 
 	
-	
+	/**
+	 * constructor of ReservationLogic 
+	 * @param checkTable
+	 */
 	public ReservationLogic(CheckTable checkTable) {
 		this.reservations = new ArrayList<Reservation>();
  		this.tablelogic = checkTable; 
@@ -23,9 +39,26 @@ public class ReservationLogic {
 		System.out.println("ReservationLogic start-up complete "); 
 	}
 
+	/**
+	 * gets the list of reservations held by the reservationLogic object 
+	 * to be used in the automatic scheduler for deletion of expired reservations 
+	 * @return
+	 */
+	public ArrayList<Reservation>getReservations(){
+		return reservations;
+	}
 	
-	
-	
+	/**
+	 * creates a reservation object using the inputs taken in the boundary class 
+	 * 
+	 * @param month
+	 * @param day
+	 * @param hour
+	 * @param minute
+	 * @param pax
+	 * @param name
+	 * @param contact
+	 */
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
 		int tableNumber = tablelogic.giveTable(pax,hour);
 		if(tableNumber==-1) { //no table 
@@ -41,7 +74,12 @@ public class ReservationLogic {
 	
 	
 
-	
+	/**
+	 * removes reservation based on the inputs taken in boundary class e.g. table number and name of customer 
+	 * @param tableNumber
+	 * @param name
+	 * @param expired
+	 */
 	public void removeReservation(int tableNumber,String name, boolean expired) {
 		int validity = checkReservation(tableNumber, name); 
 		if(validity>=0) {
@@ -65,6 +103,12 @@ public class ReservationLogic {
 		
 	}
 
+	/**
+	 * checks the validity of the reservation using inputs taken in boundary class - table number and name of customer 
+	 * @param TableNumber
+	 * @param name
+	 * @return
+	 */
 	public int checkReservation(int TableNumber, String name) {
 		if(TableNumber>0 && TableNumber<= 15) { // change parameters 
 			for(int i=0;i<reservations.size();i++) {
@@ -86,7 +130,9 @@ public class ReservationLogic {
 		
 	}
 	
-	
+	/**
+	 * loads the day's reservations from a txt file that serves as the database 
+	 */
 	private void loadReservation(){
 		try {
 			int month,day,hour,minute,pax,contact,tablenumber;
@@ -142,6 +188,9 @@ public class ReservationLogic {
 		
 	}
 	
+	/**
+	 * saves the reservation made for the next day in a txt file once the restaurant app is terminated 
+	 */
 	public void saveReservation() {
 		try {
 			FileWriter write = new FileWriter("reservationList.txt"); 

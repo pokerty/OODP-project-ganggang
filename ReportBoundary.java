@@ -4,12 +4,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner; 
 
-
+/**
+ * 
+ * @author zheng ying 
+ *@version 1.0 
+ *@since 07/11/2021 
+ *ReportBoundary serves as the boundary class to take in inputs for all report functions such as calculation of 
+ *revenue of restaurant 
+ */
 public class ReportBoundary {
 	
 	Scanner sc = new Scanner(System.in); 
 	
-	
+	/**
+	 * prints out the total revenue of the restaurant (all items) depending on month or day - inputs to be taken in this class 
+	 * @param reportLogic
+	 */
     public void reportTotal(ReportLogic reportLogic){
     	// Using Calendar class
 	      Calendar cal = Calendar.getInstance();
@@ -32,7 +42,10 @@ public class ReportBoundary {
 	      }
     }
     
-    
+    /**
+     * prints out the revenue from all ala carte items in a specified time frame (month/day)  - inputs to be taken in this class 
+     * @param reportLogic
+     */
     public void reportAlaCarte(ReportLogic reportLogic){
     	 Calendar cal = Calendar.getInstance();
 	      Date dateandtime = cal.getTime(); 
@@ -54,6 +67,11 @@ public class ReportBoundary {
 	      }
         
     }
+    /**
+     * prints out the revenue from the promotional sets that was ordered in a specified time frame (month/day) 
+     * - inputs to be taken in this class 
+     * @param reportLogic
+     */
     public void reportSetPromo(ReportLogic reportLogic){
     	Calendar cal = Calendar.getInstance();
 	      Date dateandtime = cal.getTime(); 

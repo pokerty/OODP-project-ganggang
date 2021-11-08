@@ -1,6 +1,17 @@
 package oodpassignment;
 import java.util.Scanner;
 
+
+/**
+ * 
+ * @author mei qi 
+ * @since 07/11/21 
+ * @version 1.0 
+ *RestaurantApp is the main driver class to perform all our functions. 
+ *All the other classes are mostly initialized here in start(). 
+ *Some choices will be made here and then depending on the choices, the control will be sent to the 
+ *corresponding boundary classes for further input from user to carry out the actions desired 
+ */
 public class RestaurantApp {
 
 	
@@ -16,16 +27,26 @@ public class RestaurantApp {
 	// StaffBoundary staffBoundary = new StaffBoundary(staffLogic);
 	// }
 
-	public void start() {
+	/**
+	 * driver method for all the functionality that is included in the application 
+	 * mostly contains a series of inputs to determine the choices made by the user 
+	 * to do particular actions 
+	 * takes in tableLogic and reservationLogic as they are initialized in main 
+	 * to be used by a scheduler to remove expired reservations according to
+	 * our specifications
+	 * @param tablelogic
+	 * @param reservationLogic
+	 */
+	public void start(CheckTable tablelogic, ReservationLogic reservationLogic) {
 
 		// startApp();
 		MenuLogic menuLogic = new MenuLogic();
-		CheckTable tableLogic = new TableLogic();
-		ReservationLogic reservationLogic = new ReservationLogic(tableLogic);
+		//CheckTable tableLogic = new TableLogic();
+		//ReservationLogic reservationLogic = new ReservationLogic(tableLogic);
 		StaffLogic staffLogic = new StaffLogic();
 		Report report = new Report();
 		ReportLogic reportLogic = new ReportLogic(report);
-		OrderLogic orderLogic = new OrderLogic(report,(FreeTable)tableLogic,staffLogic);
+		OrderLogic orderLogic = new OrderLogic(report,(FreeTable)tablelogic,staffLogic);
 
 		// to initialise everything
 		MenuBoundary menuBoundary = new MenuBoundary();
@@ -153,7 +174,7 @@ public class RestaurantApp {
 
 			switch (tChoice) {
 			case 1:
-				tableBoundary.checkTableAvailability((TableLogic)tableLogic);
+				tableBoundary.checkTableAvailability((TableLogic)tablelogic);
 				break;
 			default:
 				System.out.println("Please choose a valid option.");
