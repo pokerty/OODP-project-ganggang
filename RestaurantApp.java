@@ -56,8 +56,8 @@ public class RestaurantApp {
 		StaffBoundary staffBoundary = new StaffBoundary();
 
 		ArrayList<Reservation> reservations = reservationLogic.getReservations();
-		ScheduledReservationRemover scheduler = new ScheduledReservationRemover();
-		scheduler.scheduleReservationRemover(reservations,reservationLogic);
+		ScheduledReservationRemover scheduledReservationRemover = new ScheduledReservationRemover();
+		scheduledReservationRemover.scheduleReservationRemover(reservations,reservationLogic);
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nChoose the category: ");
