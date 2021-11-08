@@ -1,71 +1,274 @@
+package com.oodpassignment;
+
 import java.util.*;
-import MenuItems.courseType;
-import MenuLogic;
+
+
+/**
+ * 
+ * @author chang wei hong po 
+ * @since 06/11/2021
+ * @version 1.0
+ * MenuBoundary is the boundary class for menu related functions, where inputs are taken in here via the 
+ * java Scanner class 
+ *
+ */
+
 public class MenuBoundary {
 	Scanner sc = new Scanner(System.in);
-
-	public void displayMenu() {
-		MenuLogic.displayMenu();
+	
+	
+	/**
+	 * in displayMenu(), the Menu will be displayed via using the menuLogic object
+	 * which is passed in as an argument 
+	 * @param menuLogic
+	 */
+	public void displayMenu(MenuLogic menuLogic) {
+		System.out.print("Enter the menu to display\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
+		
+		menuLogic.displayMenu(categorynum); 
 	}
 
-	public void createMenuItems(int id, String name, MenuItems.courseType category, String description, float price) {
+	
+	
+	/**
+	 *  create additional MenuItems not previously 
+	 * in the loaded .txt file. The item ID,name,category,description and price
+	 * will be scanned in and added to the collection of MenuItems  
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void createMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
+		int id = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the item name\n");
-		name = sc.next();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
+		String name = sc.nextLine();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the item description\n");
-		description = sc.next();
+		String description = sc.nextLine();
 		System.out.print("Enter the item price\n");
-		price = sc.nextFloat();
+		float price = sc.nextFloat();
+		sc.nextLine();
+		
+		menuLogic.createMenuItems(id, name, categorynum, description, price);
 	}
 
-	public void removeMenuItems(int id, courseType category) {
+	
+	/**
+	 * removes the desired menu item from the list of menu items 
+	 * through the use of item ID and item category 
+	 * (each item has its own unique ID which allows us to identify them) 
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void removeMenuItems(MenuLogic menuLogic) {
 
 		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
-	}
-
-	public void updateMenuItemID(int id, courseType category, int newid) {
-		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
+		int id = sc.nextInt();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
+		menuLogic.removeMenuItems(id, categorynum);
+		
+		}
+	
+/**
+ * changes the item ID of a MenuItem to a new item ID 
+ * this is done via menuLogic object that is passed in 
+ * @param menuLogic
+ */
+	public void updateMenuItemID(MenuLogic menuLogic) {
+		System.out.print("Enter the old item ID\n");
+		int id = sc.nextInt();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
 		System.out.print("Enter the new item ID\n");
-		newid = sc.nextInt();
+		int newid = sc.nextInt();
+		menuLogic.updateMenuItemID(id, categorynum, newid);
 
 	}
-	public void updateMenuItemName(int id, courseType category, String newname) {
+	
+/**
+ * changes the item name of a MenuItem via item ID and category
+ * this is done via menuLogic object that is passed in 
+ * @param menuLogic
+ */
+	public void updateMenuItemName(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
+		int id = sc.nextInt();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
+		sc.nextLine(); 
 		System.out.print("Enter the new item name\n");
-		newname = sc.next();
+		String newname = sc.nextLine();
+		menuLogic.updateMenuItemName(id, categorynum, newname);
 
 	}
 
-	public void updateMenuItemDescription(int id, courseType category, String newdescription) {
+	/**
+	 * changes the item description of a MenuItem via item ID and category
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void updateMenuItemDescription(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
+		int id = sc.nextInt();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
+		sc.nextLine();
 		System.out.print("Enter the new item description\n");
-		newdescription = sc.next();
+		String newdescription = sc.nextLine();
+		menuLogic.updateMenuItemDescription(id, categorynum, newdescription);
 
 	}
-
-	public void updateMenuItemPrice(int id, courseType category, float newprice) {
+	
+	/**
+	 * updates the item price of a MenuItem via item ID and category 
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void updateMenuItemPrice(MenuLogic menuLogic) {
 		System.out.print("Enter the item ID\n");
-		id = sc.nextInt();
-		System.out.print("Enter the item category\n");
-		category = (courseType)sc.next();
+		int id = sc.nextInt();
+		System.out.print("Enter the item category\nmain:1\ndessert:2\ndrink:3\n");
+		int categorynum = sc.nextInt();
 		System.out.print("Enter the new item price\n");
-		newprice = sc.nextFloat();
+		float newprice = sc.nextFloat();
+		menuLogic.updateMenuItemPrice(id, categorynum, newprice);
 
 	}
+	
+	/**
+	 * displays the promotional set menu, which have different combinations of ala carte items\
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void displayPromoMenu(MenuLogic menuLogic){
+		System.out.print("Promo Menu:\n");
+		menuLogic.displayPromoMenu();
+		
+	}
+
+
+
+	/**
+	 * creates a new promotional set which have different combinations of ala carte items 
+	 * this is done via menuLogic object that is passed in
+	 * A unique ID, name, description,price and the menu items to be included needs to be given as input 
+	 * @param menuLogic
+	 */
+	 public void createPromoSet(MenuLogic menuLogic){
+	 	System.out.print("Enter the Promotional Set ID\n");
+	 	int SetId = sc.nextInt();
+	 	sc.nextLine();
+	 	System.out.print("Enter the Promotional Set name\n");
+	 	String SetName = sc.nextLine();
+		System.out.print("Enter the Promotional Set description\n");
+	 	String SetDescription = sc.nextLine();
+	 	System.out.print("Enter the Promotional Set price\n");
+	 	float SetPrice = sc.nextFloat();
+	 	int itemID = 0;
+	 	ArrayList<Integer> listOfIDs = new ArrayList<Integer>(); 
+	 	while(itemID!=-1) {
+	 		displayMenu(menuLogic);  
+		 	System.out.print("Enter the ID of the menu items you want to add to set, -1 to terminate\n");
+		 	itemID = sc.nextInt();
+		 	listOfIDs.add(itemID);
+	 	}
+	 	menuLogic.createPromoSet(SetId, SetName, SetDescription, SetPrice, listOfIDs);
+	 	
+	 }
+
+	 /**
+	  * removes a promo set via its set ID 
+	  * this is done via menuLogic object that is passed in 
+	  * @param menuLogic
+	  */
+	public void removePromoSet(MenuLogic menuLogic){
+		System.out.print("Enter the Promotional Set ID to remove\n");
+		int SetId = sc.nextInt();
+		menuLogic.removePromoSet(SetId);
+	}
+
+	/**
+	 * updates the promo set's id to a new one 
+	 * this is done via menuLogic object that is passed in  
+	 * @param menuLogic
+	 */
+	public void updateSetID(MenuLogic menuLogic){
+		System.out.print("Enter the old Promotional Set ID\n");
+		int SetId = sc.nextInt();
+		System.out.print("Enter the new Set ID\n");
+		int newid = sc.nextInt();
+		menuLogic.updateSetID(SetId, newid);
+	}
+/**
+ * updates the promo set's name of your choice using set ID 
+ * this is done via menuLogic object that is passed in 
+ * @param menuLogic
+ */
+	public void updateSetName(MenuLogic menuLogic){
+		System.out.print("Enter the Promotional Set ID\n");
+		int SetId = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Enter the new Set name\n");
+		String newname = sc.nextLine();
+		menuLogic.updateSetName(SetId, newname);
+	}
+
+	/**
+	 *updates a promo set's description using set ID 
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void updateSetDescription(MenuLogic menuLogic){
+		System.out.print("Enter the Promotional Set ID\n");
+		int SetId = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Enter the new Set description\n");
+		String newdescription = sc.nextLine();
+		menuLogic.updateSetDescription(SetId, newdescription);
+	}
+
+	/**
+	 *  will update a promo set's price using set ID 
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	public void updateSetPrice(MenuLogic menuLogic){
+		System.out.print("Enter the Promotional Set ID\n");
+		int SetId = sc.nextInt();
+		System.out.print("Enter the new Set price\n");
+		float newprice = sc.nextFloat();
+		menuLogic.updateSetPrice(SetId, newprice);
+	}
+
+	/**
+	 * will add a menu item to the promo set using set id and menu id of the menu item 
+	 * this is done via menuLogic object that is passed in 
+	 * @param menuLogic
+	 */
+	 public void addItemToSet(MenuLogic menuLogic){
+	 	System.out.print("Enter the Promotional Set ID\n");
+	 	int SetId = sc.nextInt();
+	 	System.out.print("Enter the ID of the menu item you want to add to set\n");
+	 	int itemID = sc.nextInt();
+	 	menuLogic.addItemToSet(SetId, itemID);
+	 }
+/**
+ * will remove a menu item from a promotional set using set ID as the identifier for the promo set 
+ * this is done via menuLogic object that is passed in 
+ * @param menuLogic
+ */
+	public void removeItemsFromSet(MenuLogic menuLogic){
+		System.out.print("Enter the Promotional Set ID\n");
+		int SetId = sc.nextInt();
+		System.out.print("Enter the item ID to remove\n");
+		int id = sc.nextInt();
+		menuLogic.removeItemsFromSet(SetId, id);
+	}
+
 }

@@ -1,3 +1,4 @@
+package com.oodpassignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,44 +8,57 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-
-
+/**
+ * 
+ * @author CHANG WEI 
+ * @since 07/11/2021 
+ * @version 1.0 
+ * ReservationLogic is responsible for the logics used to implements the different methods 
+ * involving reservations such as creating/removal/checking of reservations 
+ *
+ */
 public class ReservationLogic {
-
+/**
+ * A collection of reservation objects - each reservation object belongs to one group of customer(s) 
+ */
 	private ArrayList<Reservation> reservations;
+	/**
+	 * TableLogic of the CheckTable type to use some functions in TableLogic. (CheckTable is an interface) 
+	 */
 	private CheckTable tablelogic;
 
-
-
+	
+	/**
+	 * constructor of ReservationLogic 
+	 * @param checkTable
+	 */
 	public ReservationLogic(CheckTable checkTable) {
-		Runnable runnable = new Runnable() {
-
-			@Override
-			public void run() {
-				for(int i=0;i<reservations.size();i++){
-					if(System.currentTimeMillis()>=reservations.get(i).getDateandtime().getTimeInMillis()){
-						removeReservation(reservations.get(i).getTableNumber(),reservations.get(i).getName(),true);
-					}
-				}
-			}
-		};
-		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-		scheduler.scheduleAtFixedRate(runnable, 15, 15, TimeUnit.MINUTES);
-
-
 		this.reservations = new ArrayList<Reservation>();
- 		this.tablelogic = checkTable;
-		loadReservation();
-		System.out.println("ReservationLogic start-up complete ");
+ 		this.tablelogic = checkTable; 
+		loadReservation(); 
+		System.out.println("ReservationLogic start-up complete "); 
 	}
 
-
-
-
+	/**
+	 * gets the list of reservations held by the reservationLogic object 
+	 * to be used in the automatic scheduler for deletion of expired reservations 
+	 * @return
+	 */
+	public ArrayList<Reservation>getReservations(){
+		return reservations;
+	}
+	
+	/**
+	 * creates a reservation object using the inputs taken in the boundary class 
+	 * 
+	 * @param month
+	 * @param day
+	 * @param hour
+	 * @param minute
+	 * @param pax
+	 * @param name
+	 * @param contact
+	 */
 	public void makeReservation(int month, int day, int hour, int minute, int pax, String name, int contact){
 		int tableNumber = tablelogic.giveTable(pax,hour);
 		if(tableNumber==-1) { //no table 
@@ -60,13 +74,18 @@ public class ReservationLogic {
 	
 	
 
-	
+	/**
+	 * removes reservation based on the inputs taken in boundary class e.g. table number and name of customer 
+	 * @param tableNumber
+	 * @param name
+	 * @param expired
+	 */
 	public void removeReservation(int tableNumber,String name, boolean expired) {
 		int validity = checkReservation(tableNumber, name); 
 		if(validity>=0) {
-			tablelogic.freeTable(tableNumber, reservations.get(validity).getDateandtime().get(Calendar.HOUR_OF_DAY)); 
+			tablelogic.freeTable(tableNumber-1, reservations.get(validity).getDateandtime().get(Calendar.HOUR_OF_DAY)); 
 			//free up the table after reservation removal 
-			reservations.remove(validity); 
+			reservations.remove(validity); //remove from array list
 			//rely on java auto garbage collection to delete reservation object. 
 			if(expired==true)
 				System.out.println("Reservation expired - Removed!"); 
@@ -81,10 +100,17 @@ public class ReservationLogic {
 		}
 		
 		
+		
 	}
 
+	/**
+	 * checks the validity of the reservation using inputs taken in boundary class - table number and name of customer 
+	 * @param TableNumber
+	 * @param name
+	 * @return
+	 */
 	public int checkReservation(int TableNumber, String name) {
-		if(TableNumber>-1 && TableNumber< 15) { // change parameters 
+		if(TableNumber>0 && TableNumber<= 15) { // change parameters 
 			for(int i=0;i<reservations.size();i++) {
 				if(reservations.get(i).getName().equalsIgnoreCase(name)
 						&& reservations.get(i).getTableNumber() == TableNumber) {
@@ -104,7 +130,9 @@ public class ReservationLogic {
 		
 	}
 	
-	
+	/**
+	 * loads the day's reservations from a txt file that serves as the database 
+	 */
 	private void loadReservation(){
 		try {
 			int month,day,hour,minute,pax,contact,tablenumber;
@@ -130,19 +158,21 @@ public class ReservationLogic {
 				hour = Integer.parseInt(list.get(i+6)); //7th is hour 
 				minute = Integer.parseInt(list.get(i+7)); //8th is minute 
 				Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tablenumber); //create reservation
-				reservations.add(reservation); //allocate index according to table number 
+				reservations.add(reservation); 
 				i = i+9; //should be start of next entry , don't take empty string 
 			}
 			
 			reader.close(); //close file reader 
 			
-			/* for testing 
-			for(int j=0;j<15;j++) {
-				if(reservations[j]!=null) {
-					System.out.println(reservations[j].getName()); 
+			 /*for testing 
+			for(int j=0;j<reservations.size();j++) {
+				if(reservations.get(j)!=null) {
+					System.out.println(reservations.get(j).getName());
+					System.out.println(reservations.get(j).getTableNumber());
 				}
 			}
-		*/
+			*/
+		
 		}
 		
 		catch(FileNotFoundException e) {
@@ -158,6 +188,9 @@ public class ReservationLogic {
 		
 	}
 	
+	/**
+	 * saves the reservation made for the next day in a txt file once the restaurant app is terminated 
+	 */
 	public void saveReservation() {
 		try {
 			FileWriter write = new FileWriter("reservationList.txt"); 

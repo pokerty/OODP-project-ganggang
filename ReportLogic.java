@@ -1,3 +1,5 @@
+package com.oodpassignment;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -8,59 +10,116 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.Date;
 import java.text.DateFormat;  
 
 
-import oodpassignment.MenuItems.courseType;
+import com.oodpassignment.MenuItems.courseType;
+
+/**
+ * 
+ * @author chang wei 
+ *@since 07/11/2021 
+ *@version 1.0 
+ *ReportLogic is responsible for the logics behind all functions related to the report (i.e. revenue generated) 
+ */
 
 public class ReportLogic {
 	protected Report report;
     
-
-    public ReportLogic(){
-       Report report = new Report(); 
+/**
+ * constructor for the reportlogic object - initialised in main normally 
+ * @param report
+ */
+    public ReportLogic(Report report){
        this.report = report; 
+       loadReport(); 
+       System.out.println("ReportLogic start-up complete."); 
        
     }
-
-    public float calculateTotalRevenue(){
-        float totalRevenue = calculateAlaCateRevenue() + calculateSetPromoRevenue();
+/**
+ * calculates the total revenue depending on the time period stated in the boundary class 
+ * @param cal
+ * @return float value corresponding to total revenue 
+ */
+    public float calculateTotalRevenue(Calendar cal){
+        float totalRevenue = calculateAlaCarteRevenue(cal) + calculateSetPromoRevenue(cal);
         return totalRevenue;
     }
 
-    public float calculateSetPromoRevenue(){
+    /**
+     * calculates only the revenue from promotional set items of a specified time frame in the boundary class
+     * @param cal
+     * @return float value corresponding to revenue from promotional set items 
+     */
+    public float calculateSetPromoRevenue(Calendar cal){
         float promoRevenue = 0;
+        Date dateandtime = cal.getTime(); 
         for(int i=0; i<report.getOrders().size(); i++){
-            for(int j=0;j<report.getOrders().get(i).getOrderItems().size();j++) {
-            	promoRevenue += report.getOrders().get(i).getPromoItems().get(j).getPrice();
+            for(int j=0;j<report.getOrders().get(i).getPromoItems().size();j++) {
+            	if(dateandtime.before(report.getOrders().get(i).getTimeStamp())) {
+            		promoRevenue += report.getOrders().get(i).getPromoItems().get(j).getPrice();
+            	}
             }
         	
         }
         return promoRevenue;
     }
-    public float calculateAlaCateRevenue(){
+    
+    /**
+     * calculates revenue from ala carte items according to time frame specified in boundary class
+     * @param cal
+     * @return float value corresponding to revenue from ala carte items 
+     */
+    public float calculateAlaCarteRevenue(Calendar cal){
         float alaCarteRevenue = 0;
+        Date dateandtime = cal.getTime();
         for(int i=0; i<report.getOrders().size(); i++){
             for(int j=0;j<report.getOrders().get(i).getOrderItems().size();j++) {
-            	alaCarteRevenue += report.getOrders().get(i).getOrderItems().get(j).getPrice();
+            	if(dateandtime.before(report.getOrders().get(i).getTimeStamp())) {
+            		alaCarteRevenue += report.getOrders().get(i).getOrderItems().get(j).getPrice();
+            	}
+            
+            		
             }
         }
         return alaCarteRevenue;
     }
-    public Report showSetPromo(){
-        return report;
+    /**
+     * prints the whole list of promotional set items sold thus far 
+     */
+    public void showSetPromo(){
+        System.out.println("Promotional Set Items sold: ");
+        for(int i = 0; i<report.getOrders().size(); i++){
+           for(int j=0;j<report.getOrders().get(i).getPromoItems().size();j++) { 
+        	   System.out.println(report.getOrders().get(i).getPromoItems().get(j).getName());
+           }
+        }
     }
     
-    public Report showAlaCarte(){
-        return report;
+    /**
+     * prints the whole list of ala carte items sold thus far 
+     */
+    public void showAlaCarte(){
+        System.out.println("Ala Carte Items Sold: ");
+        for(int i = 0; i<report.getOrders().size(); i++){
+            for(int j=0;j<report.getOrders().get(i).getOrderItems().size();j++) { 
+         	   System.out.println(report.getOrders().get(i).getOrderItems().get(j).getName());
+            }
+         }
     }
     
+    /**
+     * prints all items sold thus far 
+     */
     public void showAll(){
         showSetPromo();
         showAlaCarte();
     }
 
+    /**
+     * loads the report particulars from the txt database 
+     */
     public void loadReport() {
         try {
             float price;
@@ -68,14 +127,13 @@ public class ReportLogic {
             int category; 
             
             courseType type; 
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH); 
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             FileReader report = new FileReader("Report.txt");
             BufferedReader reader = new BufferedReader(report);
             ArrayList<String> list = new ArrayList<String>();
             String info = reader.readLine();
             while (info != null) {
-                list.add(info.replace("empty_string", ""));
+                list.add(info.replace("empty_string",""));
                 info = reader.readLine();
             }
             int i = 0;
@@ -83,7 +141,8 @@ public class ReportLogic {
                 name = list.get(i);
                 price = Float.parseFloat(list.get(i + 1));
                 category = Integer.parseInt(list.get(i + 2));
-                cal.setTime(sdf.parse(list.get(i+3)));
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dateFormat.parse(list.get(i+3)));
                 switch(category) {
                 case(0):
                 	type = courseType.main; 
@@ -97,8 +156,9 @@ public class ReportLogic {
                 }
                 if(category==0){
                 	//means its alacarte 
+         
                 	MenuItems item = new MenuItems(0,name,1,"null",price); 
-                	Order order = new Order(0,false,null);
+                	Order order = new Order(0,false,null,cal);
                 	order.getOrderItems().add(item);
                 	getReport().getOrders().add(order);
                 }
@@ -123,6 +183,9 @@ public class ReportLogic {
         	e.printStackTrace(); 
         }
     }
+    /**
+     * saves the report particulars to a txt file to serve as a database 
+     */
     public void saveReport() {
         try {
             FileWriter write = new FileWriter("report.txt");
@@ -135,9 +198,9 @@ public class ReportLogic {
                         bwrite.newLine();
                         bwrite.write(Float.toString(report.getOrders().get(i).getOrderItems().get(j).getPrice()));
                         bwrite.newLine();
-                        bwrite.write(0);
+                        bwrite.write("0");
                         bwrite.newLine();
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String strdate = dateFormat.format(report.getOrders().get(i).getTimeStamp());  
                         bwrite.write(strdate);
                         bwrite.newLine();
@@ -151,9 +214,9 @@ public class ReportLogic {
                         bwrite.newLine();
                         bwrite.write(Float.toString(report.getOrders().get(i).getPromoItems().get(j).getPrice()));
                         bwrite.newLine();
-                        bwrite.write(0);
+                        bwrite.write("1");
                         bwrite.newLine();
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         String strdate = dateFormat.format(report.getOrders().get(i).getTimeStamp());  
                         bwrite.write(strdate);
                         bwrite.newLine();
