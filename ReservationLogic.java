@@ -8,6 +8,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 /**
  *  ReservationLogic is responsible for the logics used to implements the different methods 
  * involving reservations such as creating/removal/checking of reservations 
@@ -37,7 +41,8 @@ public class ReservationLogic {
 		this.reservations = new ArrayList<Reservation>();
  		this.tablelogic = checkTable; 
 		loadReservation(); 
-		System.out.println("ReservationLogic start-up complete "); 
+		System.out.println("ReservationLogic start-up complete ");
+		scheduledReservationRemover();
 	}
 
 	/**
@@ -68,8 +73,26 @@ public class ReservationLogic {
 		}
 		Reservation reservation = new Reservation(month,day,hour,minute,pax,name,contact,tableNumber); 
 		reservations.add(reservation); 
-		System.out.println("Reservation successful at table "+tableNumber+", "+day+"/"+(month+1)+","+hour+":"+minute); 
+		System.out.println("Reservation successful at table "+tableNumber+", "+day+"/"+(month+1)+","+hour+":"+minute);
 		
+	}
+
+	public void scheduledReservationRemover(){
+
+		ArrayList<Reservation> reservations = getReservations();
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				for(int i=0;i<reservations.size();i++){
+					if(System.currentTimeMillis()>=reservations.get(i).getDateandtime().getTimeInMillis()){
+						removeReservation(reservations.get(i).getTableNumber(),reservations.get(i).getName(),true);
+					}
+				}
+			}
+		};
+		final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+		scheduler.scheduleAtFixedRate(runnable, 15, 15, TimeUnit.MINUTES);
 	}
 	
 	
@@ -138,7 +161,7 @@ public class ReservationLogic {
 		try {
 			int month,day,hour,minute,pax,contact,tablenumber;
 			String name; 
-			FileReader reservationList = new FileReader("reservationList.txt"); 
+			FileReader reservationList = new FileReader("oodpassignment/reservationList.txt");
 			BufferedReader reader = new BufferedReader(reservationList);
 			ArrayList<String> list = new ArrayList<String>(); 
 			String info = reader.readLine(); 
@@ -194,7 +217,7 @@ public class ReservationLogic {
 	 */
 	public void saveReservation() {
 		try {
-			FileWriter write = new FileWriter("reservationList.txt"); 
+			FileWriter write = new FileWriter("oodpassignment/reservationList.txt");
 			@SuppressWarnings("resource")
 			BufferedWriter bwrite = new BufferedWriter(write); 
 			int noOfReservations = reservations.size();
