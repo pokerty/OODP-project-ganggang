@@ -1,37 +1,37 @@
-15
-set A
-burger and fries
-20
+0
+Set A
+Burger and Fries
+10
 
-3
-burger
+4
+Burger
 1
-mcspicy
+Mcspicy
 7
 0
 
-8
-fries
+5
+Fries
 1
-very salty fries
+Very salty fries
 5
 -1
 
-12
-setB
-waffles and ice cream
-10
+1
+SetB
+Waffles and Ice cream
+8
 
+11
+Waffles
 2
-waffles
-2
-waffles from cafe
+Waffles from cafe
 6
 0
 
-9
-ice cream
+10
+Sundae
 2
-very salty ice cream
+Very sweet ice cream
 2
 -1

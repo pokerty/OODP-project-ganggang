@@ -1,10 +1,10 @@
-12
+0
 Chicken Rice
 1
 Eating it will give you wings
 3
 
-5
+1
 Nasi Lemak 
 1
 Best Nasi Lemak in SG
@@ -16,57 +16,57 @@ Mcflurry
 The most popular ice cream 
 3
 
-1
+3
 Sprite
 3
 Gives you free diabetes
 1
 
-3
+4
 Burger
 1
 Mcspicyyyy
 7
 
-8
+5
 Fries
 1
-very salty fries
+Very salty fries
 5
 
-256
+6
 Lobster
 1
-from burger & lobster
+From Burger & Lobster
 50
 
-123
+7
 Carrot cake
 1
 Best carrot cake
 5
 
-51
+8
 Coca cola
 3
 Gives you free diabetes
 1
 
-93
+9
 Milo
 3
 Most popular drink in Singapore
 2
 
-78
+10
 Sundae
 2
 The second most popular ice cream 
 2
 
-32
-tiramisu
+11
+Waffles
 2
-made by authentic italian chefs
-10
+Made by authentic italian chefs
+8
 
