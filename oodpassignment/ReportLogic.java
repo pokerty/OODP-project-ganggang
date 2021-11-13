@@ -20,8 +20,7 @@ import oodpassignment.MenuItems;
 import oodpassignment.MenuItems.courseType;
 
 /**
- * ReportLogic is responsible for the logics behind all functions related to the
- * report (i.e. revenue generated)
+ * ReportLogic is responsible for the logics behind all functions related to the report (i.e. revenue generated)
  * 
  * @author chang wei
  * @since 07/11/2021
