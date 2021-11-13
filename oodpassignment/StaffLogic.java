@@ -10,12 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import oodpassignment.Staff;
-
-import oodpassignment.Job;
-
 /**
- * This is a control class where most of the logic concerning staff is.
+ * StaffLogic is a control class where most of the logic concerning staff is. It
+ * is used to implement the method of adding a staff member, displaying list of
+ * staff and assigning a staff to an order.
+ * 
+ * @author Mei Qi
+ * @since 08/11/21
+ * @version 1.0
  */
 
 public class StaffLogic {
@@ -25,11 +27,26 @@ public class StaffLogic {
 	 * populated with staff data read in from stafflist.txt.
 	 */
 	private ArrayList<Staff> staffs;
+	/**
+	 * BufferedWriter to write text into stafflist.txt
+	 */
 	BufferedWriter out;
+	/**
+	 * BufferedReader to read in text from stafflist.txt
+	 */
 	BufferedReader in;
 
+	/**
+	 * Scanner object to read input data from user during runtime.
+	 * 
+	 * @param System.in input stream
+	 */
 	Scanner sc = new Scanner(System.in);
 
+	/**
+	 * constructor of staffLogic which will create a new Staff arrayList and read in
+	 * data from stafflist.txt
+	 */
 	public StaffLogic() {
 		staffs = new ArrayList<Staff>();
 		loadStaffs();
@@ -38,7 +55,12 @@ public class StaffLogic {
 
 	/**
 	 * This method creates a new staff object and add it to the staffs arrayList.
-	 * The text file will also be updated with this new staff member.
+	 * stafflist.txt text file will also be updated with this new staff member.
+	 * 
+	 * @param name   name of new staff member
+	 * @param gender gender of new staff member
+	 * @param ID     ID of new staff member
+	 * @param job    job title for staff member
 	 */
 
 	public void addStaff(String name, char gender, int ID, Job job) {
@@ -49,7 +71,7 @@ public class StaffLogic {
 	}
 
 	/**
-	 * This method prints out the list of staffs and their details.
+	 * This method prints out the list of staffs and their attributes.
 	 */
 	public void displayStaff() {
 		System.out.println("List of Staff: ");

@@ -47,6 +47,7 @@ public class ReportLogic {
      * boundary class
      * 
      * @param cal the calendar object that stores the date of the completed orders
+     * @param report the object that stores all the completed order
      * @return float value corresponding to total revenue
      */
     public float calculateTotalRevenue(Calendar cal, Report report) {
@@ -59,6 +60,7 @@ public class ReportLogic {
      * frame in the boundary class
      * 
      * @param cal the calendar object that stores the date of the completed orders
+     * @param report the object that stores all the completed order
      * @return float value corresponding to revenue from promotional set items
      */
     public float calculateSetPromoRevenue(Calendar cal, Report report) {
@@ -81,6 +83,7 @@ public class ReportLogic {
      * boundary class
      * 
      * @param cal the calendar object that stores the date of the completed orders
+     * @param report the object that stores all the completed order
      * @return float value corresponding to revenue from ala carte items
      */
     public float calculateAlaCarteRevenue(Calendar cal, Report report) {
@@ -100,6 +103,7 @@ public class ReportLogic {
 
     /**
      * prints the whole list of promotional set items sold thus far
+     * @param report the object that stores all the completed order
      */
     public void showSetPromo(Report report) {
         System.out.println("Promotional Set Items sold: ");
@@ -112,6 +116,7 @@ public class ReportLogic {
 
     /**
      * prints the whole list of ala carte items sold thus far
+     * @param report the object that stores all the completed order
      */
     public void showAlaCarte(Report report) {
         System.out.println("Ala Carte Items Sold: ");
@@ -124,6 +129,7 @@ public class ReportLogic {
 
     /**
      * prints all items sold thus far
+     * @param report the object that stores all the completed order
      */
     public void showAll(Report report) {
         showSetPromo(report);

@@ -25,6 +25,7 @@ public class ReportBoundary {
 	 * 
 	 * @param reportLogic the class that is responsible for the logics behind report
 	 *                    class
+	 * @param report the class that holds the collection of orders 
 	 */
 	public void reportTotal(ReportLogic reportLogic, Report report) {
 		// Using Calendar class
@@ -54,6 +55,7 @@ public class ReportBoundary {
 	 * 
 	 * @param reportLogic the class that is responsible for the logics behind report
 	 *                    class
+	 * @param report the class that holds the collection of orders 
 	 */
 	public void reportAlaCarte(ReportLogic reportLogic, Report report) {
 		Calendar cal = Calendar.getInstance();
@@ -83,6 +85,7 @@ public class ReportBoundary {
 	 * 
 	 * @param reportLogic the class that is responsible for the logics behind report
 	 *                    class
+	 * @param report the class that holds the collection of orders 
 	 */
 	public void reportSetPromo(ReportLogic reportLogic, Report report) {
 		Calendar cal = Calendar.getInstance();

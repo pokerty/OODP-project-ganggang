@@ -412,10 +412,10 @@ public class MenuLogic {
 	 * creates a new promotional set consisting of menu items from the ala carte
 	 * menu
 	 * 
-	 * @param setId          ID of new promo set
-	 * @param setName        Name of new promo set
-	 * @param setDescription description of new promo set
-	 * @param setPrice       price of new promo set
+	 * @param SetId          ID of new promo set
+	 * @param SetName        Name of new promo set
+	 * @param SetDescription description of new promo set
+	 * @param SetPrice       price of new promo set
 	 * @param listOfIDs      the list of IDs of the menu items that will form the
 	 *                       new promotional set
 	 */
@@ -446,7 +446,7 @@ public class MenuLogic {
 	/**
 	 * removes an existing promotional set via its ID
 	 * 
-	 * @param setId the ID of the promo set you wish to remove
+	 * @param SetId the ID of the promo set you wish to remove
 	 */
 	public void removePromoSet(int SetId) {
 		for (int i = 0; i < promo.size(); i++) {
@@ -459,7 +459,7 @@ public class MenuLogic {
 	/**
 	 * updates a promotional set's old ID to a new ID
 	 * 
-	 * @param setId the ID of the promo set you wish to change
+	 * @param SetId the ID of the promo set you wish to change
 	 * @param newid the NEW ID of the promo set
 	 */
 	public void updateSetID(int SetId, int newid) {
@@ -473,7 +473,7 @@ public class MenuLogic {
 	/**
 	 * updates a promotional set's name to a new name via its ID
 	 * 
-	 * @param setId   the ID of the promo set whose name you want to change
+	 * @param SetId   the ID of the promo set whose name you want to change
 	 * @param newname the new name you wish to set for the promo set
 	 */
 	public void updateSetName(int SetId, String newname) {
@@ -487,7 +487,7 @@ public class MenuLogic {
 	/**
 	 * updates a promotional set's description to a new description via its ID
 	 * 
-	 * @param setId          the set ID of the promo set
+	 * @param SetId          the set ID of the promo set
 	 * @param newdescription the new description you want the promo set to have
 	 */
 	public void updateSetDescription(int SetId, String newdescription) {
@@ -501,7 +501,7 @@ public class MenuLogic {
 	/**
 	 * updates a promotional set's price to a new price via its ID
 	 * 
-	 * @param setId    the promo set's ID
+	 * @param SetId    the promo set's ID
 	 * @param newprice the new price of the promo set
 	 */
 	public void updateSetPrice(int SetId, float newprice) {
@@ -516,7 +516,7 @@ public class MenuLogic {
 	 * adds an additional menu item to an existing promotional set by using the ID
 	 * of the chosen menu item
 	 * 
-	 * @param setId  the promo set's ID
+	 * @param SetId  the promo set's ID
 	 * @param itemID the ID of the item that you want to add
 	 */
 	public void addItemToSet(int SetId, int itemID) {
@@ -556,7 +556,7 @@ public class MenuLogic {
 	/**
 	 * removes a specific menu item from a promotional set using the menu item's ID
 	 * 
-	 * @param setId the ID of the promo set
+	 * @param SetId the ID of the promo set
 	 * @param id    the ID of the menu item you want to remove from the set
 	 */
 	public void removeItemsFromSet(int SetId, int id) {
@@ -570,7 +570,7 @@ public class MenuLogic {
 	/**
 	 * adds a promotional set to an existing order
 	 * 
-	 * @param setId the promo set's ID
+	 * @param SetId the promo set's ID
 	 * @return the promotional set object that was chosen via its ID
 	 */
 	public PromotionalSet addPromoToOrder(int SetId) {

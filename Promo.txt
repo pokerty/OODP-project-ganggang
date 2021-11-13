@@ -18,9 +18,9 @@ Very salty fries
 -1
 
 1
-SetB
-Waffles and Ice cream
-8
+Set B
+Waffles and Ice Cream
+10
 
 11
 Waffles
@@ -30,8 +30,8 @@ Waffles from cafe
 0
 
 10
-Sundae
+Ice Cream
 2
-Very sweet ice cream
+Very salty ice cream
 2
 -1

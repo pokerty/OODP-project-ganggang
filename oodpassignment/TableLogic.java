@@ -58,8 +58,20 @@ public class TableLogic implements CheckTable, FreeTable {
 		List<List<Table>> alltables = Arrays.asList(tables_12_to_2, tables_2_to_4, tables_4_to_6, tables_6_to_8,
 				tables_8_to_10);
 		for (int i = 0; i < alltables.size(); i++) {
-			for (int j = 1; j < 16; j++) {
-				alltables.get(i).add(new Table(j, 2));
+			for (int i1 = 1; i1 < 4; i1++) {
+				alltables.get(i).add(new Table(i1, 2));
+			}
+			for (int i2 = 4; i2 < 7; i2++) {
+				alltables.get(i).add(new Table(i2, 4));
+			}
+			for (int i3 = 7; i3 < 10; i3++) {
+				alltables.get(i).add(new Table(i3, 6));
+			}
+			for (int i4 = 10; i4 < 13; i4++) {
+				alltables.get(i).add(new Table(i4, 8));
+			}
+			for (int i5 = 13; i5 < 16; i5++) {
+				alltables.get(i).add(new Table(i5, 10));
 			}
 		}
 	}

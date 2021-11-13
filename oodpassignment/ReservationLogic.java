@@ -85,6 +85,10 @@ public class ReservationLogic {
 				+ hour + ":" + minute);
 
 	}
+	
+	/**
+	 * scheduler that automatically removes reservations after every fixed interval
+	 */
 
 	public void scheduledReservationRemover() {
 
@@ -139,7 +143,7 @@ public class ReservationLogic {
 	 * 
 	 * @param TableNumber table number of reservation
 	 * @param name        name of customer who made reservation
-	 * @return
+	 * @return 
 	 */
 	public int checkReservation(int TableNumber, String name) {
 		if (TableNumber > 0 && TableNumber <= 15) { // change parameters

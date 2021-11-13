@@ -4,9 +4,10 @@ import oodpassignment.Job;
 
 /**
  * This is an entity class used to represent staff working in the restuarant. It
- * stores the staff data.
+ * stores the staff attributes like staff members' name, gender, ID and job
+ * title.
  * 
- * @author mei qi
+ * @author Mei Qi
  * @since 08/11/2021
  * @version 1.0
  * 
@@ -14,15 +15,34 @@ import oodpassignment.Job;
 
 public class Staff {
 
+	/**
+	 * Name of staff member
+	 */
 	private String name;
+	/**
+	 * Staff member's gender
+	 */
 	private char gender;
+	/**
+	 * Staff member's unique ID
+	 */
 	private int ID;
+	/**
+	 * Staff member's job title
+	 */
 	Job job;
+
+	/**
+	 * Default staff constructor
+	 */
 
 	public Staff() {
 	}
 
 	/**
+	 * Staff constructor which takes in the name, gender, ID and job title of the
+	 * staff
+	 * 
 	 * @param name   staff's name
 	 * @param gender staff's gender
 	 * @param ID     staff's unique ID
@@ -38,7 +58,7 @@ public class Staff {
 	/**
 	 * getter method for name of staff
 	 * 
-	 * @return name of staff
+	 * @return returns the staff's name
 	 */
 	public String getName() {
 		return this.name;
@@ -47,7 +67,7 @@ public class Staff {
 	/**
 	 * getter method for gender of staff
 	 * 
-	 * @return gender of staff
+	 * @return returns the staff's gender
 	 */
 	public char getGender() {
 		return this.gender;
@@ -56,7 +76,7 @@ public class Staff {
 	/**
 	 * getter method for ID of staff
 	 * 
-	 * @return ID of staff
+	 * @return returns the staff's ID
 	 */
 	public int getID() {
 		return this.ID;
@@ -65,7 +85,7 @@ public class Staff {
 	/**
 	 * getter method for job of staff
 	 * 
-	 * @return enum of staff's job
+	 * @return returns the job title of the staff which is an enumeration value
 	 */
 	public Job getJob() {
 		return this.job;
@@ -74,7 +94,7 @@ public class Staff {
 	/**
 	 * setter method for name of staff
 	 * 
-	 * @param name sets the name of the staff
+	 * @param name staff's name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -83,7 +103,7 @@ public class Staff {
 	/**
 	 * setter method for gender of staff
 	 * 
-	 * @param gender sets gender of staff
+	 * @param gender staff's gender
 	 */
 	public void setGender(char gender) {
 		this.gender = gender;
@@ -92,7 +112,7 @@ public class Staff {
 	/**
 	 * setter method for ID of staff
 	 * 
-	 * @param ID sets ID of staff
+	 * @param ID staff's ID
 	 */
 	public void setID(int ID) {
 		this.ID = ID;
@@ -101,7 +121,7 @@ public class Staff {
 	/**
 	 * setter method for job of staff
 	 * 
-	 * @param job job of staff
+	 * @param job staff's job title
 	 */
 	public void setJob(Job job) {
 		this.job = job;

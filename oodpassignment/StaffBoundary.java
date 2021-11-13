@@ -2,11 +2,14 @@ package oodpassignment;
 
 import java.util.Scanner;
 
-import oodpassignment.Job;
-
 /**
- * This is a boundary class that uses the StaffLogic class and is responsible
- * for interacting with the user.
+ * StaffBoundary is a boundary class that uses the StaffLogic class and is
+ * responsible for interacting with the user by taking the inputs to be used in
+ * the functions involving staff.
+ * 
+ * @author Mei Qi
+ * @since 08/11/2021
+ * @version 1.0
  */
 
 public class StaffBoundary {
@@ -16,6 +19,8 @@ public class StaffBoundary {
 	/**
 	 * This method is responsible for scanning in staff details when a new staff is
 	 * going to be added.
+	 * 
+	 * @param staffLogic the class that is responsible for the logics behind staff
 	 */
 	public void addStaff(StaffLogic staffLogic) {
 		System.out.println("Input staff name: ");
@@ -39,6 +44,8 @@ public class StaffBoundary {
 	/**
 	 * This method calls the displayStaff method from StaffLogic class to print out
 	 * the list of staff and their details.
+	 * 
+	 * @param staffLogic the class that is responsible for the logics behind staff
 	 */
 
 	public void displayStaff(StaffLogic staffLogic) {
@@ -48,6 +55,8 @@ public class StaffBoundary {
 	/**
 	 * This method calls the handler method from StaffLogic class to select a staff
 	 * member who will handle an order.
+	 * 
+	 * @param staffLogic the class that is responsible for the logics behind staff
 	 */
 	public void handler(StaffLogic staffLogic) {
 		staffLogic.handler();

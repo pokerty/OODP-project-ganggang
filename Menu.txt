@@ -31,13 +31,13 @@ Mcspicyyyy
 5
 Fries
 1
-Very salty fries
+very salty fries
 5
 
 6
 Lobster
 1
-From Burger & Lobster
+from burger & lobster
 50
 
 7
@@ -68,5 +68,5 @@ The second most popular ice cream
 Waffles
 2
 Made by authentic italian chefs
-8
+10
 
