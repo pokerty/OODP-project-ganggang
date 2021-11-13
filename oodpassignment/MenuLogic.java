@@ -138,21 +138,21 @@ public class MenuLogic {
 			System.out.print("Mains:\n");
 			for (int i = 0; i < mains.size(); i++) {
 				System.out.println(mains.get(i).getName() + ", ID: " + mains.get(i).getID() + ", Price: "
-						+ mains.get(i).getPrice());
+						+ mains.get(i).getPrice() + ", Description: " + mains.get(i).getDescription());
 			}
 			break;
 		case 3:
 			System.out.print("Drinks:\n");
 			for (int i = 0; i < drinks.size(); i++) {
 				System.out.println(drinks.get(i).getName() + ", ID: " + drinks.get(i).getID() + ", Price: "
-						+ drinks.get(i).getPrice());
+						+ drinks.get(i).getPrice() + ", Description: " + drinks.get(i).getDescription());
 			}
 			break;
 		case 2:
 			System.out.print("Desserts:\n");
 			for (int i = 0; i < desserts.size(); i++) {
 				System.out.println(desserts.get(i).getName() + ", ID: " + desserts.get(i).getID() + ", Price: "
-						+ desserts.get(i).getPrice());
+						+ desserts.get(i).getPrice() + ", Description: " + desserts.get(i).getDescription());
 			}
 			break;
 		}
