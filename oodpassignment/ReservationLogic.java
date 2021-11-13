@@ -85,7 +85,9 @@ public class ReservationLogic {
 				+ hour + ":" + minute);
 
 	}
-
+	/**
+	 * scheduler that automatically removes reservations after every fixed interval
+	 */
 	public void scheduledReservationRemover() {
 
 		ArrayList<Reservation> reservations = getReservations();
