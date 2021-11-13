@@ -39,11 +39,11 @@ public class PromotionalSet {
     /**
      * creates the promotional set according to its attributes
      * 
-     * @param setId          ID of promo set
-     * @param setName        name of promo set
-     * @param setDescription description of promo set
-     * @param setPrice       price of promo set
-     * @param setItems       the set of items that make up promo set (an array list)
+     * @param SetId          ID of promo set
+     * @param SetName        name of promo set
+     * @param SetDescription description of promo set
+     * @param SetPrice       price of promo set
+     * @param SetItems       the set of items that make up promo set (an array list)
      */
     public PromotionalSet(int SetId, String SetName, String SetDescription, float SetPrice,
             ArrayList<MenuItems> SetItems) {
