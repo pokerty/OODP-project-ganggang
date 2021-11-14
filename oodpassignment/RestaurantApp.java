@@ -275,7 +275,7 @@ public class RestaurantApp {
 				break;
 			}
 			System.out.println("\nChoose the category: ");
-			System.out.printf("1. Menu\n2. Reservation\n3.Table\n4. Order\n5. Report\n6. Staff\n-1.Terminate\n");
+			System.out.printf("1. Menu\n2. Reservation\n3. Table\n4. Order\n5. Report\n6. Staff\n-1. Terminate\n");
 			cChoice = sc.nextInt();
 		}
 
